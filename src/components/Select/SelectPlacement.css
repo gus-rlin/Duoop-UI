@@ -1,0 +1,6 @@
+.duoop-select__popup{min-width:240px}
+.duoop-select__popup--bottom-end{inset-inline:unset 0}
+.duoop-select__popup--top-start,.duoop-select__popup--top-end{inset-block:unset calc(100% + 9px);transform-origin:bottom}
+.duoop-select__popup--top-end{inset-inline:unset 0}
+.select-rich-value{display:flex;align-items:center;gap:8px;min-width:0}
+.select-rich-value svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}

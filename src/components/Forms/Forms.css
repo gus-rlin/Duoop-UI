@@ -1,0 +1,67 @@
+.duoop-input {
+  display:block; width:100%; min-width:0; min-height:44px; margin:0; padding:10px 13px;
+  border:2px solid #777474; border-radius:10px; background:#fff; color:#252323;
+  box-shadow:none; font: inherit; font-size: 14px; line-height:1.4;
+  transition:border-color 140ms ease,box-shadow 180ms ease-out; caret-color:#252323;
+}
+.duoop-input--sm { min-height:36px; padding:7px 11px; font-size: 12px; box-shadow:none; }
+.duoop-input--lg { min-height:52px; padding:12px 16px; font-size: 16px; }
+.duoop-input::placeholder { color:#767171; opacity:1; }
+.duoop-input:hover:not(:disabled) { border-color:#373434; }
+.duoop-input:focus { border-color:#373434; outline:none; box-shadow:0 3px 0 #373434; }
+.duoop-input:disabled { background:#efefef; color:#777; border-color:#ccc; box-shadow:none; cursor:not-allowed; }
+.duoop-input[aria-invalid=true] { border-color:#a51d2d; box-shadow:none; }
+.duoop-input[aria-invalid=true]:focus { box-shadow:0 3px 0 #a51d2d; }
+.duoop-input[type=file] { font-size: 12px; padding:6px; }
+.duoop-input::file-selector-button { border:0; border-right:1px solid #d1cece; padding:7px 10px; margin-right:10px; background:#efeded; color:#373434; font: inherit; font-weight:600; border-radius:5px; cursor:pointer; }
+.duoop-field { display:flex; flex-direction:column; gap:10px; width:100%; min-width:0; }
+.duoop-field>label { font-size: 13px; font-weight:600; color:#373434; }
+.field-required { font-size: 11px; font-weight:400; color:#717171; }
+.duoop-field p { margin:0; font-size: 12px; line-height:1.6; }
+.duoop-field .field-help { color:#686565; }
+.duoop-field .field-message { color:#a51d2d; }
+.duoop-field[data-state=success] .field-message { color:#37633f; }
+.duoop-field[data-state=success] .duoop-input { border-color:#527a59; box-shadow:none; }
+.duoop-field[data-state=success] .duoop-input:focus { box-shadow:0 3px 0 #527a59; }
+.duoop-field>div:empty { display:none; }
+.forms-showcase .gallery-card-preview { min-height:190px; }
+.form-demo { width:100%; max-width:380px; display:flex; flex-direction:column; gap:20px; }
+.form-demo .duoop-input { margin:0; }
+.input-adjacent { display:flex; align-items:start; gap:10px; width:100%; }
+.input-adjacent .duoop-button { flex-shrink:0; padding-inline:12px; }
+.form-notice { margin:0; font-size: 12px; line-height:1.6; color:#37633f; }
+.forms-showcase .gallery-card-preview:has(.form-demo) { align-items:start; }
+@media(prefers-reduced-motion:reduce) { .duoop-input { transition:none; } }
+@media(max-width:380px) { .input-adjacent { flex-direction:column; } }
+
+
+
+.form-validation-error { display:flex; align-items:center; gap:9px; margin:0; padding:10px 12px; border:2px solid #a51d2d; border-radius:10px; color:#a51d2d; background:#fff5f5; font-size: 12px; line-height:1.6; animation:form-feedback-in 180ms ease-out; }
+.form-validation-error>span { flex-shrink:0; display:grid; place-items:center; width:18px; height:18px; border:1.5px solid currentColor; border-radius:50%; font-size: 11px; font-weight:700; }
+.form-demo>div:empty { display:none; }
+@keyframes form-feedback-in { from { opacity:0; transform:translateY(-3px); } to { opacity:1; transform:translateY(0); } }
+@media(prefers-reduced-motion:reduce) { .form-validation-error { animation:none; } }
+
+.field-content { display:flex; flex-direction:column; gap:10px; min-width:0; }
+.field-feedback:empty { display:none; }
+.duoop-field label, .duoop-field p { overflow-wrap:anywhere; }
+.duoop-field[data-disabled=true]>label { color:#686565; }
+.field-help a { color:inherit; text-decoration:underline; text-underline-offset:3px; }
+.field-help a:focus-visible { outline:none; text-decoration-thickness:3px; }
+.field-message { display:flex; align-items:baseline; gap:9px; }
+.field-group { width:100%; min-width:0; margin:0; padding:0; border:0; }
+.field-group legend { padding:0; margin-bottom:16px; font-size: 14px; font-weight:600; }
+.field-group .duoop-field + .duoop-field { margin-top:16px; }
+@media(min-width:768px) {
+  .duoop-field--horizontal { display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 2fr); align-items:start; gap:16px; }
+  .duoop-field--horizontal>label { padding-top:12px; }
+}
+/* Error palettes include content and surfaces, not just an isolated red edge. */
+.duoop-field[data-state=error] > label { color:#a51d2d; }
+.duoop-input[aria-invalid=true] { color:#a51d2d; background:#fff5f5; }
+.duoop-field[data-state=error] .field-required, .duoop-field[data-state=error] .field-help { color:#945663; }
+.duoop-field[data-state=success] .field-message { padding:12px; border-radius:8px; background:#edf5ef; }
+.duoop-field[data-state=success] .field-message>span { display:grid; place-items:center; width:24px; height:24px; border:1px solid currentColor; border-radius:50%; animation:field-confirm 300ms ease-out; }
+@keyframes field-confirm { from { opacity:0; transform:scale(.6) rotate(-20deg); } to { opacity:1; transform:scale(1); } }
+@media(prefers-reduced-motion:reduce) { .duoop-field[data-state=success] .field-message>span { animation:none; } }
+

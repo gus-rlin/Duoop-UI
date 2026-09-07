@@ -1,0 +1,71 @@
+.duoop-card,.duoop-card-frame {
+  --card-ink:#252323; --card-muted:#5f5a5a; --card-border:#1d1b1b;
+  --card-soft:#f0eeee; --card-shadow:#1d1b1b; --card-paper:#faf8f4;
+  color:var(--card-ink); background:#fff; text-align:initial; min-width:0; position:relative;
+}
+.duoop-card { display:flex; width:100%; padding:0; appearance:none; overflow:hidden; border:2px solid var(--card-border); font: inherit; animation:card-arrive 300ms cubic-bezier(.2,.8,.2,1) backwards; }
+.duoop-card--vertical { flex-direction:column; }
+.duoop-card--horizontal { flex-direction:row; }
+.duoop-card--outline { background:#fff; }
+.duoop-card--elevated { box-shadow:0 5px 0 var(--card-shadow); }
+.duoop-card--filled { background:var(--card-soft); }
+.duoop-card--ghost { background:transparent; border-style:solid; }
+.duoop-card--radius-sm { border-radius:6px; }
+.duoop-card--radius-md { border-radius:10px; }
+.duoop-card--radius-lg { border-radius:16px; }
+.duoop-card--sm { --card-pad:12px; }
+.duoop-card--md { --card-pad:24px; }
+.duoop-card--lg { --card-pad:28px; }
+.duoop-card--interactive { cursor:pointer; text-decoration:none; transition:transform 240ms cubic-bezier(.2,1.65,.35,1), box-shadow 240ms cubic-bezier(.2,1.65,.35,1), background-color 160ms ease-out; }
+@media(hover:hover) {
+  .duoop-card--interactive:hover { transform:translateY(-3px); box-shadow:0 7px 0 var(--card-shadow); }
+  .duoop-card:hover .duoop-card__title { transform:translateX(3px); }
+}
+.duoop-card--interactive:active { transform:translateY(3px) scale(.99); box-shadow:0 1px 0 var(--card-shadow); transition-duration:90ms; }
+.duoop-card--interactive:focus-visible { outline:2px solid currentColor; outline-offset:-5px; border-style:solid; }
+.duoop-card--interactive:not(a):not(button) { cursor:default; }
+.duoop-card--interactive:not(a):not(button):is(:hover,:active) { transform:none; }
+.duoop-card--interactive:not(a):not(button):focus-within { box-shadow:0 7px 0 var(--card-shadow); border-style:solid; }
+.duoop-card[data-selected] { background:var(--card-soft); box-shadow:0 3px 0 var(--card-shadow); }
+.duoop-card[data-selected] .duoop-card__title { animation:card-title-pop 300ms cubic-bezier(.2,1.7,.35,1); }
+.duoop-card[data-disabled] { opacity:.48; pointer-events:none; }
+.duoop-card__header,.duoop-card__content,.duoop-card__footer { padding:var(--card-pad); }
+.duoop-card__header { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px 16px; align-items:start; }
+.duoop-card__header .duoop-card__description { grid-column:1/-1; }
+.duoop-card__title { margin:0; min-width:0; font-size: 19px; font-weight:650; letter-spacing:-.6px; line-height:1.25; overflow-wrap:anywhere; transition:transform 220ms cubic-bezier(.2,1.5,.35,1); }
+.duoop-card__title::after { content:''; display:block; width:28px; height:3px; margin-top:12px; background:var(--card-border); transform:scaleX(.6); transform-origin:left; transition:transform 260ms cubic-bezier(.2,1.6,.35,1); }
+@media(hover:hover) { .duoop-card:hover .duoop-card__title::after { transform:scaleX(1); } }
+.duoop-card__description { margin:6px 0 0; color:var(--card-muted); font-size: 13px; line-height:1.7; overflow-wrap:anywhere; }
+.duoop-card__action { display:flex; gap:8px; align-items:center; }
+.duoop-card__content { padding-top:0; min-width:0; font-size: 13px; line-height:1.65; }
+.duoop-card__footer { margin-top:auto; padding-block:16px; background:var(--card-paper); border-top:2px solid var(--card-border); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; font-size: 12px; }
+.duoop-card__footer>strong { font-size: 25px; letter-spacing:-1px; font-variant-numeric:tabular-nums; }
+.duoop-card__media { min-height:120px; overflow:hidden; display:grid; place-items:center; background:var(--card-paper); border-bottom:2px solid var(--card-border); }
+.duoop-card__media img { width:100%; height:100%; object-fit:cover; display:block; }
+.duoop-card--horizontal .duoop-card__media { flex:0 0 38%; min-width:110px; border-bottom:0; border-inline-end:2px solid var(--card-border); }
+.duoop-card--horizontal>div:not(.duoop-card__media) { min-width:0; }
+.duoop-card-frame { width:100%; border:2px solid var(--card-border); border-radius:12px; overflow:hidden; box-shadow:0 4px 0 var(--card-shadow); animation:card-arrive 300ms cubic-bezier(.2,.8,.2,1) backwards; }
+.duoop-card-frame__header,.duoop-card-frame__footer { padding:20px 22px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px 16px; align-items:center; }
+.duoop-card-frame__header { border-bottom:2px solid var(--card-border); background:var(--card-paper); }
+.duoop-card-frame__header .duoop-card__description { grid-column:1/-1; }
+.duoop-card-frame__footer { border-top:2px solid var(--card-border); font-size: 12px; }
+.duoop-card-frame>.duoop-card__content { padding:20px 22px; }
+.duoop-card__skeleton { padding:var(--card-pad,20px); display:grid; gap:12px; width:100%; }
+.duoop-card__skeleton i { display:block; border:1px solid #c8c2c2; border-radius:5px; background:linear-gradient(90deg,#ddd8d5 25%,#f7f5f4 45%,#ddd8d5 65%); background-size:240% 100%; animation:card-shimmer 1.15s ease-in-out infinite; }
+.skeleton-media { height:82px; }
+.skeleton-line { height:11px; }
+.skeleton-line:last-child { width:68%; }
+@keyframes card-arrive { from { opacity:0; transform:translateY(7px) scale(.985); } 70% { transform:translateY(-1px) scale(1.004); } to { opacity:1; transform:none; } }
+@keyframes card-title-pop { 50% { transform:translateX(5px); } }
+@keyframes card-shimmer { to { background-position:-240% 0; } }
+@media(max-width:520px) {
+  .duoop-card--horizontal { flex-direction:column; }
+  .duoop-card--horizontal .duoop-card__media { flex-basis:auto; min-height:110px; border-inline-end:0; border-bottom:2px solid var(--card-border); }
+  .duoop-card--lg { --card-pad:20px; }
+  .duoop-card-frame__header,.duoop-card-frame__footer { padding:18px 20px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .duoop-card,.duoop-card-frame,.duoop-card__title,.duoop-card__title::after { animation:none; transition:none; }
+  .duoop-card--interactive:hover,.duoop-card--interactive:active,.duoop-card:hover .duoop-card__title { transform:none; }
+  .duoop-card__skeleton i { animation:none; background:#e4dfdc; }
+}

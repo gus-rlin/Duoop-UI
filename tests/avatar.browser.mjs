@@ -1,0 +1,62 @@
+import { openCatalog } from './catalog-page.mjs';
+import assert from 'node:assert/strict';
+import { mkdir } from 'node:fs/promises';
+const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
+const browser = await chromium.launch({ headless: true });
+const page = await browser.newPage({ viewport: { width: 1440, height: 1100 } });
+const errors = [];
+page.on('pageerror', error => errors.push(error.message));
+await mkdir('artifacts', { recursive: true });
+// Exercise successful image loading independently of a third-party CDN's availability.
+await page.route('https://images.unsplash.com/**', route => route.fulfill({ contentType: 'image/svg+xml', body: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#e7e4df"/><circle cx="50" cy="37" r="18" fill="#736d65"/><path d="M15 100V85a35 35 0 0 1 70 0v15" fill="#736d65"/></svg>' }));
+try {
+  await openCatalog(page, process.env.TEST_URL || 'http://127.0.0.1:5176');
+  await page.getByRole('link', { name:'Explore Avatar', exact: true }).click();
+  const lab = page.getByRole('region', { name: 'Avatar playground' });
+  await lab.locator('.avatar-profile img[data-loaded=true]').waitFor();
+  await page.keyboard.press('Tab');
+  await lab.getByRole('button', { name: 'Select Alex Morgan' }).focus();
+  assert.equal(await lab.locator('.avatar-roster button').nth(1).evaluate(el => getComputedStyle(el, '::after').height), '3px');
+  await page.keyboard.press('Space');
+  assert.equal(await lab.locator('.avatar-profile__copy strong').textContent(), 'Alex Morgan');
+  assert.equal(await lab.getByRole('button', { name: 'Select Alex Morgan' }).getAttribute('aria-pressed'), 'true');
+  await lab.getByRole('button', { name: 'Show initials' }).click();
+  assert.equal(await lab.locator('img').count(), 0);
+  assert.equal(await lab.locator('.avatar-profile .duoop-avatar__fallback').textContent(), 'AM');
+  await lab.getByRole('button', { name: 'Show photos' }).click();
+  await lab.locator('.avatar-profile img[data-loaded=true]').waitFor();
+  await lab.getByRole('button', { name: 'Select Sam Rivera' }).hover();
+  await page.waitForTimeout(260);
+  assert.notEqual(await lab.locator('.avatar-roster button').nth(2).locator('.duoop-avatar__face').evaluate(el => getComputedStyle(el).transform), 'none');
+  await page.mouse.down();
+  await page.waitForTimeout(130);
+  await page.mouse.up();
+  await page.mouse.move(0, 0);
+  await page.waitForTimeout(300);
+  await lab.screenshot({ path: 'artifacts/avatar-desktop.png' });
+  await lab.getByRole('button', { name: 'Dark surface' }).click();
+  await lab.screenshot({ path: 'artifacts/avatar-dark.png' });
+  const recovery = page.getByRole('article', { name: 'Avatar: Image recovery', exact: true });
+  assert.equal(await recovery.locator('img').getAttribute('data-loaded'), 'false');
+  await recovery.getByRole('button', { name: 'Restore photo' }).click();
+  await recovery.locator('img[data-loaded=true]').waitFor();
+  await recovery.getByRole('button', { name: 'Break image' }).click();
+  assert.equal(await recovery.locator('img').getAttribute('data-loaded'), 'false');
+  const rtl = page.getByRole('article', { name: 'Avatar: Right to left', exact: true });
+  assert.equal(await rtl.locator('.avatar-composition').getAttribute('dir'), 'rtl');
+  for (const width of [1000, 768, 390, 320]) {
+    await page.setViewportSize({ width, height: 1000 });
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `No overflow at ${width}`);
+    if (width === 390) await lab.screenshot({ path: 'artifacts/avatar-mobile.png' });
+  }
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await lab.getByRole('button', { name: 'Select Luke Tracy' }).click();
+  assert.equal(await lab.locator('.avatar-profile__copy').evaluate(el => getComputedStyle(el).animationName), 'none');
+  await page.setViewportSize({ width: 1440, height: 1100 });
+  await page.locator('.component-gallery').screenshot({ path: 'artifacts/avatar-gallery.png' });
+  await page.getByRole('button', { name: 'View code: Avatar Initials', exact: true }).click();
+  assert.ok(await page.getByRole('dialog').isVisible());
+  await page.keyboard.press('Escape');
+  assert.deepEqual(errors, []);
+  console.log('Avatar passed: navigation, images, recovery, keyboard, selection, motion, themes, RTL, responsive layout and source dialog.');
+} finally { await browser.close(); }

@@ -1,0 +1,11 @@
+.badge-showcase .gallery-card-preview { min-height:128px; }
+.badge-avatar { width:20px; height:20px; border:1.5px solid currentColor; border-radius:5px; display:grid; place-items:center; background:#fff; color:#303b51; font-size: 8px; box-shadow:0 1px 0 currentColor; }
+.badge-reset { border:2px solid #1d1b1b; background:#fff; border-radius:7px; box-shadow:0 3px 0 #1d1b1b; padding:8px 10px; font-size: 11px; font-weight:650; }
+.badge-truncated { max-width:190px; }
+.badge-matrix { border:2px solid #1d1b1b; border-radius:10px; overflow:hidden; box-shadow:0 4px 0 #1d1b1b; background:#fff; }
+.badge-matrix>div { display:grid; grid-template-columns:90px repeat(3,minmax(0,1fr)); align-items:center; gap:18px; padding:17px 20px; }
+.badge-matrix>div+div { border-top:2px solid #1d1b1b; }
+.badge-matrix>div>span { font: 650 11px var(--duoop-font, 'DM Sans', sans-serif); color:#373434; text-transform:capitalize; }
+.badge-matrix .duoop-badge { justify-self:start; }
+.badge-scale { display:flex; align-items:center; flex-wrap:wrap; gap:18px; margin-top:18px; padding:20px; border:2px solid #1d1b1b; border-radius:10px; box-shadow:0 4px 0 #1d1b1b; background:#f7f5f4; }
+@media(max-width:650px) { .badge-matrix>div { grid-template-columns:1fr; justify-items:start; gap:12px; } .badge-matrix>div>span { margin-bottom:3px; } }

@@ -1,0 +1,28 @@
+.map-experience { width:100%; min-width:0; color:#373434; text-align:start; container-type:inline-size; }
+.map-atlas { border:2px solid #373434; border-radius:12px; box-shadow:4px 5px 0 #1d1b1b; overflow:hidden; background:#fff; }
+.map-atlas-heading { display:flex; justify-content:space-between; align-items:center; gap:24px; padding:28px 32px; border-bottom:2px solid #373434; }
+.map-eyebrow { font-size: 10px; font-weight:600; letter-spacing:.13em; color:#686565; }
+.map-atlas-heading h3 { font-size: 38px; font-weight:550; letter-spacing:-1.6px; margin:9px 0 0; line-height:1.1; }
+.map-atlas-heading h3 span { color:#777474; }
+.map-coordinates { font-size: 11px; line-height:1.9; letter-spacing:.06em; text-align:end; color:#686565; font-variant-numeric:tabular-nums; }
+.duoop-map { position:relative; height:510px; isolation:isolate; background:#eeece8; }
+.duoop-map-canvas { width:100%; height:100%; background:#eeece8; font-family:var(--duoop-font, 'DM Sans', sans-serif); }
+.duoop-map .leaflet-tile-pane { filter:grayscale(1) contrast(.72) brightness(1.15); }
+.duoop-map-canvas:focus-visible { outline:3px solid #373434; outline-offset:-6px; }
+.duoop-map-controls { position:absolute; z-index:800; right:22px; top:22px; display:grid; gap:12px; }
+.duoop-map-controls .duoop-button { width:44px; height:44px; }
+.duoop-map-controls .duoop-button:last-child { margin-top:4px; }
+.duoop-map .leaflet-control-attribution { font-size: 10px; background:#ffffffeb; padding:3px 7px; }
+.duoop-map .leaflet-control-attribution a { color:#484646; }
+.duoop-map-message { position:absolute; z-index:900; left:20px; right:86px; top:20px; padding:16px; border:2px solid #373434; border-radius:8px; background:#fff; font-size: 12px; display:grid; gap:12px; }
+.map-atlas-footer { display:flex; justify-content:space-between; gap:16px; padding:19px 32px; border-top:2px solid #373434; font-size: 11px; color:#686565; line-height:1.6; }
+.map-atlas-footer span:first-child { color:#373434; font-weight:500; }
+.map-atlas-footer i { font-style:normal; color:#aaa5a5; padding:0 8px; }
+.map-showcase .gallery-card-preview { padding:30px; display:block; }
+.map-showcase .gallery-card--wide { grid-column:1/-1; }
+.mini-map { position:relative; display:block; width:250px; height:150px; background:#eae8e2; border:2px solid #373434; border-radius:10px; box-shadow:4px 5px 0 #1d1b1b; overflow:hidden; }
+.mini-map svg { position:absolute; inset:0; width:100%; height:100%; }
+.mini-map b { position:absolute; top:14px; left:14px; color:#373434; font-size: 20px; font-weight:600; letter-spacing:-.7px; }
+.mini-map small { position:absolute; bottom:0; left:0; right:0; background:white; padding:8px 14px; border-top:1px solid #373434; font-size: 9px; letter-spacing:.08em; }
+@container (max-width:580px) { .map-atlas-heading { padding:22px 20px; } .map-atlas-heading h3 { font-size: 30px; } .map-coordinates { font-size: 10px; } .duoop-map { height:430px; } .map-atlas-footer { padding:16px 20px; flex-direction:column; gap:4px; } .duoop-map-controls { top:16px; right:16px; } }
+@media(max-width:600px) { .map-showcase .gallery-card-preview { padding:18px 12px 22px; } }

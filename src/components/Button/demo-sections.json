@@ -1,0 +1,276 @@
+[
+  {
+    "id": "button-variants",
+    "title": "Variants",
+    "items": [
+      {
+        "id": "example-default",
+        "title": "Primary",
+        "preset": {
+          "label": "Continue"
+        }
+      },
+      {
+        "id": "example-outline",
+        "title": "Outline",
+        "preset": {
+          "variant": "outline",
+          "label": "Learn more"
+        }
+      },
+      {
+        "id": "example-ghost",
+        "title": "Ghost",
+        "preset": {
+          "variant": "ghost",
+          "label": "Reset"
+        }
+      }
+    ]
+  },
+  {
+    "id": "button-intent",
+    "title": "Intents and links",
+    "items": [
+      {
+        "id": "example-destructive",
+        "title": "Destructive",
+        "preset": {
+          "variant": "destructive",
+          "label": "Delete"
+        }
+      },
+      {
+        "id": "example-destructive-outline",
+        "title": "Destructive outline",
+        "preset": {
+          "variant": "destructive-outline",
+          "label": "Remove"
+        }
+      },
+      {
+        "id": "example-link",
+        "title": "Text link",
+        "preset": {
+          "variant": "link",
+          "label": "Documentation",
+          "href": "#button-documentation"
+        }
+      },
+      {
+        "id": "example-with-link",
+        "title": "Button as a link",
+        "preset": {
+          "variant": "outline",
+          "label": "Learn more",
+          "href": "#button-usage"
+        }
+      }
+    ]
+  },
+  {
+    "id": "button-sizes",
+    "title": "Sizes and icons",
+    "items": [
+      {
+        "id": "example-size-sm",
+        "title": "Small size",
+        "preset": {
+          "size": "sm",
+          "label": "Continue"
+        }
+      },
+      {
+        "id": "example-size-md",
+        "title": "Default size",
+        "preset": {
+          "size": "md",
+          "label": "Continue"
+        }
+      },
+      {
+        "id": "example-size-lg",
+        "title": "Large size",
+        "preset": {
+          "size": "lg",
+          "label": "Continue"
+        }
+      },
+      {
+        "id": "example-icon-left",
+        "title": "Left icon",
+        "preset": {
+          "label": "Add",
+          "content": "left",
+          "iconName": "plus"
+        }
+      },
+      {
+        "id": "example-icon-right",
+        "title": "Right icon",
+        "preset": {
+          "label": "Continue",
+          "content": "right"
+        }
+      },
+      {
+        "id": "example-full-width",
+        "title": "Full width",
+        "preset": {
+          "variant": "outline",
+          "label": "Confirm my preferences and continue",
+          "width": "full",
+          "content": "right"
+        }
+      },
+      {
+        "id": "example-favorite",
+        "title": "Favorite",
+        "preset": {
+          "variant": "outline",
+          "content": "only",
+          "behavior": "toggle",
+          "label": "Favorite"
+        }
+      }
+    ]
+  },
+  {
+    "id": "button-motion",
+    "title": "Animations",
+    "items": [
+      {
+        "id": "example-motion-discreet",
+        "title": "Subtle motion",
+        "preset": {
+          "motion": "discreet",
+          "label": "Continue",
+          "content": "right"
+        }
+      },
+      {
+        "id": "example-motion-tactile",
+        "title": "Tactile motion",
+        "preset": {
+          "motion": "tactile",
+          "label": "Continue",
+          "content": "right"
+        }
+      },
+      {
+        "id": "example-motion-expressive",
+        "title": "Expressive motion",
+        "preset": {
+          "motion": "expressive",
+          "label": "Continue",
+          "content": "right"
+        }
+      }
+    ]
+  },
+  {
+    "id": "button-status",
+    "title": "States",
+    "items": [
+      {
+        "id": "example-disabled",
+        "title": "Disabled",
+        "preset": {
+          "label": "Unavailable",
+          "disabled": true
+        }
+      },
+      {
+        "id": "example-status-loading",
+        "title": "Loading",
+        "preset": {
+          "status": "loading",
+          "label": "Save"
+        }
+      },
+      {
+        "id": "example-status-success",
+        "title": "Success",
+        "preset": {
+          "status": "success",
+          "label": "Save"
+        }
+      },
+      {
+        "id": "example-status-error",
+        "title": "Error",
+        "preset": {
+          "status": "error",
+          "label": "Save"
+        }
+      },
+      {
+        "id": "example-async",
+        "title": "Loading then success",
+        "preset": {
+          "label": "Save",
+          "behavior": "success"
+        }
+      },
+      {
+        "id": "example-retry",
+        "title": "Error then retry",
+        "preset": {
+          "label": "Simulate error",
+          "behavior": "error"
+        }
+      }
+    ]
+  },
+  {
+    "id": "icon-button-examples",
+    "title": "Icon buttons",
+    "items": [
+      {
+        "id": "example-icon-solid",
+        "title": "Solid icon",
+        "preset": {
+          "variant": "solid",
+          "content": "left",
+          "action": "plus"
+        }
+      },
+      {
+        "id": "example-icon-outline",
+        "title": "Outline icon",
+        "preset": {
+          "variant": "outline",
+          "content": "left",
+          "action": "arrow"
+        }
+      },
+      {
+        "id": "example-icon-ghost",
+        "title": "Ghost icon",
+        "preset": {
+          "variant": "ghost",
+          "content": "left",
+          "action": "close"
+        }
+      },
+      {
+        "id": "example-icon-destructive",
+        "title": "Destructive icon",
+        "preset": {
+          "variant": "destructive",
+          "content": "left",
+          "action": "trash"
+        }
+      },
+      {
+        "id": "example-icon-destructive-outline",
+        "title": "Destructive outline icon",
+        "preset": {
+          "variant": "destructive-outline",
+          "content": "left",
+          "action": "trash"
+        }
+      }
+    ]
+  }
+]

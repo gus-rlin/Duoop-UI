@@ -1,0 +1,22 @@
+.mini-stepper { width:min(280px,90%); display:flex; position:relative; color:#373434; }
+.mini-stepper::before { content:''; position:absolute; top:16px; inset-inline:16%; height:4px; border-block:1px solid #1d1b1b; background:linear-gradient(to right,#373434 50%,#e8e4e4 50%); }
+.mini-stepper>span { position:relative; flex:1; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.mini-stepper i { display:grid; place-items:center; width:34px; height:34px; border:2px solid #1d1b1b; border-radius:8px; background:#fff; box-shadow:0 3px 0 #1d1b1b; font-size:13px; font-weight:650; font-style:normal; }
+.mini-stepper svg { width:19px; height:19px; }
+.mini-stepper>span:first-child i { color:#356247; background:#edf5ef; border-color:#356247; box-shadow:0 3px 0 #234631; }
+.mini-stepper>span:nth-child(2) i { background:#373434; color:white; }
+.mini-stepper strong { font-size:10px; font-weight:600; }
+.mini-reactions { display:flex; gap:14px; color:#373434; }
+.mini-reactions>span { display:flex; align-items:center; gap:8px; border:2px solid #1d1b1b; border-radius:10px; box-shadow:0 4px 0 #1d1b1b; padding:10px 12px; background:white; }
+.mini-reactions>span:first-child { transform:translateY(3px); box-shadow:0 1px 0 #1d1b1b; background:#f0eeee; }
+.mini-reactions svg { width:20px; height:20px; }
+.mini-reactions strong,.mini-reactions b { font-size:12px; }
+.mini-reactions strong+b { padding-inline-start:10px; border-inline-start:1px solid #777474; }
+.mini-achievement { display:flex; align-items:center; gap:18px; color:#373434; }
+.mini-achievement .achievement-emblem { --emblem-width:67px; }
+.mini-achievement>span:last-child { display:flex; flex-direction:column; align-items:flex-start; gap:10px; }
+.mini-achievement small { font-size:8px; letter-spacing:.1em; }
+.mini-achievement strong { font-size:16px; }
+.mini-achievement em { display:flex; align-items:center; gap:5px; font-size:9px; font-style:normal; padding:4px 6px; border:2px solid #234631; border-radius:5px; color:#356247; background:#edf5ef; box-shadow:0 2px 0 #234631; }
+.mini-achievement em svg { width:12px; height:12px; }
+.mini-stepper .duoop-check,.mini-stepper .duoop-check path,.mini-achievement .duoop-check,.mini-achievement .duoop-check path { animation:none; stroke-dashoffset:0; }

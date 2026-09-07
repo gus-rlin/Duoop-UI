@@ -1,0 +1,8 @@
+.accordion-showcase .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.accordion-showcase .gallery-card-preview { padding: 28px; align-items: flex-start; }
+@media (max-width: 760px) {
+  .accordion-showcase .gallery-grid { grid-template-columns: minmax(0, 1fr); }
+  .accordion-showcase .gallery-card--wide { grid-column: auto; }
+  .accordion-showcase .gallery-card-preview { padding: 20px 16px; }
+  .accordion-showcase .duoop-accordion { --acc-inset: 14px; }
+}

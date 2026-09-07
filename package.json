@@ -1,0 +1,39 @@
+{
+  "name": "duoop-ui",
+  "version": "1.0.0",
+  "description": "Tactile React components with live previews, complete source code and integration guides.",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "npm run build -- --logLevel warn && node tests/check-imports.mjs && playwright test && node tests/build-downloads.mjs",
+    "test:primitives": "node tests/run-primitives.mjs",
+    "test:integration": "node tests/fresh-project.mjs",
+    "test:pages": "node tests/standalone-pages.mjs",
+    "test:a11y": "node tests/audit-galleries.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "type": "module",
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "fflate": "^0.8.3",
+    "gsap": "^3.15.0",
+    "highlight.js": "^11.11.1",
+    "leaflet": "^1.9.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@babel/parser": "^8.0.4",
+    "@playwright/test": "^1.63.0",
+    "prettier": "^3.9.6",
+    "vite": "^8.2.2"
+  },
+  "private": true,
+  "engines": {
+    "node": "^22.18.0 || >=24.11.0"
+  }
+}

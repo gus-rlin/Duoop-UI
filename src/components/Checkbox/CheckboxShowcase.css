@@ -1,0 +1,35 @@
+.checkbox-showcase .gallery-card-preview { min-height:190px; }
+.checkbox-showcase .gallery-card-preview > * { width:100%; }
+.checkbox-showcase .gallery-card--wide { grid-column:span 2; }
+.checkbox-showcase .gallery-card-preview:has(.checkbox-demo-form), .checkbox-showcase .gallery-card-preview:has(.checkbox-children) { align-items:flex-start; }
+.checkbox-demo-form { display:flex; flex-direction:column; gap:20px; width:100%; margin:0; }
+.checkbox-form-actions { display:flex; flex-wrap:wrap; gap:12px; }
+.checkbox-form-notice { color:#37633f; font-size: 12px; line-height:1.6; margin:0; }
+.checkbox-form-notice:empty { display:none; }
+.checkbox-surface { padding:20px; width:100%; border-radius:10px; }
+.checkbox-table-wrap { width:100%; overflow-x:auto; }
+.checkbox-table { border-collapse:collapse; width:100%; font-size: 12px; text-align:start; }
+.checkbox-table caption { text-align:start; font-weight:600; margin-bottom:14px; }
+.checkbox-table th, .checkbox-table td { padding:6px 12px; border-bottom:1px solid #ddd8d8; text-align:start; }
+.checkbox-table th { font-weight:550; }
+.checkbox-table tr[data-selected=true] { background:#efeded; }
+.checkbox-table th:first-child,.checkbox-table td:first-child { width:44px; padding-inline:6px; }
+.checkbox-showcase .individual-preview > * { width:100%; max-width:600px; }
+.mini-checkbox { display:flex; align-items:center; gap:12px; color:#373434; font-size: 13px; }
+.mini-checkbox-box { width:21px; height:21px; display:grid; place-items:center; color:#fff; background:#373434; border:2px solid #373434; border-radius:5px; box-shadow:0 2px 0 #1d1b1b; font-weight:700; }
+@media(max-width:650px) { .checkbox-showcase .gallery-card--wide { grid-column:auto; } .checkbox-table th,.checkbox-table td { padding-inline:6px; } }
+.checkbox-showcase .gallery-card-preview:has(.checkbox-surface) { padding:16px; }
+.checkbox-surface { padding:28px; display:flex; flex-direction:column; gap:28px; }
+.theme-settings-heading { display:flex; flex-direction:column; gap:10px; }
+.theme-kicker { font-size: 9px; letter-spacing:.16em; color:var(--check-muted); }
+.theme-settings-heading strong { font-size: 21px; font-weight:550; letter-spacing:-.6px; }
+.theme-settings-heading p { margin:0; font-size: 12px; line-height:1.7; color:var(--check-muted); max-width:28ch; }
+.theme-secondary-options { border-top:1px solid color-mix(in srgb,var(--check-border) 25%,transparent); padding-top:24px; }
+.theme-secondary-options legend { float:inline-start; width:100%; margin-bottom:12px; font-size: 11px; color:var(--check-muted); font-weight:400; }
+.theme-secondary-options .checkbox-options { clear:both; gap:14px; }
+.theme-settings-footer { display:flex; gap:8px; align-items:center; font-size: 10px; color:var(--check-muted); }
+.checkbox-table tr { transition:background-color 180ms ease; }
+@media(max-width:650px) { .checkbox-surface { padding:20px; } }
+@media(prefers-reduced-motion:reduce) { .checkbox-table tr { transition:none; } }
+.checkbox-showcase .gallery-grid:has(.checkbox-surface) { grid-template-columns:repeat(2,minmax(0,1fr)); }
+@media(max-width:650px) { .checkbox-showcase .gallery-grid:has(.checkbox-surface) { grid-template-columns:1fr; } }

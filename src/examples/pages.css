@@ -1,0 +1,733 @@
+.example-page {
+  color: #373434;
+  background: #fff;
+  font-family: var(--duoop-font);
+  line-height: 1.6;
+  text-align: left;
+}
+.example-page a {
+  color: inherit;
+  text-decoration: none;
+}
+.example-page h1,
+.example-page h2,
+.example-page h3,
+.example-page p {
+  margin-top: 0;
+}
+.example-page .duoop-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.example-page .duoop-card__header > .example-between {
+  width: 100%;
+}
+.example-page .duoop-tabs__panel {
+  border: 0;
+  padding: 0;
+  box-shadow: none;
+  background: transparent;
+}
+.example-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.example-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.example-muted {
+  font-size: 11px;
+  color: #686565;
+}
+.example-eyebrow {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #686565;
+  margin-bottom: 18px;
+}
+.settings-page {
+  background: #f8f8f7;
+}
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 5%;
+  background: white;
+  border-bottom: 1px solid #e7e5e4;
+}
+.settings-header > div {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.settings-context {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding-left: 24px;
+  border-left: 1px solid #ddd8d5;
+  color: #686565;
+}
+.settings-body {
+  max-width: 890px;
+  margin: auto;
+  padding: 55px 5%;
+}
+.settings-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.settings-title :is(h1, h2) {
+  font-size: 36px;
+  letter-spacing: -1.3px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.settings-title p {
+  font-size: 13px;
+  color: #686565;
+}
+.settings-title .example-eyebrow {
+  font-size: 9px;
+}
+.settings-page .duoop-tabs__panels {
+  padding-top: 24px;
+}
+.settings-page .duoop-card {
+  background: white;
+}
+.settings-page .duoop-card__header {
+  padding-bottom: 22px;
+}
+.settings-avatar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-bottom: 1px solid #e7e5e4;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+}
+.settings-avatar > div {
+  flex: 1;
+}
+.settings-avatar strong {
+  font-size: 14px;
+}
+.settings-avatar p {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: #686565;
+}
+.settings-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.settings-wide {
+  grid-column: 1/-1;
+}
+.settings-options {
+  display: grid;
+  gap: 28px;
+}
+.settings-options > .duoop-switch {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e7e5e4;
+}
+.settings-options > .duoop-switch:last-child {
+  padding-bottom: 0;
+  border: 0;
+}
+.settings-save {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-top: 26px;
+}
+.settings-save > p {
+  margin: 0;
+  font-size: 12px;
+  color: #686565;
+}
+.settings-note {
+  margin-top: 42px;
+  padding-top: 24px;
+  border-top: 1px solid #e2dedc;
+}
+.settings-note strong {
+  font-size: 12px;
+}
+.settings-note p {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #686565;
+  max-width: 65ch;
+}
+.settings-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 24px 5%;
+  border-top: 1px solid #e7e5e4;
+  font-size: 11px;
+  color: #686565;
+}
+.settings-page[data-density="compact"] .settings-body {
+  padding-block: 30px;
+}
+.settings-page[data-density="compact"] .settings-options {
+  gap: 16px;
+}
+.settings-page[data-density="compact"] .duoop-card__header,
+.settings-page[data-density="compact"] .duoop-card__content {
+  padding: 18px;
+}
+@media (max-width: 540px) {
+  .settings-fields {
+    grid-template-columns: 1fr;
+  }
+  .settings-save {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .settings-title {
+    align-items: flex-start;
+  }
+  .settings-title > .duoop-badge {
+    display: none;
+  }
+  .settings-avatar {
+    flex-wrap: wrap;
+  }
+  .settings-avatar > .duoop-badge {
+    display: none;
+  }
+  .settings-page input,
+  .settings-page textarea {
+    font-size: 16px;
+  }
+  .settings-body {
+    padding-inline: 16px;
+  }
+  .settings-page .duoop-card {
+    --card-padding: 18px;
+  }
+}
+
+/* Landing layout. Container breakpoints also work inside the catalog preview. */
+.forma {
+  container: forma / inline-size;
+  --forma-space-1: 8px;
+  --forma-space-2: 16px;
+  --forma-space-3: 24px;
+  --forma-space-4: 32px;
+  --forma-content-max: 1200px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.forma > * {
+  --forma-columns: 12;
+  --forma-gutter: 24px;
+  --forma-inset: 32px;
+  --forma-section-gap: 64px;
+  --forma-title: 56px;
+  --forma-heading: 40px;
+}
+.forma
+  :is(.forma-nav, .forma-hero, .forma-section, .forma-footer, .forma-created) {
+  width: calc(100% - 2 * var(--forma-inset));
+  max-width: var(--forma-content-max);
+  margin-inline: auto;
+}
+.forma
+  :is(
+    .forma-nav,
+    .forma-feature-heading,
+    .forma-pricing,
+    .forma-faq,
+    .forma-footer
+  ) {
+  display: grid;
+  grid-template-columns: repeat(var(--forma-columns), minmax(0, 1fr));
+  gap: var(--forma-gutter);
+}
+.forma :is(.forma-section, .forma-footer) {
+  margin-top: var(--forma-section-gap);
+}
+.forma :is(h1, h2, h3, p) {
+  margin: 0;
+}
+.forma :is(h1, h2) {
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+.forma h2 {
+  font-size: var(--forma-heading);
+}
+.forma :is(h3, .duoop-card__title) {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3333;
+  letter-spacing: -0.02em;
+}
+.forma p,
+.forma .duoop-card__description,
+.forma .duoop-accordion__content {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #686565;
+}
+.forma .example-eyebrow {
+  margin-bottom: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3333;
+}
+.forma .duoop-button {
+  min-height: 48px;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 24px;
+}
+.forma .duoop-badge {
+  font-size: 12px;
+  line-height: 16px;
+}
+.forma a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+.forma-nav {
+  align-items: center;
+  padding-block: 24px;
+  border-bottom: 1px solid #e9e7e7;
+}
+.forma-brand {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: -1.5px;
+}
+.forma-nav > .forma-brand {
+  grid-column: span 3;
+}
+.forma-nav nav {
+  grid-column: span 6;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.forma-nav nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+}
+.forma-nav > .duoop-button {
+  grid-column: span 3;
+  justify-self: end;
+}
+.forma-nav nav a:hover,
+.forma-footer > a:last-child:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.forma .forma-hero {
+  display: block;
+  margin-top: 24px;
+  padding: 0;
+  aspect-ratio: 2.5;
+  border-radius: 16px;
+  background: url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1800&q=85")
+    center / cover;
+}
+.forma-section {
+  scroll-margin-top: 96px;
+}
+#forma-features {
+  display: grid;
+  gap: var(--forma-section-gap);
+}
+.forma-feature-heading {
+  align-items: center;
+}
+.forma-feature-heading > div:first-child {
+  grid-column: span 8;
+  min-width: 0;
+}
+.forma-feature-heading > .forma-feature-cta {
+  grid-column: span 4;
+}
+.forma-feature-heading :is(h1, h2) {
+  font-size: var(--forma-title);
+  line-height: 1.14286;
+}
+.forma-feature-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.forma-feature-cta p {
+  max-width: 40ch;
+}
+/* The line uses the center of a 1200 × 520 SVG; crop its empty canvas. */
+.forma-loop {
+  position: relative;
+  height: 64px;
+}
+.forma-loop .text-loop-svg {
+  position: absolute;
+  width: 1200px;
+  max-width: none;
+  height: 520px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.forma-carousel {
+  margin: 0;
+}
+.forma-carousel .cards-carousel__heading {
+  padding: 0 0 24px;
+}
+.forma-carousel .cards-carousel__heading h3 {
+  margin-top: 8px;
+  font-size: 24px;
+  line-height: 32px;
+}
+.forma-carousel .cards-carousel__rail {
+  gap: var(--forma-gutter);
+  padding: 8px 0 16px;
+  scroll-padding-inline: 0;
+}
+.forma-carousel .cards-carousel__card {
+  flex-basis: calc((100% - 2 * var(--forma-gutter)) / 3);
+}
+.forma-carousel .cards-carousel__copy {
+  min-height: 112px;
+  padding: 24px;
+}
+.forma-carousel .cards-carousel__copy strong {
+  margin-top: 8px;
+  font-size: 24px;
+  line-height: 32px;
+}
+.forma-carousel .cards-carousel__image {
+  height: 208px;
+}
+.forma-carousel .cards-carousel__card-footer {
+  padding: 16px 24px;
+  gap: 16px;
+}
+.forma-carousel .cards-carousel__navigation {
+  padding: 16px 0 0;
+  gap: 16px;
+}
+.forma-carousel .cards-carousel__navigation > div {
+  gap: 16px;
+}
+.forma-carousel .duoop-button--icon {
+  width: 48px;
+  height: 48px;
+  padding: 8px;
+}
+@container forma (max-width: 1023px) {
+  .forma-carousel .cards-carousel__card {
+    flex-basis: calc((100% - var(--forma-gutter)) / 2);
+  }
+}
+@container forma (max-width: 639px) {
+  .forma-carousel .cards-carousel__card {
+    flex-basis: 88%;
+  }
+  .forma-carousel .cards-carousel__hint {
+    display: none;
+  }
+  .forma-carousel .cards-carousel__image {
+    height: 192px;
+  }
+}
+.forma .forma-pricing {
+  width: 100%;
+  max-width: none;
+  padding: 32px
+    max(var(--forma-inset), calc((100% - var(--forma-content-max)) / 2));
+  align-items: center;
+}
+.forma-pricing > * {
+  grid-column: span 6;
+  min-width: 0;
+}
+.forma-pricing h2 {
+  margin-bottom: 24px;
+}
+.forma-pricing .selection-group {
+  margin-top: 24px;
+}
+.forma .selection-group legend,
+.forma .selection-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+}
+.forma .selection-group legend {
+  margin-bottom: 8px;
+}
+.forma .radio-option {
+  min-height: 48px;
+  gap: 8px;
+  padding: 8px 0;
+  align-items: center;
+}
+.forma-price-card {
+  --card-pad: 24px;
+  background: white;
+}
+.forma-price-card .example-between {
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.forma-price-card .duoop-card__title::after {
+  margin-top: 8px;
+}
+.forma-price-card .duoop-card__description {
+  margin: 0;
+}
+.forma-price {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 56px;
+  letter-spacing: -2px;
+  font-variant-numeric: tabular-nums;
+}
+.forma-price > span {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0;
+  color: #686565;
+}
+.forma-price-card .duoop-card__content > p,
+.forma-price-card small {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #686565;
+}
+.forma-price-card ul {
+  display: grid;
+  gap: 8px;
+  margin-block: 24px;
+  padding-left: 24px;
+  font-size: 16px;
+  line-height: 24px;
+}
+.forma-price-card small {
+  display: block;
+  margin-top: 16px;
+  text-align: center;
+}
+.forma-faq > div:first-child {
+  grid-column: span 4;
+}
+.forma-faq > .duoop-accordion {
+  grid-column: span 8;
+  width: 100%;
+  --acc-inset: 24px;
+}
+.forma .duoop-accordion__trigger {
+  gap: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+}
+.forma .duoop-accordion__item + .duoop-accordion__item {
+  margin-top: 16px;
+}
+.forma-footer {
+  align-items: center;
+  padding-block: 24px;
+  border-top: 1px solid #e2dedc;
+  color: #686565;
+  font-size: 12px;
+  line-height: 16px;
+}
+.forma-footer > * {
+  grid-column: span 4;
+}
+.forma-footer > .forma-brand {
+  color: #000;
+}
+.forma-footer > span {
+  text-align: center;
+}
+.forma-footer > a:last-child {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+}
+.forma-created {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 24px;
+  margin-top: 24px;
+  background: #edf5ef;
+}
+@container forma (max-width: 1023px) {
+  .forma > * {
+    --forma-columns: 8;
+    --forma-section-gap: 48px;
+    --forma-title: 48px;
+    --forma-heading: 32px;
+  }
+  .forma-nav > .forma-brand {
+    grid-column: span 2;
+  }
+  .forma-nav nav {
+    grid-column: span 4;
+    gap: 16px;
+  }
+  .forma-nav > .duoop-button {
+    grid-column: span 2;
+  }
+  .forma-feature-heading > div:first-child {
+    grid-column: span 8;
+  }
+  .forma-feature-heading > .forma-feature-cta {
+    grid-column: span 8;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .forma-pricing > *,
+  .forma-faq > div:first-child,
+  .forma-faq > .duoop-accordion {
+    grid-column: span 4;
+  }
+  .forma-footer > * {
+    grid-column: span 3;
+  }
+  .forma-footer > a:last-child {
+    grid-column: span 2;
+  }
+}
+@container forma (max-width: 639px) {
+  .forma > * {
+    --forma-columns: 4;
+    --forma-gutter: 16px;
+    --forma-inset: 16px;
+    --forma-section-gap: 40px;
+    --forma-title: 32px;
+    --forma-heading: 32px;
+  }
+  .forma-nav {
+    padding-block: 16px;
+  }
+  .forma-nav > .forma-brand,
+  .forma-nav > .duoop-button {
+    grid-column: span 2;
+  }
+  .forma-nav nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: space-between;
+    gap: 8px;
+    border-top: 1px solid #e9e7e7;
+    padding-top: 8px;
+  }
+  .forma-nav > .duoop-button {
+    padding-inline: 16px;
+  }
+  .forma-brand {
+    font-size: 24px;
+  }
+  .forma .forma-hero {
+    aspect-ratio: 1.5;
+    margin-top: 16px;
+    background-position: 58% center;
+  }
+  .forma-feature-heading > div:first-child, .forma-feature-heading > .forma-feature-cta, .forma-pricing > *, .forma-faq > div:first-child, .forma-faq > .duoop-accordion {
+    grid-column: 1 / -1;
+  }
+  .forma-feature-heading > .forma-feature-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .forma-feature-heading :is(h1, h2) {
+    line-height: 1.25;
+  }
+  .forma :is(.forma-pricing, .forma-faq) {
+    row-gap: 32px;
+  }
+  .forma-footer > .forma-brand,
+  .forma-footer > a:last-child {
+    grid-column: span 2;
+  }
+  .forma-footer > span {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    text-align: left;
+  }
+}
+
+/* Dialogs are portaled outside the page, so share the same control geometry. */
+.forma-dialog .duoop-button {
+  min-height: 48px;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 24px;
+}
+.forma-dialog .example-actions {
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* A tactile product story, using the existing ink, paper and components. */
+.forma-feature-heading em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -.045em;
+}
+.forma-feature-cta .duoop-button-label > span {
+  display: inline-block;
+  margin-left: 8px;
+  transition: transform 180ms ease;
+}
+.forma-loop-row { background: #373434; border-radius: 8px; overflow: hidden; }
+.forma-price-card .duoop-card__header { border-bottom: 1px solid #e8e4e4; }
+.forma-price-card .duoop-card__content { padding-top: 24px; }
+.forma-price-card .duoop-badge { min-width: 128px; justify-content: center; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .forma-feature-cta .duoop-button:hover .duoop-button-label > span { transform: translate(2px, -2px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .forma-feature-cta .duoop-button-label > span { transition: none; }
+}

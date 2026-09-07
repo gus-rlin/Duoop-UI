@@ -1,0 +1,41 @@
+@import './Forms.css';
+.number-field { width:100%; min-width:0; }
+.number-control { display:flex; align-items:stretch; min-height:44px; border:2px solid #777474; border-radius:10px; background:#fff; transition:border-color 140ms ease,box-shadow 180ms ease-out; overflow:hidden; }
+.number-control:hover { border-color:#373434; }
+.number-control:focus-within { border-color:#373434; box-shadow:0 3px 0 #373434; }
+.number-control input { width:100%; min-width:0; margin:0; padding:10px 4px; border:0; border-radius:0; background:transparent; color:#252323; font: inherit; font-size: 14px; text-align:center; font-variant-numeric:tabular-nums; outline:none; }
+.number-control button { flex:0 0 42px; padding:0; border:0; border-radius:0; color:#373434; background:transparent; font: inherit; font-size: 20px; cursor:pointer; transition:background 140ms ease,transform 120ms ease; }
+.number-control button:hover:not(:disabled) { background:#efeded; }
+.number-control button:active:not(:disabled) { transform:translateY(2px); }
+.number-control button:focus-visible { outline:2px solid #373434; outline-offset:-5px; border-radius:8px; }
+.number-control button:disabled { color:#b2adad; cursor:not-allowed; }
+.number-field--sm .number-control { min-height:36px; }
+.number-field--sm input { padding:7px 4px; font-size: 12px; }
+.number-field--lg .number-control { min-height:52px; }
+.number-field--lg input { font-size: 16px; padding:12px 4px; }
+.number-scrub { display:flex; align-items:center; gap:8px; width:fit-content; margin-bottom:10px; color:#686565; font-size: 12px; cursor:ew-resize; touch-action:none; user-select:none; }
+.number-field[data-invalid=true] .number-control { border-color:#a51d2d; }
+.number-field[data-invalid=true] .number-control:focus-within { box-shadow:0 3px 0 #a51d2d; }
+.number-error { color:#a51d2d; font-size: 12px; margin:10px 0 0; }
+.number-field[data-disabled=true] .number-control { border-color:#ccc; background:#efefef; box-shadow:none; }
+.number-field[data-disabled=true] input { color:#777; cursor:not-allowed; }
+.number-field[data-disabled=true] .number-scrub { cursor:not-allowed; }
+.otp-field { position:relative; width:100%; max-width:340px; min-width:0; }
+.otp-field>input { position:absolute; inset:0; z-index:1; width:100%; height:100%; margin:0; opacity:0; cursor:text; font-size: 16px; }
+.otp-slots { display:flex; gap:6px; align-items:center; }
+.otp-slot { display:grid; place-items:center; flex:1; min-width:0; height:44px; border:2px solid #777474; border-radius:10px; background:#fff; color:#767171; font-size: 18px; font-variant-numeric:tabular-nums; transition:border-color 140ms ease,box-shadow 180ms ease-out; }
+.otp-slot[data-filled=true] { color:#252323; }
+.otp-slot[data-filled=true]>span { animation:otp-character-in 150ms ease-out; }
+.otp-slot[data-active=true] { border-color:#373434; box-shadow:0 3px 0 #373434; }
+.otp-field--lg .otp-slot { height:52px; font-size: 22px; }
+.otp-separator { color:#8d8585; font-size: 12px; }
+.otp-field[data-invalid=true] .otp-slot { border-color:#a51d2d; }
+.otp-field[data-invalid=true] .otp-slot[data-active=true] { box-shadow:0 3px 0 #a51d2d; }
+.duoop-field[data-state=success] .otp-slot { border-color:#527a59; }
+.otp-field[data-disabled=true] .otp-slot { background:#efefef; border-color:#ccc; color:#777; }
+.otp-field[data-disabled=true]>input { cursor:not-allowed; }
+@keyframes otp-character-in { from { opacity:0; transform:translateY(3px); } to { opacity:1; transform:translateY(0); } }
+@media(prefers-reduced-motion:reduce) { .number-control,.number-control button,.otp-slot { transition:none; } .otp-slot[data-filled=true]>span { animation:none; } .number-control button:active:not(:disabled) { transform:none; } }
+.number-field[data-invalid=true] .number-control, .otp-field[data-invalid=true] .otp-slot { background:#fff5f5; color:#a51d2d; }
+.number-field[data-invalid=true] .number-control input, .number-field[data-invalid=true] .number-control button:not(:disabled) { color:#a51d2d; }
+.duoop-field[data-state=success] .otp-slot { background:#edf5ef; color:#356247; }

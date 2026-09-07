@@ -1,0 +1,6 @@
+/* Placement is kept separate from the surface styling. */
+.duoop-dialog { inset: 0; margin: auto; }
+@media (max-width: 600px) {
+  .duoop-dialog--mobile-bottom { inset: auto 0 0; margin: 0; }
+  .duoop-dialog--mobile-fullscreen { inset: 0; margin: 0; }
+}

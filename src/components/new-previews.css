@@ -1,0 +1,18 @@
+ .mini-accordion{width:240px;display:grid;gap:8px;text-align:left}.mini-accordion>span{display:grid;grid-template-columns:1fr 22px;gap:8px;padding:11px 12px;border:2px solid #373434;border-radius:8px;background:#fff;box-shadow:0 3px 0 #1d1b1b}.mini-accordion strong{font-size:10px;align-self:center}.mini-accordion small{grid-column:1/-1;font-size:9px;color:#686565}.mini-accordion b{display:grid;place-items:center;width:22px;height:22px;border:2px solid #373434;border-radius:5px;box-shadow:0 2px 0 #1d1b1b}.mini-accordion>span:first-child b{background:#373434;color:#fff}.mini-accordion svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.mini-select{width:190px;min-height:45px;padding:0 13px;border:2px solid #1d1b1b;border-radius:10px;background:#fff;box-shadow:0 4px 0 #1d1b1b;display:flex;align-items:center;justify-content:space-between;font-size:11px}.mini-menu{width:170px;padding:7px;border:2px solid #1d1b1b;border-radius:10px;background:#fff;box-shadow:0 5px 0 #1d1b1b;display:grid;text-align:left}.mini-menu i{padding:7px 8px;font:600 10px inherit;border-radius:5px}.mini-menu i:first-child{background:#f0eeee}.mini-menu i:last-child{color:#a51d2d;border-top:1px solid #dedada;border-radius:0}.mini-dialog{width:210px;padding:15px;border:2px solid #1d1b1b;border-radius:10px;background:#fff;box-shadow:0 5px 0 #1d1b1b;display:grid;grid-template-columns:1fr auto;gap:10px;text-align:left}.mini-dialog b,.mini-dialog small{grid-column:1/-1}.mini-dialog b{font-size:14px}.mini-dialog small{font-size:9px;color:#686565}.mini-dialog i{padding:6px 9px;border:2px solid #1d1b1b;border-radius:6px;font:600 9px inherit;text-align:center}.mini-dialog i:last-child{background:#373434;color:#fff}
+
+.mini-dialog { background: #f7f6f5; border-radius: 12px; gap: 9px; }
+.mini-dialog > small { font-size: 8px; letter-spacing: 1px; }
+.mini-dialog > span { grid-column: 1/-1; padding-block: 12px; border-block: 1px solid #373434; font-size: 13px; }
+.mini-dialog em { display: block; margin-top: 5px; color: #686565; font-style: normal; font-size: 9px; }
+.mini-dialog i { background: white; box-shadow: 0 2px #1d1b1b; }
+
+.mini-toast { display:flex; align-items:center; gap:12px; width:240px; max-width:100%; padding:16px; border:2px solid #1d1b1b; border-radius:10px; box-shadow:0 4px 0 #1d1b1b; color:#373434; background:#fff; }
+.mini-toast>svg { width:24px; height:24px; flex:none; stroke:#356247; fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+.mini-toast>span { display:flex; flex-direction:column; gap:6px; }
+.mini-toast strong { font-size:12px; }
+.mini-toast small { color:#686565; font-size:9px; }
+.mini-progress { display:flex; flex-direction:column; gap:12px; width:220px; max-width:100%; color:#373434; }
+.mini-progress>span { display:flex; justify-content:space-between; gap:12px; font-size:10px; }
+.mini-progress>i { position:relative; display:block; height:14px; background:#e8e4e4; border-radius:5px; box-shadow:0 3px 0 #1d1b1b; overflow:hidden; isolation:isolate; }
+.mini-progress>i::after { content:''; position:absolute; inset:0; border:2px solid #1d1b1b; border-radius:inherit; pointer-events:none; }
+.mini-progress em { display:block; width:64%; height:100%; background:#373434; }

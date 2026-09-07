@@ -1,0 +1,58 @@
+.testimonials { --testimonial-ink:#373434; --testimonial-edge:#1d1b1b; width:100%; min-width:0; container-type:inline-size; color:var(--testimonial-ink); padding:40px; background:#f7f6f4; border-radius:10px; }
+.testimonials__heading { max-width:500px; margin-bottom:32px; }
+.testimonials__eyebrow { display:block; font-size: 10px; font-weight:600; letter-spacing:.13em; text-transform:uppercase; margin-bottom:12px; }
+.testimonials .testimonials__heading h3 { margin:0; font-size: clamp(26px, 4cqi, 38px); line-height:1.15; letter-spacing:-.045em; font-weight:600; }
+.testimonials .testimonials__heading p { margin:16px 0 0; font-size: 13px; line-height:1.7; color:#686565; max-width:380px; }
+.testimonials__stage { min-width:0; }
+.testimonials__paper { background:#fff; border:2px solid var(--testimonial-edge); border-radius:10px; box-shadow:0 5px 0 var(--testimonial-edge); padding:28px; min-width:0; }
+.testimonials__company { display:flex; align-items:center; justify-content:space-between; gap:16px; font-size: 18px; font-weight:650; letter-spacing:-.04em; }
+.testimonials__company > span { color:#686565; font-size: 10px; font-weight:450; letter-spacing:0; }
+.testimonials__quote { margin:0; min-width:0; }
+.testimonials__mark { width:36px; height:30px; flex:none; }
+.testimonials blockquote { margin:16px 0 24px; font-size: 14px; line-height:1.7; letter-spacing:-.015em; overflow-wrap:anywhere; }
+.testimonials__quote--featured { padding-top:28px; }
+.testimonials__quote--featured blockquote { font-size: clamp(20px, 3.6cqi, 30px); font-weight:500; line-height:1.45; letter-spacing:-.035em; min-height:4.35em; }
+.testimonials__author { display:flex; gap:12px; align-items:center; }
+.testimonials__author > span:last-child { display:grid; gap:4px; min-width:0; }
+.testimonials__author strong { font-size: 12px; font-weight:600; }
+.testimonials__author small { font-size: 11px; color:#686565; line-height:1.5; }
+.testimonials__footer { display:flex; justify-content:space-between; align-items:center; gap:16px; border-top:1px solid #e2dede; padding-top:20px; margin-top:28px; }
+.testimonials__footer > span { font-size: 11px; font-variant-numeric:tabular-nums; color:#686565; }
+.testimonials__footer > div { display:flex; gap:12px; }
+.testimonials__footer .duoop-button { min-width:44px; min-height:44px; }
+.testimonials__story { animation:testimonial-arrive 320ms cubic-bezier(.2,.8,.2,1) both; }
+.testimonials__wall { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2.15fr) minmax(0,1fr); align-items:start; gap:20px; padding-bottom:8px; }
+.testimonials__wall-column, .testimonials__wall-center { display:grid; gap:24px; min-width:0; align-content:start; }
+.testimonials__wall-lower { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; align-items:start; }
+.testimonials__wall .testimonials__quote { padding:20px; margin:0; background:#fff; border:2px solid var(--testimonial-edge); border-radius:10px; box-shadow:0 4px 0 var(--testimonial-edge); }
+.testimonials__wall blockquote { font-size: 13px; line-height:1.75; margin:12px 0 24px; }
+.testimonials__wall .testimonials__mark { width:28px; height:24px; }
+.testimonials__wall .testimonials__author { align-items:flex-start; gap:10px; }
+.testimonials__wall .testimonials__author small { font-size: 10px; }
+.testimonials__wall .testimonials__quote--featured { padding:32px 28px 0; overflow:hidden; }
+.testimonials__wall .testimonials__quote--featured blockquote { font-size: clamp(20px, 2.7cqi, 28px); line-height:1.55; font-weight:550; min-height:0; margin-bottom:32px; }
+.testimonials__wall .testimonials__quote--featured .testimonials__author { padding:24px 28px; margin-inline:-28px; border-top:1px solid #e2dede; background:#f7f6f4; }
+.testimonials--wall .testimonials__heading { text-align:center; margin:0 auto 32px; }
+.testimonials--wall .testimonials__heading p { margin-inline:auto; }
+.testimonials__choices { display:flex; flex-direction:column; gap:16px; min-width:0; }
+.testimonials__choices .duoop-button { width:100%; min-height:76px; }
+.testimonials__choice { display:grid; gap:5px; padding:4px; text-align:start; }
+.testimonials__choice strong { font-size: 16px; letter-spacing:-.03em; }
+.testimonials__choice small { font-size: 11px; font-weight:400; }
+.testimonials--voices .testimonials__stage { display:grid; grid-template-columns:180px minmax(0,1fr); gap:24px; align-items:start; }
+.testimonials--voices { background:#eeece9; }
+.testimonials-showcase .gallery-card--wide { grid-column:1 / -1; }
+.testimonials-showcase .gallery-card-preview { padding:20px; }
+.testimonials-showcase .individual-preview { display:block; }
+.testimonials-reference { font-size: 12px; color:#717781; line-height:1.7; }
+.testimonials-mini { display:grid; width:220px; padding:20px; border:2px solid #1d1b1b; border-radius:10px; background:#fff; box-shadow:0 4px 0 #1d1b1b; gap:10px; transform:rotate(-3deg); color:#373434; }
+.testimonials-mini .testimonials__mark { width:26px; height:22px; }
+.testimonials-mini strong { font-size: 15px; letter-spacing:-.03em; }
+.testimonials-mini small { font-size: 10px; color:#686565; }
+@container (max-width:700px) { .testimonials__wall { grid-template-columns:1fr 1fr; } .testimonials__wall-center { grid-column:1 / -1; grid-row:1; } .testimonials--voices .testimonials__stage { grid-template-columns:1fr; } .testimonials__choices { flex-direction:row; flex-wrap:wrap; } .testimonials__choices .duoop-button { flex:1; min-width:120px; } }
+@container (max-width:420px) { .testimonials__wall, .testimonials__wall-lower { grid-template-columns:1fr; gap:24px; } .testimonials__wall .testimonials__quote--featured { padding:24px 20px 0; } .testimonials__wall .testimonials__quote--featured .testimonials__author { margin-inline:-20px; padding:20px; } .testimonials__paper { padding:20px; } .testimonials__company { flex-wrap:wrap; } .testimonials__quote--featured blockquote { min-height:0; } }
+@media(max-width:650px) { .testimonials { padding:24px 16px; } .testimonials-showcase .gallery-card-preview { padding:8px; } }
+@keyframes testimonial-arrive { from { opacity:0; transform:translateY(10px) rotate(.4deg); } to { opacity:1; transform:translateY(0) rotate(0); } }
+@media(prefers-reduced-motion:reduce) { .testimonials__story { animation:none; } }
+
+
