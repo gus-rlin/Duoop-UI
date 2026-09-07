@@ -16,6 +16,7 @@ import {
   repository,
 } from './catalog/catalog';
 import { CatalogPreview } from './catalog/Previews';
+import { updatePageSeo } from './catalog/seo';
 
 const ComponentDetail = lazy(() =>
   import('./catalog/ComponentDetail').then((module) => ({ default: module.ComponentDetail })),
@@ -194,6 +195,9 @@ function App() {
   useEffect(() => {
     document.title = `${selected?.name || (route.page === 'installation' ? 'Installation' : route.page === 'examples' ? 'Page examples' : 'Tactile React components')} — Duoop-UI`;
   }, [selected, route.page]);
+  useEffect(() => {
+    updatePageSeo(route);
+  }, [route]);
   function navigate(url, { replace = false, focus = true } = {}) {
     if (
       focus &&
