@@ -22,7 +22,7 @@ export function ChartShowcase() {
       Demo={ChartDemo}
       playground={<ChartPlayground />}
       accessibility="Explore with the arrow keys, toggle each series, or open the semantic data table. Missing values stay missing."
-      usage="Provide ordered records and unique series keys. Categories use equal spacing; this is not a continuous time scale. Non-finite or missing values create gaps. The vertical domain includes zero and rescales to visible series. Smooth curves use horizontal Bézier tangents, inspired by D3’s curveBumpX; SVG composition follows the small-primitives approach of visx. No external chart runtime or copied source is included. Use formatValue for units and localization. Prefer a modest number of categories for legible labels."
+      usage="Provide ordered records and unique series keys. Categories use equal spacing; this is not a continuous time scale. Non-finite or missing values create gaps; numeric strings are not converted. The vertical domain includes zero and rescales to visible series. Smooth curves use horizontal Bézier tangents, inspired by D3’s curveBumpX; SVG composition follows the small-primitives approach of visx. No external chart runtime or copied source is included. Use formatValue for units and localization. In the playground, Our data edits up to 24 rows; enable Compare series to edit Shop. Apply data updates the preview, closing keeps the draft, and Reset restores demo data and controls. Blank values create gaps. Edits stay local and are not included in code downloads. The editor belongs to the playground; Chart receives its data through props."
       usageCode={
         '<Chart data={[{ label: "Jan", value: 24 }, { label: "Feb", value: 38 }]} />'
       }
@@ -33,7 +33,7 @@ export function ChartShowcase() {
         ],
         [
           "type / curve",
-          "area (default), line, bar; smooth (default) or linear interpolation. Bars are grouped.",
+          "area (default), line, bar; smooth (default) or linear interpolation. Bars are grouped and offset slightly from zero to clear their shadows.",
         ],
         [
           "title / description",
@@ -61,7 +61,7 @@ export function ChartShowcase() {
         ],
         [
           "className / style",
-          "Root customization. CSS variables: --chart-face, --chart-ink, --chart-edge, --chart-soft, --chart-accent.",
+          "Root customization. CSS variables: --chart-face, --chart-ink, --chart-edge, --chart-soft, --chart-accent. Accent colors the header illustration; series[].color colors the plotted data.",
         ],
         [
           "Keyboard",

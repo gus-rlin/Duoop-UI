@@ -9,7 +9,7 @@ import icons from '../Feedback/ExperienceIcon.jsx?raw';
 import simulation from '../Feedback/useDemoRequest.js?raw';
 import shared from '../Feedback/Experience.css?raw';
 
-export const achievementEntry = { id:'builtin-achievement', name:'Achievement', category:'Other', notes:'Make progress worth keeping. Thirty examples of milestones, collectible badges and moments of celebration.' };
+export const achievementEntry = { id:'builtin-achievement', name:'Achievement', category:'Feedback', notes:'Make progress worth keeping. Thirty examples of milestones, collectible badges and moments of celebration.' };
 export function AchievementShowcase() {
   return <CatalogShowcase entry={achievementEntry} number="20" section="MILESTONES" examples={achievementExamples} Demo={AchievementDemo} playground={<AchievementPlayground />} wide={['Every achievement state','Long content']}
     accessibility="Persistent achievements explain the goal and its state. Unlock announcements are separate, explicitly triggered, dismissible, and respectful of reduced motion."

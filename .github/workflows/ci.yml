@@ -18,6 +18,8 @@ jobs:
           node-version: '24'
           cache: npm
       - run: npm ci
+      - run: npm ci --prefix mcp
+      - run: npm run test:mcp
       - run: npm run test:docs
       - run: npm run build
       - run: node tests/check-imports.mjs

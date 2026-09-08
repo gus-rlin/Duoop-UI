@@ -3,6 +3,8 @@ dist/
 lib/
 *.tgz
 artifacts/
+mcp/LICENSE
+mcp/THIRD_PARTY_NOTICES.md
 .env
 .env.*
 !.env.example

@@ -63,6 +63,7 @@ Import `base.css` once; components import their own styles. To match the site's 
 | GSAP motion | Install `gsap` when listed in Installation. Preserve reduced-motion behavior; Text Loop includes an explicit pause in its minimal example. |
 | Map | Install `leaflet`; preserve CSS and attribution. OSM/CARTO tiles need network access and remain subject to provider terms and capacity. |
 | Toast | Wrap `useToast()` consumers in `ToastProvider` and render `ToastViewport` once. |
+| Chart | Copy Chart.jsx and Chart.css for the chart itself; no external chart runtime is needed. The playground imports additional Duoop controls. See the [Chart guide](chart.md) for data, series, missing values and Our data. |
 | Dialog, Select, Menu | Keep the positioning helpers and CSS listed in Installation. Overlays may use portals. |
 | Images and async demos | Supply production images and connect authentication, server validation, requests, quotas, and persistence. |
 | Next.js | Add a `'use client';` boundary above hook-based components; import the foundation in your layout. Map needs client-only loading without SSR. This framework integration is not separately verified. |

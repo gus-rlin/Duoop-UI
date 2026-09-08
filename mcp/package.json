@@ -1,0 +1,12 @@
+{
+  "name": "duoop-ui-mcp",
+  "version": "1.0.0",
+  "description": "Official Duoop UI MCP: search components and variants, get complete source files.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "bin": { "duoop-ui-mcp": "server.mjs" },
+  "files": ["server.mjs", "catalog.mjs", "data.json", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md"],
+  "engines": { "node": ">=22.18.0" },
+  "repository": { "type": "git", "url": "git+https://github.com/gus-rlin/Duoop-UI.git", "directory": "mcp" },
+  "dependencies": { "@modelcontextprotocol/sdk": "^1.29.0", "zod": "^4.3.6" }
+}

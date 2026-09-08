@@ -10,6 +10,7 @@ import {
 import { CodeBlock } from '../components/Button/Documentation';
 import { recipes } from './recipes';
 import { Icon } from './Icon';
+import { CodexSetup } from './CodexSetup';
 
 export function Installation() {
   return (
@@ -40,6 +41,12 @@ export function Installation() {
           The stylesheet includes all components and page defaults for font and spacing.
           Load your own CSS afterwards to override them. The package uses ESM and React 19;
           dedicated TypeScript declarations are not yet included.
+        </p>
+        <p>
+          The catalog follows the current repository. If your installed npm version does
+          not export a component shown here, use that component’s source download or
+          build a local archive with <code>npm pack</code> from the repository.
+          A Git push does not publish a new npm release.
         </p>
         <h2>Prefer to copy the source?</h2>
         <p>Follow the steps below to keep the component files directly in your project.</p>
@@ -112,6 +119,7 @@ export function Installation() {
           />
         </li>
       </ol>
+      <CodexSetup />
       <section className="guide-section">
         <h2>A few useful details.</h2>
         <Accordion type="multiple">

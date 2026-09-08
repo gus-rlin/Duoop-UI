@@ -8,7 +8,7 @@ import { siteOrigin } from '../src/catalog/seo.js';
 const root = path.resolve(import.meta.dirname, '..');
 const read = file => fs.readFile(path.join(root, file), 'utf8');
 const manifest = JSON.parse(await read('package.json'));
-const tracked = execFileSync('git', ['ls-files', '-z'], { cwd: root, encoding: 'utf8', windowsHide: true }).split('\0').filter(Boolean);
+const tracked = execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '-z'], { cwd: root, encoding: 'utf8', windowsHide: true }).split('\0').filter(Boolean);
 const documents = tracked.filter(file => /\.(md|txt)$/.test(file));
 const guideFiles = ['src/catalog/Installation.jsx', 'src/catalog/Examples.jsx', 'src/catalog/download.js'];
 const publicPaths = new Set([
@@ -44,7 +44,7 @@ for (const file of [...documents, ...guideFiles]) {
 
 for (const file of ['README.md', 'VALIDATION.md', 'public/llms.txt']) {
   const content = await read(file);
-  const counts = [...content.matchAll(/\b(\d+) components (?:across|in) (\d+) categories\b/g)];
+  const counts = [...content.matchAll(/\b(\d+) components (?:across|in|·) (\d+) categories\b/g)];
   assert.ok(counts.length, `${file}: missing catalog totals`);
   for (const [, components, groups] of counts) {
     assert.equal(Number(components), entries.length, `${file}: stale component count`);
@@ -53,12 +53,28 @@ for (const file of ['README.md', 'VALIDATION.md', 'public/llms.txt']) {
 }
 
 const llms = await read('public/llms.txt');
+let indexedCategory = null;
+for (const line of llms.split(/\r?\n/)) {
+  if (line.startsWith('## ')) indexedCategory = null;
+  const heading = line.match(/^### \[([^\]]+)\]/);
+  if (heading) {
+    indexedCategory = heading[1];
+    assert.ok(categories.includes(indexedCategory), `llms.txt: unknown category ${indexedCategory}`);
+  }
+  const componentLink = line.match(/\?component=([^)&]+)/);
+  if (componentLink) {
+    const entry = entries.find(item => item.id === componentLink[1]);
+    assert.equal(indexedCategory, entry?.category, `llms.txt: ${componentLink[1]} must be under ${entry?.category}`);
+  }
+}
+const essentialGuide = await read('docs/essential-components.md');
+assert.equal(Number(essentialGuide.match(/\b(\d+)-component catalog\b/)?.[1]), entries.length, 'Essential guide: stale catalog total');
 const indexed = [...llms.matchAll(/\]\(https:\/\/[^)]+\?component=([^)&]+)\)/g)].map(match => match[1]);
 assert.deepEqual(indexed.sort(), entries.map(entry => entry.id).sort(), 'llms.txt must index every component exactly once');
 const sitemap = await read('public/sitemap.xml');
 const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1].replaceAll('&amp;', '&'));
 const expected = [...publicPaths].filter(route => !/\.(txt|xml)$/.test(route)).map(route => siteOrigin + route);
-assert.deepEqual(locations.sort(), expected.sort(), 'Sitemap routes must match the public catalog');
+assert.deepEqual(locations, expected, 'Sitemap routes and order must match the public catalog');
 const seo = await read('SEO.md');
 assert.equal(Number(seo.match(/\b(\d+) URLs\b/)?.[1]), expected.length, 'SEO.md: stale sitemap total');
 console.log(`PASS documentation: ${documents.length} Markdown/TXT files, 3 rendered/download guides, ${entries.length} components, ${categories.length} categories and ${expected.length} sitemap URLs.`);

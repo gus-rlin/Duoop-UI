@@ -12,6 +12,8 @@ For source-copy integration, keep all listed paths, import `base.css` once and i
 
 Dedicated TypeScript declarations are not supplied. Next.js and server rendering have not been separately validated; Map requires client-only loading. The source is licensed under Apache-2.0, with third-party notices retained. Demo brands, prices, forms, requests and persistence are examples to connect to your own services.
 
+The catalog documents the current repository. An installed npm release may predate additions shown here. For a component missing from that release, use its source download or install a locally packed archive; a Git push does not publish an npm version. Chart itself uses React and SVG without an external chart library. Its playground also uses Duoop Button, Checkbox, Slider and Popover.
+
 ## Start here
 
 - [Home](https://duoop-ui.com/): Introduction to Duoop UI.
@@ -59,6 +61,7 @@ Dedicated TypeScript declarations are not supplied. Next.js and server rendering
 - [Bento Grid](https://duoop-ui.com/?component=builtin-bento-grid): A little structure for your next big idea.
 - [Cards Carousel](https://duoop-ui.com/?component=builtin-cards-carousel): A tactile collection of stories to explore.
 - [Testimonials](https://duoop-ui.com/?component=builtin-testimonials): Give good words a considered place.
+- [Folder](https://duoop-ui.com/?component=builtin-folder): A tabbed folder that unfolds into selectable documents.
 
 ### [Feedback](https://duoop-ui.com/?category=Feedback)
 
@@ -71,6 +74,7 @@ Dedicated TypeScript declarations are not supplied. Next.js and server rendering
 - [Sheet](https://duoop-ui.com/?component=builtin-sheet): Bring the details in. A focused panel from any side of the screen.
 - [Skeleton](https://duoop-ui.com/?component=builtin-skeleton): Keep the shape of what comes next. Quiet structural loading states.
 - [Alert](https://duoop-ui.com/?component=builtin-alert): A message that stays. Clear context, useful actions and considered tones.
+- [Achievement](https://duoop-ui.com/?component=builtin-achievement): Caller-owned milestones, progress, collectible badges and unlock announcements.
 
 ### [Motion](https://duoop-ui.com/?category=Motion)
 
@@ -84,6 +88,7 @@ Dedicated TypeScript declarations are not supplied. Next.js and server rendering
 - [Avatar](https://duoop-ui.com/?component=builtin-avatar): Familiar faces in tactile frames.
 - [Map](https://duoop-ui.com/?component=builtin-map): Neutral cartography with useful, tactile controls.
 - [Table](https://duoop-ui.com/?component=builtin-table): The work, at a glance. Semantic tables and useful data interactions.
+- [Chart](https://duoop-ui.com/?component=builtin-chart): Area, line and grouped bar charts with missing-value gaps, negative values, keyboard exploration and a data table. The playground's Our data popover edits labels and values locally; Apply data updates the preview and Reset restores demo data.
 
 ## Complete page
 
@@ -94,9 +99,3 @@ Dedicated TypeScript declarations are not supplied. Next.js and server rendering
 - [Duoop-UI on GitHub](https://github.com/gus-rlin/Duoop-UI): README, contribution guide, design guidelines, validation scope and Apache-2.0 license.
 
 Component identity is carried by the `component` query parameter; `category`, `page` and `example` select other public content. The `tab` parameter selects a view of the same documentation. Search results are not canonical catalog pages.
-
-- [Folder](https://duoop-ui.com/?component=builtin-folder): A tabbed folder with selectable documents.
-
-- [Achievement](https://duoop-ui.com/?component=builtin-achievement): Make progress worth keeping.
-
-- [Chart](https://duoop-ui.com/?component=builtin-chart): Customizable curves, areas and tactile bars.

@@ -1,5 +1,13 @@
 # Third-party component foundations
 
+## Codex product icon
+
+`public/codex-icon.png` is the unmodified `codex-app-ga-logo-3e5209898ca3.png` asset supplied in OpenAI's official Codex VS Code extension (`openai.chatgpt`, version 26.901.22334). It identifies the compatible OpenAI product in the Duoop UI MCP announcement. Codex and its icon belong to OpenAI; this brand asset is not covered by Duoop UI's Apache-2.0 license. The MCP is maintained by Duoop UI and does not imply OpenAI endorsement. Official extension: https://marketplace.visualstudio.com/items?itemName=openai.chatgpt
+
+## MCP dependencies
+
+The standalone MCP uses the official Model Context Protocol TypeScript SDK and Zod, installed from npm. Their MIT licenses and transitive notices remain in their respective package distributions.
+
 Duoop adapts the official composition examples and uses the unstyled runtime packages below. Duoop CSS, demos and integration are maintained in this repository. Dependency source is installed through npm, rather than vendored.
 
 - Radix Primitives — Tooltip, Popover, Slider and Dialog (Sheet): https://github.com/radix-ui/primitives and https://www.radix-ui.com/primitives/docs/components

@@ -12,6 +12,7 @@
   <url><loc>https://duoop-ui.com/?category=Feedback</loc></url>
   <url><loc>https://duoop-ui.com/?category=Motion</loc></url>
   <url><loc>https://duoop-ui.com/?category=Display</loc></url>
+  <url><loc>https://duoop-ui.com/?component=builtin-chart</loc></url>
   <url><loc>https://duoop-ui.com/?component=builtin-breadcrumb</loc></url>
   <url><loc>https://duoop-ui.com/?component=builtin-separator</loc></url>
   <url><loc>https://duoop-ui.com/?component=builtin-relief-button</loc></url>
@@ -57,5 +58,4 @@
   <url><loc>https://duoop-ui.com/?component=builtin-skeleton</loc></url>
   <url><loc>https://duoop-ui.com/?component=builtin-alert</loc></url>
   <url><loc>https://duoop-ui.com/?component=builtin-folder</loc></url>
-  <url><loc>https://duoop-ui.com/?component=builtin-chart</loc></url>
 </urlset>

@@ -55,9 +55,15 @@ The ESM package contains all public components, their compound components and he
 
 Use a React bundler such as Vite. For Next.js, import the stylesheet in the root layout and use interactive components from a client component; the library entry preserves its `"use client"` boundary. Next.js and server rendering have not been separately validated. Dedicated TypeScript declarations are not supplied.
 
+## Use the collection in Codex
+
+The **official Duoop UI MCP** searches components, families and gallery variants, then returns complete JSX, CSS, local helpers and runnable examples. It runs locally without an API key. Follow the [Codex MCP setup guide](docs/mcp.md) for installation, tool examples and configuration.
+
 ## Explore the collection
 
-**46 components · 7 categories**, each with downloadable examples. The collection includes Breadcrumb and Separator, plus Tooltip, Popover, Slider, Calendar, Date Picker, Table, Pagination, Sheet, File Upload, Skeleton and Alert. See [integration notes and verification](docs/essential-components.md).
+**46 components · 7 categories**, each with downloadable examples. Recent additions include [Chart](https://duoop-ui.com/?component=builtin-chart), [Folder](https://duoop-ui.com/?component=builtin-folder) and the restored [Achievement](https://duoop-ui.com/?component=builtin-achievement). See the [Chart integration and data editor guide](docs/chart.md) and [essential-component integration notes](docs/essential-components.md).
+
+The catalog describes the current repository. An installed npm release may predate components shown here. If an export is missing from your installed version, use the component's source download or [build a local archive](CONTRIBUTING.md#test-a-local-library-archive). Pushing source changes does not publish a new npm release.
 
 | Collection | Explore |
 | --- | --- |
@@ -67,7 +73,7 @@ Use a React bundler such as Vite. For Next.js, import the stylesheet in the root
 | Cards | [Cards and composed layouts](https://duoop-ui.com/?category=Cards) |
 | Feedback | [Toasts and progress](https://duoop-ui.com/?category=Feedback) |
 | Motion | [Animated text and expressive interactions](https://duoop-ui.com/?category=Motion) |
-| Display | [Avatars, maps, and more](https://duoop-ui.com/?category=Display) |
+| Display | [Charts, tables, avatars, maps and separators](https://duoop-ui.com/?category=Display) |
 
 Explore the [outdoor adventure landing page](https://duoop-ui.com/?page=examples&example=landing), the current public page example, with [source](src/examples/LandingPage.jsx), styles and a runnable download. [SettingsPage.jsx](src/examples/SettingsPage.jsx) remains a source-only example in the repository; it is not listed in the public catalog. Example brands, pricing, forms, and persistence are demonstrations; connect your own services when adapting them.
 

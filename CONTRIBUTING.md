@@ -41,6 +41,7 @@ Check UI changes at desktop and mobile widths, with keyboard input and reduced m
 - The initial HTML summary and description metadata are generated from catalog metadata by `vite.config.js`. Keep these facts readable without JavaScript; the SEO suite checks that the static inventory matches the interactive collection.
 - Use [docs/source-installation.md](docs/source-installation.md) for optional source copying, [docs/essential-components.md](docs/essential-components.md) for the eleven essential families, [design.md](design.md) for design guidance, and [VALIDATION.md](VALIDATION.md) for dated verification and known gaps. Preserve third-party notices in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 - Run `npm run test:docs` and the SEO checks after documentation changes. Confirm registry status with `npm view duoop-ui version homepage` before claiming a release is published. Source changes and site deployment do not publish an npm release.
+- Keep component links under their actual categories in `public/llms.txt`. Update component-specific guides such as [docs/chart.md](docs/chart.md) and the rendered Usage & API notes when props or playground interactions change. Distinguish playground controls from the reusable component API.
 
 ## Open a pull request
 

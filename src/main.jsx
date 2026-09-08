@@ -70,6 +70,11 @@ function Hero() {
   return (
     <section className="home-hero">
       <div className="hero-copy">
+        <a className="codex-mcp-badge" href="?page=installation#codex-mcp">
+          <img src="/codex-icon.png" width="26" height="26" alt="" />
+          <span>Codex MCP is now available</span>
+          <Icon name="arrow" size={14} />
+        </a>
         <span className="eyebrow">
           <span className="eyebrow-line" /> THOUGHTFULLY MADE. YOURS TO MAKE.
         </span>
