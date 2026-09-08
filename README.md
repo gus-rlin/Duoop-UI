@@ -8,7 +8,9 @@
 
 Tactile React components with crisp outlines, playful motion, and satisfying feedback.
 
-[**Explore the live catalog →**](https://duoop-ui.pages.dev/) · [Components](https://duoop-ui.pages.dev/?page=components) · [Installation](https://duoop-ui.pages.dev/?page=installation) · [Page examples](https://duoop-ui.pages.dev/?page=examples)
+**46 components across 7 categories — interactive previews, source code, and downloadable examples.**
+
+[**Explore the live catalog →**](https://duoop-ui.com/) · [Components](https://duoop-ui.com/?page=components) · [Installation](https://duoop-ui.com/?page=installation) · [Page examples](https://duoop-ui.com/?page=examples)
 
 [![CI](https://github.com/gus-rlin/Duoop-UI/actions/workflows/ci.yml/badge.svg)](https://github.com/gus-rlin/Duoop-UI/actions/workflows/ci.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-303b51?style=flat-square)](LICENSE)
@@ -16,7 +18,7 @@ Tactile React components with crisp outlines, playful motion, and satisfying fee
 
 </div>
 
-[![Duoop UI live catalog](docs/images/catalog.png)](https://duoop-ui.pages.dev/)
+[![Duoop UI live catalog](docs/images/catalog.png)](https://duoop-ui.com/)
 
 ## Why Duoop?
 
@@ -34,15 +36,15 @@ This repository contains the documentation site and component sources. Distribut
 
 | Collection | Explore |
 | --- | --- |
-| Buttons | [Raised buttons and reactions](https://duoop-ui.pages.dev/?category=Buttons) |
-| Forms | [Inputs, selection, and validation](https://duoop-ui.pages.dev/?category=Forms) |
-| Navigation | [Menus and tabs](https://duoop-ui.pages.dev/?category=Navigation) |
-| Cards | [Cards and composed layouts](https://duoop-ui.pages.dev/?category=Cards) |
-| Feedback | [Toasts, progress, and achievements](https://duoop-ui.pages.dev/?category=Feedback) |
-| Motion | [Animated text and expressive interactions](https://duoop-ui.pages.dev/?category=Motion) |
-| Display | [Avatars, maps, and more](https://duoop-ui.pages.dev/?category=Display) |
+| Buttons | [Raised buttons and reactions](https://duoop-ui.com/?category=Buttons) |
+| Forms | [Inputs, selection, and validation](https://duoop-ui.com/?category=Forms) |
+| Navigation | [Menus and tabs](https://duoop-ui.com/?category=Navigation) |
+| Cards | [Cards and composed layouts](https://duoop-ui.com/?category=Cards) |
+| Feedback | [Toasts, progress, and achievements](https://duoop-ui.com/?category=Feedback) |
+| Motion | [Animated text and expressive interactions](https://duoop-ui.com/?category=Motion) |
+| Display | [Avatars, maps, and more](https://duoop-ui.com/?category=Display) |
 
-Explore [Page examples](https://duoop-ui.pages.dev/?page=examples). Sources include a [studio landing page](src/examples/LandingPage.jsx) and a [settings page](src/examples/SettingsPage.jsx). Example brands, pricing, forms, and persistence are demonstrations; connect your own services when adapting them.
+Explore [Page examples](https://duoop-ui.com/?page=examples). Sources include a [studio landing page](src/examples/LandingPage.jsx) and a [settings page](src/examples/SettingsPage.jsx). Example brands, pricing, forms, and persistence are demonstrations; connect your own services when adapting them.
 
 ## Your first component
 
@@ -54,7 +56,7 @@ cd my-duoop-app
 npm install
 ```
 
-Open [Raised button → Code](https://duoop-ui.pages.dev/?component=builtin-relief-button&tab=code) and copy these files, preserving their paths:
+Open [Raised button → Code](https://duoop-ui.com/?component=builtin-relief-button&tab=code) and copy these files, preserving their paths:
 
 | File | Purpose |
 | --- | --- |
@@ -143,7 +145,7 @@ GitHub CI runs the production build, import checks, and SEO browser tests. See [
 
 ## Deployment
 
-The live site is on [Cloudflare Pages](https://duoop-ui.pages.dev/). Deploy `dist/` over HTTPS for clipboard access. Query-based deep links do not need route rewrites. Preserve public TXT/XML files and allow required remote demo assets in any CSP. See [SEO.md](SEO.md).
+The live site is on [Cloudflare Pages](https://duoop-ui.com/). Deploy `dist/` over HTTPS for clipboard access. Query-based deep links do not need route rewrites. Preserve public TXT/XML files and allow required remote demo assets in any CSP. See [SEO.md](SEO.md).
 
 Legacy personal entries in `duoop-ui.components.v1` are no longer displayed; their stored data is not deleted or rewritten.
 
