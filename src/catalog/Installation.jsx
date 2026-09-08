@@ -17,14 +17,33 @@ export function Installation() {
       <span className="eyebrow">GET STARTED</span>
       <h1>From preview to your project.</h1>
       <p className="page-intro">
-        Duoop is a collection of React source components. Copy the pieces you need, keep the
-        code, and make it your own.
+        Install the React component library with npm, or copy the source when you want to
+        make the implementation your own.
       </p>
       <div className="guide-facts">
         <Badge>React 19</Badge>
         <Badge>Plain CSS</Badge>
         <Badge>JavaScript / JSX</Badge>
       </div>
+      <section className="guide-section">
+        <h2>Install the library</h2>
+        <p>
+          Install Duoop UI from npm in your React 19 project.
+        </p>
+        <CodeBlock label="In your React 19 project" language="bash" code="npm i duoop-ui" />
+        <p>
+          Component dependencies are
+          installed automatically. Import the shared stylesheet once, then use named imports.
+        </p>
+        <CodeBlock label="App.jsx" code={"import { Button } from 'duoop-ui';\nimport 'duoop-ui/styles.css';\n\nexport default function App() {\n  return <Button onClick={() => alert('Hello!')}>Press me</Button>;\n}"} />
+        <p>
+          The stylesheet includes all components and page defaults for font and spacing.
+          Load your own CSS afterwards to override them. The package uses ESM and React 19;
+          dedicated TypeScript declarations are not yet included.
+        </p>
+        <h2>Prefer to copy the source?</h2>
+        <p>Follow the steps below to keep the component files directly in your project.</p>
+      </section>
       <ol className="installation-steps">
         <li>
           <h2>Start with a React project</h2>

@@ -28,7 +28,32 @@ Tactile React components with crisp outlines, playful motion, and satisfying fee
 - **Plain React and CSS.** No Tailwind setup, custom CLI, or global provider required for a basic button.
 - **Interaction matters.** Keyboard behavior, visible focus, reduced motion, and clear action feedback are part of the design.
 
-This repository contains the documentation site and component sources. Distribution is by **copying source files**, under Apache 2.0. There is currently **no published `duoop-ui` npm package** or complete TypeScript declaration package.
+This repository contains the documentation site and the installable React library, under Apache 2.0. Use the package to install the whole collection, or keep copying source files and downloading examples when you want to edit their implementation. Dedicated TypeScript declarations are not yet supplied.
+
+## Install the library
+
+Install [duoop-ui from npm](https://www.npmjs.com/package/duoop-ui) in your React 19 application:
+
+```sh
+npm i duoop-ui
+```
+
+Component dependencies install automatically. React and React DOM are shared with your application as peer dependencies.
+
+Import the stylesheet once in your application entry, then import components by name:
+
+```jsx
+import { Button, Card } from 'duoop-ui';
+import 'duoop-ui/styles.css';
+
+export default function App() {
+  return <Card><Button onClick={() => alert('Hello!')}>Press me</Button></Card>;
+}
+```
+
+The ESM package contains all public components, their compound components and helpers, including `IconButton`. It excludes the catalogue, demos and development tools. Your bundler can remove unused JavaScript exports; the single stylesheet includes the full collection, the shared foundation and Leaflet styles. The foundation sets page defaults such as body margin and font, so import your application overrides afterwards. DM Sans remains an optional font installation.
+
+Use a React bundler such as Vite. For Next.js, import the stylesheet in the root layout and use interactive components from a client component; the library entry preserves its `"use client"` boundary. Next.js integration and dedicated TypeScript declarations are not yet verified/provided. The source-copy instructions below remain available.
 
 ## Explore the collection
 
@@ -46,7 +71,7 @@ This repository contains the documentation site and component sources. Distribut
 
 Explore [Page examples](https://duoop-ui.com/?page=examples). Sources include a [studio landing page](src/examples/LandingPage.jsx) and a [settings page](src/examples/SettingsPage.jsx). Example brands, pricing, forms, and persistence are demonstrations; connect your own services when adapting them.
 
-## Your first component
+## Your first component by copying source
 
 Use **React 19 + React DOM 19**, JSX compilation, and CSS imports. For a new Vite app, use Node.js **22.12+ or 24+**:
 
