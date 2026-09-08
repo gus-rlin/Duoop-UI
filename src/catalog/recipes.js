@@ -465,27 +465,6 @@ export default function App() {
   );
 }
 `,
-  "depth-carousel": `import React from 'react';
-import './base.css';
-import { DepthCarousel } from './components/DepthCarousel/DepthCarousel.jsx';
-
-export default function App() {
-  return (
-    <DepthCarousel
-      items={[
-        { id: 'one', title: 'A fresh start' },
-        { id: 'two', title: 'A new perspective' },
-        { id: 'three', title: 'A considered detail' },
-      ]}
-      renderItem={(item) => (
-        <div style={{ padding: 32, background: '#f0eeee', height: '100%' }}>
-          <h2>{item.title}</h2>
-        </div>
-      )}
-    />
-  );
-}
-`,
   "cards-carousel": `import React from 'react';
 import './base.css';
 import { CardsCarousel } from './components/CardsCarousel/CardsCarousel.jsx';
@@ -537,33 +516,6 @@ export default function App() {
           role: 'Developer',
           company: 'Example Studio',
           quote: 'Every detail has a place. The code comes with it.',
-        },
-      ]}
-    />
-  );
-}
-`,
-  "card-spread": `import React from 'react';
-import './base.css';
-import { CardSpread } from './components/CardSpread/CardSpread.jsx';
-
-export default function App() {
-  return (
-    <CardSpread
-      items={[
-        {
-          id: 'studio',
-          title: 'The studio',
-          image:
-            'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&auto=format&fit=crop',
-          alt: 'A bright studio interior',
-        },
-        {
-          id: 'city',
-          title: 'The city',
-          image:
-            'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=600&auto=format&fit=crop',
-          alt: 'City buildings',
         },
       ]}
     />

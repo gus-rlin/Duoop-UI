@@ -30,8 +30,6 @@ export * from './components/Achievement/Achievement.jsx';
 export * from './components/KineticType/KineticType.jsx';
 export * from './components/ShuffleDeck/ShuffleDeck.jsx';
 export * from './components/TextLoop/TextLoop.jsx';
-export * from './components/DepthCarousel/DepthCarousel.jsx';
-export * from './components/CardSpread/CardSpread.jsx';
 export * from './components/Avatar/Avatar.jsx';
 export * from './components/Map/Map.jsx';
 export * from './components/Tooltip/Tooltip.jsx';

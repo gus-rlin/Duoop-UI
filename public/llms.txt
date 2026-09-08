@@ -2,7 +2,7 @@
 
 > Tactile React components with plain CSS, interactive previews, complete JSX/CSS source files and runnable downloads.
 
-Duoop UI has 46 components across 7 categories and one public page example. These counts refer to catalog entries; compound components and helpers are additional named exports. The production website is https://duoop-ui.com/.
+Duoop UI has 44 components across 7 categories and one public page example. These counts refer to catalog entries; compound components and helpers are additional named exports. The production website is https://duoop-ui.com/.
 
 ## Installation
 
@@ -78,8 +78,6 @@ Dedicated TypeScript declarations are not supplied. Next.js and server rendering
 - [Kinetic Type](https://duoop-ui.com/?component=builtin-kinetic-type): Typography with an entrance worth watching.
 - [Shuffle Deck](https://duoop-ui.com/?component=builtin-shuffle-deck): A deck of perspectives, ready for a shuffle.
 - [Text Loop](https://duoop-ui.com/?component=builtin-text-loop): Words with a rhythm, on sculpted ribbons.
-- [Depth Carousel](https://duoop-ui.com/?component=builtin-depth-carousel): Photographs in perspective, with room to explore.
-- [Card Spread](https://duoop-ui.com/?component=builtin-card-spread): An open fan of photographs. Pick a perspective.
 
 ### [Display](https://duoop-ui.com/?category=Display)
 

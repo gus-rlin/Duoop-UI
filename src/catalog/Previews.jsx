@@ -41,12 +41,10 @@ const previewModules = {
   "kinetic-type": ["KineticType/KineticTypeDemos", "KineticPreview"],
   "shuffle-deck": ["ShuffleDeck/ShuffleDeckDemos", "ShufflePreview"],
   "text-loop": ["TextLoop/TextLoopDemos", "TextLoopPreview"],
-  "depth-carousel": ["DepthCarousel/DepthCarouselDemos", "DepthPreview"],
   "cards-carousel": [
     "CardsCarousel/CardsCarouselDemos",
     "CardsCarouselPreview",
   ],
-  "card-spread": ["CardSpread/CardSpreadDemos", "SpreadPreview"],
   avatar: ["Avatar/AvatarDemos", "AvatarPreview"],
   testimonials: ["Testimonials/TestimonialsDemos", "TestimonialsPreview"],
   "bento-grid": ["BentoGrid/BentoGridDemos", "BentoPreview"],
