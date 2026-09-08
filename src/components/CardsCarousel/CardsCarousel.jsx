@@ -10,6 +10,33 @@ function CardImage({ src, alt = '', className = '' }) {
   return src && !failed ? <img className={className} src={src} alt={alt} loading="lazy" onError={() => setFailed(true)} /> : <span className={`cards-carousel__image-fallback ${className}`}>Image unavailable</span>;
 }
 
+function StoryWindow({ src }) {
+  const frame = useRef(null);
+  const id = useId();
+  const [bounds, setBounds] = useState({ width: 260, height: 224 });
+  useEffect(() => {
+    const observer = new ResizeObserver(([entry]) => {
+      const { width, height } = entry.contentRect;
+      if (width && height) setBounds({ width, height });
+    });
+    observer.observe(frame.current);
+    return () => observer.disconnect();
+  }, []);
+  const { width, height } = bounds;
+  const radius = (width - 2) / 2;
+  const corner = 7;
+  const base = height - 1;
+  // A single circular arch, tangent to both sides; the photo and ink share it.
+  const path = `M1 ${radius + 1} A${radius} ${radius} 0 0 1 ${width - 1} ${radius + 1} V${base - corner} Q${width - 1} ${base} ${width - 1 - corner} ${base} H${corner + 1} Q1 ${base} 1 ${base - corner} Z`;
+  return <svg ref={frame} className="cards-carousel__window" aria-hidden="true">
+    <defs><path id={`${id}-shape`} d={path} /><clipPath id={`${id}-clip`}><use href={`#${id}-shape`} /></clipPath></defs>
+    <g clipPath={`url(#${id}-clip)`}>
+      <foreignObject width={width} height={height}><CardImage key={src} src={src} className="cards-carousel__image" /></foreignObject>
+    </g>
+    <use href={`#${id}-shape`} fill="none" stroke="var(--story-border)" strokeWidth="2" />
+  </svg>;
+}
+
 /** A scroll-snap collection with native touch scrolling and modal card details. */
 export function CardsCarousel({ items = [], title = 'A little more to discover.', label = 'Featured stories', size = 'large', theme = 'light', className = '' }) {
   const rail = useRef(null);
@@ -74,7 +101,7 @@ export function CardsCarousel({ items = [], title = 'A little more to discover.'
     <div className="cards-carousel__rail" ref={rail} onKeyDown={navigate} aria-labelledby={headingId}>
       {items.map((item, index) => <button key={item.id} className="cards-carousel__card" type="button" aria-label={`Read ${item.title}`} aria-haspopup="dialog" onClick={() => setSelectedId(item.id)}>
         <span className="cards-carousel__copy"><span className="cards-carousel__eyebrow">{item.category}</span><strong>{item.title}</strong></span>
-        <span className="cards-carousel__window"><CardImage key={item.src} src={item.src} alt="" className="cards-carousel__image" /></span>
+        <StoryWindow src={item.src} />
         <span className="cards-carousel__card-footer"><span>{String(index + 1).padStart(2, '0')} / Explore story</span><span className="cards-carousel__plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M5 12h14M12 5v14" /></svg></span></span>
       </button>)}
       {!items.length && <p className="cards-carousel__empty">No stories to display.</p>}

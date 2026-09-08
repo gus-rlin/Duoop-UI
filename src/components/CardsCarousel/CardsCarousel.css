@@ -5,17 +5,17 @@
 .cards-carousel__heading h3 { margin:12px 0 0; max-width:440px; font-size: clamp(24px, 3vw, 36px); line-height:1.12; font-weight:600; letter-spacing:-1.2px; text-wrap:balance; }
 .cards-carousel__hint { max-width:150px; font-size: 12px; color:var(--feedback-muted); line-height:1.7; }
 .cards-carousel__rail { display:flex; gap:20px; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; scroll-padding-inline:32px; padding:32px 32px 48px; scrollbar-width:none; background:var(--feedback-soft); border-block:1px solid var(--feedback-track); }
-.cards-carousel__card { position:relative; flex:0 0 300px; min-width:0; padding:0; display:flex; flex-direction:column; text-align:start; font: inherit; color:inherit; background:var(--feedback-face); border:2px solid var(--story-border); border-radius:10px; box-shadow:0 5px 0 var(--story-border); overflow:hidden; scroll-snap-align:start; cursor:pointer; transform:translateY(var(--card-rise, 0px)) rotate(var(--card-angle, -1.5deg)); transform-origin:50% 80%; transition:transform 280ms cubic-bezier(.2,.8,.2,1),box-shadow 200ms ease-out; }
-.cards-carousel__card:nth-child(even) { --card-angle:1.5deg; --card-rise:16px; }
+.cards-carousel__card { position:relative; flex:0 0 300px; min-width:0; padding:0; display:flex; flex-direction:column; text-align:start; font: inherit; color:inherit; background:var(--feedback-face); border:2px solid var(--story-border); border-radius:10px; box-shadow:0 5px 0 var(--story-border); overflow:hidden; scroll-snap-align:start; cursor:pointer; transform:translateY(var(--card-rise, 0px)); transition:transform 280ms cubic-bezier(.2,.8,.2,1),box-shadow 200ms ease-out; }
+.cards-carousel__card:nth-child(even) { --card-rise:16px; }
 .cards-carousel__copy { display:block; min-height:156px; padding:24px; }
 .cards-carousel__copy strong { display:block; margin-top:12px; font-size:27px; font-weight:800; line-height:1.06; letter-spacing:-.8px; text-transform:uppercase; text-wrap:balance; overflow-wrap:anywhere; }
-.cards-carousel__window { display:block; margin:0 18px; overflow:hidden; border:2px solid var(--story-border); border-radius:120px 120px 8px 8px; isolation:isolate; }
-.cards-carousel__image { width:100%; height:220px; object-fit:cover; display:block; transition:transform 320ms cubic-bezier(.2,.8,.2,1); }
+.cards-carousel__window { display:block; width:calc(100% - 36px); height:224px; flex-shrink:0; margin:0 18px; overflow:visible; }
+.cards-carousel__image { width:100%; height:100%; object-fit:cover; display:block; transform-origin:center; transition:transform 320ms cubic-bezier(.2,.8,.2,1); }
 .cards-carousel__image-fallback { display:grid; place-items:center; background:var(--feedback-soft); color:var(--feedback-muted); font-size: 12px; }
 .cards-carousel__card-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 20px; font-size: 11px; }
 .cards-carousel__plus { display:grid; place-items:center; width:40px; height:40px; border:2px solid var(--story-border); border-radius:8px; box-shadow:0 3px 0 var(--story-border); transition:transform 180ms ease-out,box-shadow 180ms ease-out; }
 .cards-carousel__plus svg { width:20px; height:20px; transition:transform 240ms cubic-bezier(.2,.8,.2,1); }
-@media(hover:hover) { .cards-carousel__card:hover { transform:translateY(-8px) rotate(0deg); box-shadow:0 9px 0 var(--story-border); }.cards-carousel__card:hover .cards-carousel__image { transform:scale(1.045); }.cards-carousel__card:hover .cards-carousel__plus { transform:translateY(2px); box-shadow:0 1px 0 var(--story-border); }.cards-carousel__card:hover .cards-carousel__plus svg { transform:rotate(90deg); } }
+@media(hover:hover) { .cards-carousel__card:hover { transform:translateY(-8px); box-shadow:0 9px 0 var(--story-border); }.cards-carousel__card:hover .cards-carousel__image { transform:scale(1.045); }.cards-carousel__card:hover .cards-carousel__plus { transform:translateY(2px); box-shadow:0 1px 0 var(--story-border); }.cards-carousel__card:hover .cards-carousel__plus svg { transform:rotate(90deg); } }
 .cards-carousel__card:focus-visible { transform:translateY(-8px); box-shadow:0 9px 0 var(--story-border); }
 .cards-carousel__card:active { transform:translateY(3px); box-shadow:0 2px 0 var(--story-border); }
 .cards-carousel__card:focus-visible { outline:2px solid var(--feedback-ink); outline-offset:-7px; }
@@ -29,7 +29,7 @@
 .cards-carousel[data-size=compact] .cards-carousel__card { flex-basis:240px; }
 .cards-carousel[data-size=compact] .cards-carousel__copy { min-height:144px; padding:20px; }
 .cards-carousel[data-size=compact] .cards-carousel__copy strong { font-size: 22px; }
-.cards-carousel[data-size=compact] .cards-carousel__image { height:180px; }
+.cards-carousel[data-size=compact] .cards-carousel__window { height:184px; }
 .cards-carousel__dialog { width:min(800px,calc(100% - 32px)); max-height:calc(100dvh - 48px); padding:0; border:2px solid var(--story-border); border-radius:12px; background:var(--feedback-face); color:var(--feedback-ink); box-shadow:0 6px 0 var(--story-border); overscroll-behavior:contain; scrollbar-width:thin; scrollbar-color:var(--feedback-muted) transparent; }
 .cards-carousel__dialog[open] { animation:story-enter 240ms cubic-bezier(.2,.8,.2,1); }
 .cards-carousel__dialog::backdrop { background:rgb(29 27 27 / .6); animation:story-fade 180ms ease-out; }
@@ -69,9 +69,9 @@
 .cards-controls .duoop-button-reserve { display:none; }
 .cards-carousel-showcase .gallery-grid { grid-template-columns:minmax(0,1fr); }
 .cards-carousel-showcase .gallery-card-preview { padding:0; }
-.cards-mini { display:flex; gap:12px; width:262px; transform:rotate(-3deg); }
+.cards-mini { display:flex; gap:12px; width:262px; }
 .cards-mini>span { flex:0 0 124px; display:flex; flex-direction:column; border:2px solid #1d1b1b; border-radius:8px; background:#fff; overflow:hidden; box-shadow:0 4px 0 #1d1b1b; transition:transform 200ms ease-out; }
-.cards-mini>span:last-child { transform:translateY(12px) rotate(5deg); }
+.cards-mini>span:last-child { transform:translateY(12px); }
 .cards-mini strong { text-transform:uppercase; font-weight:800; font-size: 13px; line-height:1.2; padding:12px; }
 .cards-mini img { width:calc(100% - 16px); margin:0 8px 10px; height:90px; object-fit:cover; border:2px solid #1d1b1b; border-radius:60px 60px 5px 5px; }
 .library-card:hover .cards-mini>span:last-child { transform:translateY(-6px); }
