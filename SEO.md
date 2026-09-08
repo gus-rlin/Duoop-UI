@@ -11,7 +11,7 @@ Production uses https://duoop-ui.pages.dev/. An HTTP check on September 8, 2026 
 - Allow all crawlers, including Googlebot and Bingbot. No private server area, cart, or administration interface was identified in this catalog. CSS, JavaScript, images, categories, and navigation parameters remain accessible.
 - Internal search results (`q`) and nonexistent components receive `noindex, follow` in the application. Keep them crawlable so engines can read the directive.
 - Components, categories, installation, and examples have distinct canonical URLs. Remove tab and tracking parameters from canonicals. Search/error views must not announce conflicting canonicals.
-- The sitemap contains 46 URLs: home, catalog, installation, examples index, landing-page example, 7 categories, and 34 components. Exclude searches, alternate tabs, invented modification dates, and preview domains.
+- The sitemap contains 58 URLs: home, catalog, installation, examples index, landing-page example, 7 categories, and 46 components. Exclude searches, alternate tabs, invented modification dates, and preview domains.
 - `llms.txt` is an optional Markdown index for AI agents, not a Google ranking factor or indexing guarantee.
 - No `llms-full.txt` is needed for the current scope. A second `sitemap.txt` would duplicate the XML sitemap.
 - Do not add `ads.txt`/`app-ads.txt` without relevant advertising activity, `security.txt` without a defined reporting process and contact, or IndexNow without an actual key integration.

@@ -30,7 +30,7 @@ This repository contains the documentation site and component sources. Distribut
 
 ## Explore the collection
 
-**44 components · 7 categories**, each with downloadable examples. The essential collection adds Tooltip, Popover, Slider, Calendar, Date Picker, Table, Pagination, Sheet, File Upload, Skeleton and Alert. See [integration notes and verification](docs/essential-components.md).
+**46 components · 7 categories**, each with downloadable examples. The collection includes Breadcrumb and Separator, plus Tooltip, Popover, Slider, Calendar, Date Picker, Table, Pagination, Sheet, File Upload, Skeleton and Alert. See [integration notes and verification](docs/essential-components.md).
 
 | Collection | Explore |
 | --- | --- |

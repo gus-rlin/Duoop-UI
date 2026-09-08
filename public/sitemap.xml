@@ -12,6 +12,8 @@
   <url><loc>https://duoop-ui.pages.dev/?category=Feedback</loc></url>
   <url><loc>https://duoop-ui.pages.dev/?category=Motion</loc></url>
   <url><loc>https://duoop-ui.pages.dev/?category=Display</loc></url>
+  <url><loc>https://duoop-ui.pages.dev/?component=builtin-breadcrumb</loc></url>
+  <url><loc>https://duoop-ui.pages.dev/?component=builtin-separator</loc></url>
   <url><loc>https://duoop-ui.pages.dev/?component=builtin-relief-button</loc></url>
   <url><loc>https://duoop-ui.pages.dev/?component=builtin-reaction-button</loc></url>
   <url><loc>https://duoop-ui.pages.dev/?component=builtin-input</loc></url>
