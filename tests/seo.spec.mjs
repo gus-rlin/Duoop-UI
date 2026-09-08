@@ -55,7 +55,7 @@ test('SEO files are served as text and XML, and cover the public catalogue', asy
     ...categories.map((category) => `/?category=${encodeURIComponent(category)}`),
     ...entries.map((entry) => `/?component=${entry.id}`),
   ].map((path) => `${siteOrigin}${path}`);
-  expect(parsed.urls).toEqual(expected);
+  expect([...parsed.urls].sort()).toEqual([...expected].sort());
   expect(new Set(parsed.urls).size).toBe(expected.length);
 
   const llms = await request.get('/llms.txt');

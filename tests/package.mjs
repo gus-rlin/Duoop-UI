@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { execFileSync, spawn } from 'node:child_process';
 import { createRequire } from 'node:module';
+import { stripVTControlCharacters } from 'node:util';
 import { parse } from '@babel/parser';
 import { chromium } from 'playwright';
 import { entries } from '../src/catalog/catalog.js';
@@ -82,7 +83,7 @@ try {
     server.once('exit', code => { clearTimeout(timer); reject(new Error(`Preview exited ${code}: ${output}`)); });
     server.stdout.on('data', chunk => {
       output += chunk;
-      const match = output.match(/http:\/\/127\.0\.0\.1:\d+/);
+      const match = stripVTControlCharacters(output).match(/http:\/\/127\.0\.0\.1:\d+/);
       if (match) { clearTimeout(timer); resolve(match[0]); }
     });
     server.stderr.on('data', chunk => { output += chunk; });
