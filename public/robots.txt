@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://duoop-ui.pages.dev/sitemap.xml
+Sitemap: https://duoop-ui.com/sitemap.xml

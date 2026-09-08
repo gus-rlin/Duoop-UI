@@ -8,38 +8,38 @@ Duoop-UI is for developers and designers building React interfaces. The public c
 
 Components use React 19 and plain CSS. Each component page provides Preview, Code and Installation tabs. Import the shared base.css foundation once and preserve the files and dependencies listed in the installation instructions. Some motion components use GSAP; Map uses Leaflet. Tooltip, Popover, Slider and Sheet use Radix; calendars use React DayPicker; File Upload uses React Dropzone. Duoop-UI is not currently distributed as an npm package.
 
-The production website is https://duoop-ui.pages.dev/. Component identity is carried by the component query parameter; category, page and example parameters also identify public content. Tab parameters select views of the same documentation. Demonstration brands, prices and forms belong to examples and are not commercial offers or live services from Duoop-UI.
+The production website is https://duoop-ui.com/. Component identity is carried by the component query parameter; category, page and example parameters also identify public content. Tab parameters select views of the same documentation. Demonstration brands, prices and forms belong to examples and are not commercial offers or live services from Duoop-UI.
 
 ## Start here
 
-- [Home](https://duoop-ui.pages.dev/): Introduction to the component library.
-- [Component catalogue](https://duoop-ui.pages.dev/?page=components): All public components.
-- [Installation guide](https://duoop-ui.pages.dev/?page=installation): Project setup, source files, CSS imports and dependencies.
-- [Page examples](https://duoop-ui.pages.dev/?page=examples): Complete compositions built with the components.
+- [Home](https://duoop-ui.com/): Introduction to the component library.
+- [Component catalogue](https://duoop-ui.com/?page=components): All public components.
+- [Installation guide](https://duoop-ui.com/?page=installation): Project setup, source files, CSS imports and dependencies.
+- [Page examples](https://duoop-ui.com/?page=examples): Complete compositions built with the components.
 
 ## Categories
 
-- [Buttons](https://duoop-ui.pages.dev/?category=Buttons): Raised button and reaction controls.
-- [Forms](https://duoop-ui.pages.dev/?category=Forms): Inputs, fields, selection controls and autocomplete.
-- [Navigation](https://duoop-ui.pages.dev/?category=Navigation): Tabs, menus, steppers and accordions.
-- [Cards](https://duoop-ui.pages.dev/?category=Cards): Cards, bento grids, carousels and testimonials.
-- [Feedback](https://duoop-ui.pages.dev/?category=Feedback): Badges, dialogs, toasts, progress and achievements.
-- [Motion](https://duoop-ui.pages.dev/?category=Motion): Animated text, decks and interactive visual compositions.
-- [Display](https://duoop-ui.pages.dev/?category=Display): Avatars, maps and tables.
+- [Buttons](https://duoop-ui.com/?category=Buttons): Raised button and reaction controls.
+- [Forms](https://duoop-ui.com/?category=Forms): Inputs, fields, selection controls and autocomplete.
+- [Navigation](https://duoop-ui.com/?category=Navigation): Tabs, menus, steppers and accordions.
+- [Cards](https://duoop-ui.com/?category=Cards): Cards, bento grids, carousels and testimonials.
+- [Feedback](https://duoop-ui.com/?category=Feedback): Badges, dialogs, toasts, progress and achievements.
+- [Motion](https://duoop-ui.com/?category=Motion): Animated text, decks and interactive visual compositions.
+- [Display](https://duoop-ui.com/?category=Display): Avatars, maps and tables.
 
 ## Reference components
 
-- [Raised button](https://duoop-ui.pages.dev/?component=builtin-relief-button): First integration example and button source files.
-- [Input](https://duoop-ui.pages.dev/?component=builtin-input): Form input examples and implementation.
-- [Dropdown Menu](https://duoop-ui.pages.dev/?component=builtin-menu): Menus and their supporting source files.
-- [Dialog](https://duoop-ui.pages.dev/?component=builtin-dialog): Dialog examples and integration.
-- [Toast](https://duoop-ui.pages.dev/?component=builtin-toast): ToastProvider, useToast and ToastViewport integration.
-- [Text Loop](https://duoop-ui.pages.dev/?component=builtin-text-loop): Animated text examples.
-- [Map](https://duoop-ui.pages.dev/?component=builtin-map): Leaflet integration, styles and map attribution.
+- [Raised button](https://duoop-ui.com/?component=builtin-relief-button): First integration example and button source files.
+- [Input](https://duoop-ui.com/?component=builtin-input): Form input examples and implementation.
+- [Dropdown Menu](https://duoop-ui.com/?component=builtin-menu): Menus and their supporting source files.
+- [Dialog](https://duoop-ui.com/?component=builtin-dialog): Dialog examples and integration.
+- [Toast](https://duoop-ui.com/?component=builtin-toast): ToastProvider, useToast and ToastViewport integration.
+- [Text Loop](https://duoop-ui.com/?component=builtin-text-loop): Animated text examples.
+- [Map](https://duoop-ui.com/?component=builtin-map): Leaflet integration, styles and map attribution.
 
 ## Complete page
 
-- [Outdoor adventure landing page](https://duoop-ui.pages.dev/?page=examples&example=landing): A tourism interface example with its source files and runnable download.
+- [Outdoor adventure landing page](https://duoop-ui.com/?page=examples&example=landing): A tourism interface example with its source files and runnable download.
 
 ## Source repository
 

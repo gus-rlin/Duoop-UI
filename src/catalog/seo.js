@@ -1,6 +1,6 @@
 import { categories, componentHref, entries } from './catalog.js';
 
-export const siteOrigin = 'https://duoop-ui.pages.dev';
+export const siteOrigin = 'https://duoop-ui.com';
 
 // Match the content selected by App's route precedence. View and tracking
 // parameters do not create separate canonical documents.
