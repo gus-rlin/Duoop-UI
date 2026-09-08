@@ -25,6 +25,7 @@ for (const file of [...documents, ...guideFiles]) {
   const content = await read(file);
   assert.doesNotMatch(content, /https?:\/\/[^\s)"<>]*\.pages\.dev\b/, `${file}: use the production domain`);
   assert.doesNotMatch(content, /\b(?:34 components|504 variants|Apache 2\.0d|No Duoop npm package)\b/i, `${file}: obsolete documentation`);
+  assert.doesNotMatch(content, /no published\s+`?duoop-ui`?\s+npm package|duoop-ui\s+(?:npm\s+)?package\s+is\s+not\s+(?:yet\s+)?published/i, `${file}: obsolete npm publication claim`);
   for (const [, command] of content.matchAll(/\bnpm run ([\w:-]+)/g)) {
     assert.ok(Object.hasOwn(manifest.scripts, command), `${file}: npm script ${command} does not exist`);
   }

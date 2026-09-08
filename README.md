@@ -28,30 +28,17 @@ Tactile React components with crisp outlines, playful motion, and satisfying fee
 - **Plain React and CSS.** No Tailwind setup, custom CLI, or global provider required for a basic button.
 - **Interaction matters.** Keyboard behavior, visible focus, reduced motion, and clear action feedback are part of the design.
 
-This repository contains the documentation site and the installable React library, under Apache 2.0. Use the package to install the whole collection, or keep copying source files and downloading examples when you want to edit their implementation. Dedicated TypeScript declarations are not yet supplied.
+**Duoop UI is published on npm as `duoop-ui`.** Install the library with npm to use its components in your React application. This repository contains the library source and documentation site, under Apache 2.0.
 
 ## Install the library
 
-Install [duoop-ui from npm](https://www.npmjs.com/package/duoop-ui) in your React 19 application:
+Install the published [duoop-ui package](https://www.npmjs.com/package/duoop-ui) in your React 19 application:
 
 ```sh
 npm i duoop-ui
 ```
 
-To build an installable archive from a local checkout instead:
-
-```sh
-npm ci
-npm pack
-```
-
-In your React 19 application, install the generated archive (adjust the path):
-
-```sh
-npm i /path/to/Duoop-UI/duoop-ui-1.0.0.tgz
-```
-
-Both methods install the component dependencies automatically. React and React DOM are shared with your application as peer dependencies.
+The package installs its runtime dependencies automatically. React and React DOM are peer dependencies supplied by your React 19 application.
 
 Import the stylesheet once in your application entry, then import components by name:
 
@@ -84,77 +71,9 @@ Use a React bundler such as Vite. For Next.js, import the stylesheet in the root
 
 Explore the [outdoor adventure landing page](https://duoop-ui.com/?page=examples&example=landing), the current public page example, with [source](src/examples/LandingPage.jsx), styles and a runnable download. [SettingsPage.jsx](src/examples/SettingsPage.jsx) remains a source-only example in the repository; it is not listed in the public catalog. Example brands, pricing, forms, and persistence are demonstrations; connect your own services when adapting them.
 
-## Your first component by copying source
+## Optional: own the source files
 
-Use **React 19 + React DOM 19**, JSX compilation, and CSS imports. Use Node.js **22.18+ in the 22.x line, or 24.11+**, matching this repository's supported tooling:
-
-```sh
-npm create vite@latest my-duoop-app -- --template react
-cd my-duoop-app
-npm install
-```
-
-Open [Raised button → Code](https://duoop-ui.com/?component=builtin-relief-button&tab=code) and copy these files, preserving their paths:
-
-| File | Purpose |
-| --- | --- |
-| [src/base.css](src/base.css) | Shared sizing, font fallback, accessible hidden text, and inset focus. |
-| [src/components/Button/Button.jsx](src/components/Button/Button.jsx) | Button and ActionFeedback; imports its CSS and helper. |
-| [src/components/Button/Button.css](src/components/Button/Button.css) | Appearance, depth, states, and reduced motion. |
-| [src/components/Button/buttonColor.js](src/components/Button/buttonColor.js) | Custom color palette calculations. |
-
-Or select **Download project**, unzip it, run `npm install`, then `npm run dev`. The download already includes the setup below.
-
-Replace `src/main.jsx` with:
-
-```jsx
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App.jsx';
-import './base.css';
-
-createRoot(document.getElementById('root')).render(<App />);
-```
-
-Keep Vite's `<div id="root"></div>` in `index.html`. Remove its template `index.css` and `App.css` imports to avoid conflicting layout rules. Do not copy the catalog's `src/styles.css` into your app.
-
-Replace `src/App.jsx` with:
-
-```jsx
-import React, { useState } from 'react';
-import { Button } from './components/Button/Button.jsx';
-
-export default function App() {
-  const [count, setCount] = useState(0);
-  return (
-    <main style={{ padding: 32 }}>
-      <Button onClick={() => setCount(value => value + 1)}>
-        Pressed {count} times
-      </Button>
-    </main>
-  );
-}
-```
-
-Run `npm run dev`. Clicking increments the counter; Tab reveals inset focus and Enter/Space activate the button. `npm run build` creates `dist/`. Button needs no additional dependencies beyond React.
-
-### Styling and integration
-
-Import `base.css` once; components import their own styles. To match the site's **DM Sans** font, install and import `@fontsource-variable/dm-sans`, then set `:root { --duoop-font: 'DM Sans Variable', system-ui, sans-serif; }`. Otherwise, the foundation uses a system font.
-
-| Feature | Integration |
-| --- | --- |
-| GSAP motion | Install `gsap` when listed in Installation. Preserve reduced-motion behavior; Text Loop includes an explicit pause in its minimal example. |
-| Map | Install `leaflet`; preserve CSS and attribution. OSM/CARTO tiles need network access and remain subject to provider terms and capacity. |
-| Toast | Wrap `useToast()` consumers in `ToastProvider` and render `ToastViewport` once. |
-| Dialog, Select, Menu | Keep the positioning helpers and CSS listed in Installation. Overlays may use portals. |
-| Images and async demos | Supply production images and connect authentication, server validation, requests, quotas, and persistence. |
-| Next.js | Add a `'use client';` boundary above hook-based components; import the foundation in your layout. Map needs client-only loading without SSR. This framework integration is not separately verified. |
-| TypeScript | Allow JavaScript with `allowJs: true`, or add types in your project. |
-
-The public page download maps [LandingPage.jsx](src/examples/LandingPage.jsx) to `src/App.jsx` and [pages.css](src/examples/pages.css) to `src/example.css`, including the foundation and local dependencies. If adapting the source-only settings example, replace its `readSettings()` and `save()` functions with your API; its demo storage key is `duoop-example-settings-v1`.
-
-On Windows, if npm reports `UNABLE_TO_VERIFY_LEAF_SIGNATURE` and your network certificate is in the system store, use Node.js 24 and set `$env:NODE_USE_SYSTEM_CA = '1'` in PowerShell before installing. This preserves TLS verification.
+For direct edits to a component implementation, follow the [source-copy guide](docs/source-installation.md), or choose **Download project** in the catalog for a complete Vite example. These are optional ways to use the same components. The npm installation above is complete on its own.
 
 ## Develop and test
 
@@ -182,7 +101,7 @@ npm run dev
 | `npm run test:primitives` | Run detailed primitive suites against a dev server on port 5176. |
 | `npm run test:a11y` | Audit galleries against a dev server on port 5176. |
 | `npm run test:pages` | Legacy two-page regression script; requires old downloads and selectors. See VALIDATION.md before using. |
-| `npm run test:integration` | Verify the README button in a fresh Vite app; requires npm access. |
+| `npm run test:integration` | Verify the optional source-copy guide in a fresh Vite app; requires npm access. |
 
 Install Chromium with `npx playwright install chromium`. For a fixed dev port, run `npm run dev -- --port 5176 --strictPort`. Most primitive suites accept `TEST_URL`, but some diagnostic scripts use fixed addresses; keep port 5176 for the combined run. Reports and screenshots go to the ignored `artifacts/` directory.
 
@@ -190,11 +109,7 @@ GitHub CI runs documentation checks, the production build, import checks, packag
 
 ## Deployment
 
-### npm release
-
-Run `npm run test:package` before releasing (Chromium must be installed). Review `npm pack --dry-run`, verify that you control the npm package name, and sign in with `npm login`. Set a new, unpublished release version with `npm version <version>`, then run `npm publish --access public`. The `prepack` hook rebuilds the library for packing and publishing. Registry publication is a separate maintainer action; this repository does not publish automatically.
-
-The published `1.0.0` release was confirmed on September 8, 2026. Its registry metadata still contains the previous hosting URL; `package.json` now points to the production domain. Pushing this repository updates the source documentation, but does not rewrite a published npm version's README or metadata. Include the corrected documentation and homepage in the next npm release.
+Maintainer instructions for [packing and publishing a new npm release](CONTRIBUTING.md#publish-a-new-npm-release-maintainers) are in the contribution guide.
 
 ### Documentation site
 

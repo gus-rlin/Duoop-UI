@@ -4,11 +4,11 @@ import { execFileSync, spawn } from 'node:child_process';
 import assert from 'node:assert/strict';
 import { chromium } from 'playwright';
 
-// Follow README.md literally, outside the repository and its node_modules tree.
-const readme = (await fs.readFile('README.md', 'utf8')).replaceAll('\r\n', '\n');
-const main = readme.match(/Replace `src\/main.jsx` with:\s*```jsx\n([\s\S]+?)```/)[1];
-const app = readme.match(/Replace `src\/App.jsx` with:\s*```jsx\n([\s\S]+?)```/)[1];
-const files = [...readme.matchAll(/\| \[(src\/(?:base\.css|components\/Button\/[^\]]+))\]/g)].map(match => match[1]);
+// Follow docs/source-installation.md literally, outside the repository and its node_modules tree.
+const guide = (await fs.readFile('docs/source-installation.md', 'utf8')).replaceAll('\r\n', '\n');
+const main = guide.match(/Replace `src\/main.jsx` with:\s*```jsx\n([\s\S]+?)```/)[1];
+const app = guide.match(/Replace `src\/App.jsx` with:\s*```jsx\n([\s\S]+?)```/)[1];
+const files = [...guide.matchAll(/\| \[(src\/(?:base\.css|components\/Button\/[^\]]+))\]/g)].map(match => match[1]);
 assert.equal(files.length, 4);
 // Windows Application Control blocks native Vite bindings in this host's Temp folder.
 // A sibling project is still outside both the catalog and its dependency tree.
@@ -52,6 +52,6 @@ try {
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   await fs.mkdir('artifacts',{recursive:true});
   await page.screenshot({path:'artifacts/fresh-integration.png'});
-  await fs.writeFile('artifacts/fresh-integration.json',JSON.stringify({directory,source:'README.md',files,node:process.version,build:'passed',mouse:'passed',keyboard:'passed',styles:style,consoleErrors:errors},null,2));
-  console.log(`Fresh README integration passed: ${directory}`);
+  await fs.writeFile('artifacts/fresh-integration.json',JSON.stringify({directory,source:'docs/source-installation.md',files,node:process.version,build:'passed',mouse:'passed',keyboard:'passed',styles:style,consoleErrors:errors},null,2));
+  console.log(`Fresh source-copy guide integration passed: ${directory}`);
 } finally { await browser?.close(); server.kill(); }

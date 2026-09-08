@@ -48,7 +48,7 @@ These are the checks run by [GitHub CI](.github/workflows/ci.yml). Package check
 
 For additional focused coverage:
 
-- `npm run test:integration`: create an independent Vite app from the README source-copy example; build and check pointer/keyboard interaction, styling and mobile width. Requires npm access.
+- `npm run test:integration`: create an independent Vite app from the [optional source-copy guide](docs/source-installation.md); build and check pointer/keyboard interaction, styling and mobile width. Requires npm access.
 - `npm run test:essential-downloads`: download and build essential starters and variants using its own server.
 - `npm run test:navigation`: check Breadcrumb and Separator with its own server.
 - `npm run test:primitives` and `npm run test:a11y`: first start `npm run dev -- --port 5176 --strictPort` in another terminal. Some individual diagnostic scripts use fixed local addresses; inspect them before overriding TEST_URL.
@@ -60,6 +60,10 @@ Reports, downloaded archives and screenshots are written under ignored `artifact
 - `npm test` runs the maintained checks relevant to the catalog plus the broader public browser and download-build suite. It stops on failure and does not include the package test. The public suite still contains expectations for removed home-page controls and the former studio/settings pages in `tests/public-catalog.spec.mjs`; its last recorded discovery failure expected the absent “A little more focus” switch. Do not describe the full suite as passing based on CI's narrower scope.
 - `npm run test:pages` still consumes both landing.zip and settings.zip and uses old studio selectors in `tests/standalone-pages.mjs`. It is a legacy regression script, not a current public-page validation command. It cannot be reproduced from today's single public page download without updating the script.
 - `tests/build-downloads.mjs` builds archives already in `artifacts/downloads/`; stale downloads can affect its totals. No current aggregate variant or full-download success count is claimed.
+
+## Installation-guide clarification — September 8, 2026
+
+The README now presents the published npm package as the primary installation path. The source-copy tutorial is in [docs/source-installation.md](docs/source-installation.md); packing and release instructions are in CONTRIBUTING.md. The fresh-app integration script reads the relocated tutorial. Documentation checks and that integration test passed after the move. The external web reader may still return the older repository-homepage snapshot; this edit does not purge its copy.
 
 ## Integration limits
 

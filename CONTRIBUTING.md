@@ -39,7 +39,7 @@ Check UI changes at desktop and mobile widths, with keyboard input and reduced m
 - Keep [README.md](README.md) as the main installation and development guide. Update the rendered guides in `src/catalog/Installation.jsx`, `src/catalog/Examples.jsx`, and the generated download README in `src/catalog/download.js` when those instructions change.
 - For catalog or route changes, update the README totals, `public/llms.txt`, `public/sitemap.xml`, and [SEO.md](SEO.md). The AI index describes the current collection; historical test totals belong in Git history, not in its introduction.
 - The initial HTML summary and description metadata are generated from catalog metadata by `vite.config.js`. Keep these facts readable without JavaScript; the SEO suite checks that the static inventory matches the interactive collection.
-- Use [docs/essential-components.md](docs/essential-components.md) for the eleven essential families, [design.md](design.md) for design guidance, and [VALIDATION.md](VALIDATION.md) for dated verification and known gaps. Preserve third-party notices in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+- Use [docs/source-installation.md](docs/source-installation.md) for optional source copying, [docs/essential-components.md](docs/essential-components.md) for the eleven essential families, [design.md](design.md) for design guidance, and [VALIDATION.md](VALIDATION.md) for dated verification and known gaps. Preserve third-party notices in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 - Run `npm run test:docs` and the SEO checks after documentation changes. Confirm registry status with `npm view duoop-ui version homepage` before claiming a release is published. Source changes and site deployment do not publish an npm release.
 
 ## Open a pull request
@@ -47,3 +47,26 @@ Check UI changes at desktop and mobile widths, with keyboard input and reduced m
 Explain the user-visible problem, resulting behavior, and verification. Link related issues. Keep generated `dist/`, `artifacts/`, credentials, and `node_modules/` out of commits.
 
 Be respectful and specific in reviews. Discuss the work, welcome different experience levels, and provide actionable feedback. Contributions use the repository's [Apache 2.0 license](LICENSE).
+
+## Publish a new npm release (maintainers)
+
+Run `npm run test:package` before releasing (Chromium must be installed). Review `npm pack --dry-run`, verify that you control the npm package name, and sign in with `npm login`. Set a new, unpublished release version with `npm version <version>`, then run `npm publish --access public`. The `prepack` hook rebuilds the library for packing and publishing. Registry publication is a separate maintainer action; this repository does not publish automatically.
+
+The published `1.0.0` release was confirmed on September 8, 2026. Its registry metadata still contains the previous hosting URL; `package.json` now points to the production domain. Pushing this repository updates the source documentation, but does not rewrite a published npm version's README or metadata. Include the corrected documentation and homepage in the next npm release.
+
+### Test a local library archive
+
+To build an installable archive from a local checkout instead:
+
+```sh
+npm ci
+npm pack
+```
+
+In your React 19 application, install the generated archive (adjust the path):
+
+```sh
+npm i /path/to/Duoop-UI/duoop-ui-1.0.0.tgz
+```
+
+A local archive is useful for testing unpublished changes before a release. Users installing the published library can use `npm i duoop-ui` directly.
