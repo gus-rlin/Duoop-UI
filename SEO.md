@@ -2,9 +2,9 @@
 
 ## Domain and deployment
 
-Production uses https://duoop-ui.pages.dev/. An HTTP check on September 8, 2026 found the public site there without an `X-Robots-Tag: noindex` header. The deployment-specific `8a3f3afc.duoop-ui.pages.dev` address had that header and remains a non-indexable preview.
+The primary production URL is https://duoop-ui.com/. The Cloudflare-provided duoop-ui.pages.dev hostname is an alternate hosting address, not the preferred URL for search results. Canonicals, sitemap entries, robots.txt, llms.txt and README links use the custom domain.
 
-`npm run build` copies `public/robots.txt`, `public/llms.txt`, and `public/sitemap.xml` to the root of `dist/`. Deploy the contents of `dist/` to production Cloudflare Pages. These static files must replace the HTML fallback at those URLs; do not rewrite them to `index.html`.
+`npm run build` copies `public/robots.txt`, `public/llms.txt`, and `public/sitemap.xml` to the root of `dist/`. Cloudflare Pages automatically builds and deploys the GitHub main branch, using dist/ as its output directory. Publish source changes to main to update production. These static files must replace the HTML fallback at those URLs; do not rewrite them to `index.html`.
 
 ## Crawl policy
 

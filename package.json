@@ -1,5 +1,6 @@
 {
   "name": "duoop-ui",
+  "homepage": "https://duoop-ui.com/",
   "version": "1.0.0",
   "description": "Tactile React components with live previews, complete source code and integration guides.",
   "scripts": {
