@@ -6,7 +6,10 @@
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "npm run build -- --logLevel warn && node tests/check-imports.mjs && playwright test && node tests/build-downloads.mjs",
+    "test": "npm run build -- --logLevel warn && node tests/check-imports.mjs && npm run test:essentials && playwright test && node tests/build-downloads.mjs",
+    "test:navigation": "node tests/navigation.browser.mjs",
+    "test:essentials": "node tests/essentials.browser.mjs",
+    "test:essential-downloads": "node tests/essential-downloads.mjs",
     "test:primitives": "node tests/run-primitives.mjs",
     "test:integration": "node tests/fresh-project.mjs",
     "test:pages": "node tests/standalone-pages.mjs",
@@ -18,12 +21,18 @@
   "type": "module",
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.3.0",
+    "@radix-ui/react-dialog": "^1.1.23",
+    "@radix-ui/react-popover": "^1.1.23",
+    "@radix-ui/react-slider": "^1.4.7",
+    "@radix-ui/react-tooltip": "^1.2.16",
     "fflate": "^0.8.3",
     "gsap": "^3.15.0",
     "highlight.js": "^11.11.1",
     "leaflet": "^1.9.4",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-day-picker": "^9.14.0",
+    "react-dom": "^19.2.8",
+    "react-dropzone": "^14.4.1"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

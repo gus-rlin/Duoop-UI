@@ -1,0 +1,40 @@
+.duoop-date-picker {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  font:
+    500 14px/1.5 'DM Sans',
+    sans-serif;
+  color: #373434;
+}
+.duoop-date-picker__trigger {
+  width: 100%;
+}
+.duoop-date-picker__trigger .duoop-button-content {
+  width: 100%;
+  justify-content: space-between;
+}
+.duoop-date-picker__trigger .duoop-button-label {
+  white-space: normal;
+  text-align: start;
+}
+.duoop-date-picker__popup {
+  width: 328px;
+  padding: 0;
+}
+.duoop-date-picker__popup .duoop-calendar {
+  width: 100%;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+.duoop-date-picker__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  border-top: 1px solid #e7e9ed;
+  font-size: 12px;
+  color: #686565;
+}

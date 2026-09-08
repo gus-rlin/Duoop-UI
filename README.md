@@ -30,7 +30,7 @@ This repository contains the documentation site and component sources. Distribut
 
 ## Explore the collection
 
-**34 components · 7 categories · 504 downloadable variants** in the September 7 validation snapshot. Browse the live catalog for the current collection.
+**44 components · 7 categories**, each with downloadable examples. The essential collection adds Tooltip, Popover, Slider, Calendar, Date Picker, Table, Pagination, Sheet, File Upload, Skeleton and Alert. See [integration notes and verification](docs/essential-components.md).
 
 | Collection | Explore |
 | --- | --- |

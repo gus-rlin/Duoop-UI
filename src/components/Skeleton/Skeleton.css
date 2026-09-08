@@ -1,0 +1,82 @@
+.duoop-skeleton {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+  height: 12px;
+  border: 1px solid #d0cccc;
+  border-radius: 4px;
+  background: #eae7e7;
+}
+.duoop-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.7),
+    transparent
+  );
+  transform: translateX(-100%);
+  animation: duoop-skeleton-shimmer 1.8s ease-in-out infinite;
+}
+.duoop-skeleton--avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+.duoop-skeleton--card {
+  border-radius: 8px;
+  height: 140px;
+}
+.duoop-skeleton-text {
+  display: grid;
+  width: 100%;
+  gap: 12px;
+}
+.duoop-skeleton-card {
+  display: grid;
+  gap: 24px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px;
+  border: 2px solid #777474;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 3px 0 #373434;
+}
+.duoop-skeleton-person {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.duoop-skeleton-table {
+  width: 100%;
+  border: 2px solid #777474;
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+.duoop-skeleton-table > div {
+  display: grid;
+  gap: 24px;
+  padding: 22px;
+  border-bottom: 1px solid #e7e9ed;
+}
+.duoop-skeleton-table > div:last-child {
+  border: 0;
+}
+@keyframes duoop-skeleton-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .duoop-skeleton::after {
+    animation: none;
+    display: none;
+  }
+}

@@ -1,0 +1,10 @@
+.separator-showcase .gallery-card--wide {
+  grid-column: 1 / -1;
+}
+.essential-demo .separator-demo__title {
+  margin: 0 0 6px;
+  color: #373434;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.4;
+}

@@ -1,0 +1,129 @@
+.essential-demo {
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+  width: min(100%, 360px);
+  display: grid;
+  gap: 24px;
+  padding: 12px 0;
+  color: #373434;
+  font:
+    400 14px/1.6 'DM Sans',
+    sans-serif;
+}
+.essential-demo--wide {
+  width: 100%;
+  max-width: 720px;
+}
+.table-showcase .essential-demo--wide {
+  max-width: 920px;
+}
+.button-showcase:is(
+    .table-showcase,
+    .pagination-showcase,
+    .file-upload-showcase,
+    .skeleton-showcase,
+    .alert-showcase
+  )
+  .gallery-card--wide {
+  grid-column: 1 / -1;
+}
+.calendar-showcase .gallery-card-preview {
+  padding-inline: 16px;
+}
+.essential-demo--center {
+  justify-items: center;
+}
+.essential-demo h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.essential-demo p {
+  margin: 0;
+  font-size: 13px;
+  color: #686565;
+}
+.essential-demo__eyebrow {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: #686565;
+}
+.essential-demo__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.essential-demo__stack {
+  display: grid;
+  gap: 20px;
+}
+.essential-demo__note {
+  padding-top: 16px;
+  border-top: 1px solid #e7e9ed;
+  font-size: 12px;
+  color: #686565;
+}
+.essential-demo__result {
+  font-size: 13px;
+  color: #686565;
+  min-height: 21px;
+}
+.essential-demo__toolbar {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #d0cccc;
+  border-radius: 12px;
+  background: #fff;
+}
+.essential-demo__swatch {
+  height: 80px;
+  border: 2px solid #373434;
+  border-radius: 10px;
+  background: #f0eeee;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  font-weight: 600;
+}
+.essential-demo__records {
+  width: 100%;
+  display: grid;
+  gap: 10px;
+}
+.essential-demo__records > div {
+  padding: 12px 16px;
+  border: 1px solid #d0cccc;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+.essential-demo__records small {
+  color: #686565;
+}
+.essential-demo__sheet-body {
+  max-width: 480px;
+  display: grid;
+  gap: 28px;
+}
+.essential-demo__table-name {
+  display: grid;
+}
+.essential-demo__table-name small {
+  font-size: 12px;
+  color: #686565;
+}
+@media (max-width: 480px) {
+  .essential-demo {
+    gap: 20px;
+  }
+  .essential-demo__toolbar {
+    gap: 8px;
+    padding: 12px;
+  }
+}

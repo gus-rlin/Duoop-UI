@@ -1,0 +1,41 @@
+.duoop-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font:
+    500 13px/1.5 'DM Sans',
+    sans-serif;
+  color: #373434;
+}
+.duoop-pagination__pages {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.duoop-pagination .duoop-button {
+  min-width: 36px;
+  padding-inline: 10px;
+}
+.duoop-pagination__gap {
+  width: 16px;
+  text-align: center;
+}
+.duoop-pagination__compact {
+  display: none;
+  min-width: 64px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 600px) {
+  .duoop-pagination__pages {
+    display: none;
+  }
+  .duoop-pagination__compact {
+    display: inline;
+  }
+  .duoop-pagination .duoop-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}

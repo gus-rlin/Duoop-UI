@@ -1,6 +1,12 @@
 // Complete, runnable first examples. Keep their paths consistent with the downloadable bundles.
+import { essentialRecipes } from "./essential-recipes";
 export const recipes = {
-  'relief-button': `import React, { useState } from 'react';
+  ...essentialRecipes,
+  breadcrumb:
+    "import React from 'react';\nimport './base.css';\nimport { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from './components/Breadcrumb/Breadcrumb.jsx';\n\nexport default function App() {\n  return <Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink href=\"/\">Home</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbLink href=\"/products\">Products</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbPage>Shoes</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb>;\n}\n",
+  separator:
+    "import React from 'react';\nimport './base.css';\nimport { Separator } from './components/Separator/Separator.jsx';\n\nexport default function App() {\n return <section><h2>The studio journal</h2><p>Notes from the workshop.</p><Separator /><h2>Made for the everyday</h2><p>Objects worth keeping.</p><div style={{display: 'flex', alignItems: 'center'}}><span>Design</span><Separator orientation=\"vertical\" decorative /><span>Development</span></div></section>;\n}\n",
+  "relief-button": `import React, { useState } from 'react';
 import './base.css';
 import { Button } from './components/Button/Button.jsx';
 
@@ -61,7 +67,7 @@ export default function App() {
   );
 }
 `,
-  'input-group': `import React from 'react';
+  "input-group": `import React from 'react';
 import './base.css';
 import { InputGroup, InputGroupInput } from './components/Forms/InputGroup.jsx';
 
@@ -87,7 +93,7 @@ export default function App() {
   );
 }
 `,
-  'number-field': `import React from 'react';
+  "number-field": `import React from 'react';
 import './base.css';
 import { NumberField } from './components/Forms/NumberField.jsx';
 
@@ -95,7 +101,7 @@ export default function App() {
   return <NumberField aria-label="Quantity" defaultValue={2} min={1} max={10} />;
 }
 `,
-  'otp-field': `import React from 'react';
+  "otp-field": `import React from 'react';
 import './base.css';
 import { OtpField } from './components/Forms/OtpField.jsx';
 
@@ -103,7 +109,7 @@ export default function App() {
   return <OtpField aria-label="Verification code" length={6} />;
 }
 `,
-  'radio-group': `import React from 'react';
+  "radio-group": `import React from 'react';
 import './base.css';
 import { RadioGroup } from './components/Selection/Selection.jsx';
 
@@ -247,7 +253,7 @@ export default function App() {
   );
 }
 `,
-  'bento-grid': `import React from 'react';
+  "bento-grid": `import React from 'react';
 import './base.css';
 import { BentoGrid, BentoItem } from './components/BentoGrid/BentoGrid.jsx';
 
@@ -265,7 +271,7 @@ export default function App() {
   );
 }
 `,
-  'kinetic-type': `import React from 'react';
+  "kinetic-type": `import React from 'react';
 import './base.css';
 import { KineticType } from './components/KineticType/KineticType.jsx';
 
@@ -273,7 +279,7 @@ export default function App() {
   return <KineticType as="h1" text="Made to feel different." effect="wave" />;
 }
 `,
-  'text-loop': `import React, { useState } from 'react';
+  "text-loop": `import React, { useState } from 'react';
 import './base.css';
 import { TextLoop } from './components/TextLoop/TextLoop.jsx';
 import { Button } from './components/Button/Button.jsx';
@@ -409,7 +415,7 @@ export default function App() {
   );
 }
 `,
-  'reaction-button': `import React from 'react';
+  "reaction-button": `import React from 'react';
 import './base.css';
 import { ReactionButton } from './components/ReactionButton/ReactionButton.jsx';
 
@@ -437,7 +443,7 @@ export default function App() {
   );
 }
 `,
-  'shuffle-deck': `import React from 'react';
+  "shuffle-deck": `import React from 'react';
 import './base.css';
 import { ShuffleDeck } from './components/ShuffleDeck/ShuffleDeck.jsx';
 
@@ -459,7 +465,7 @@ export default function App() {
   );
 }
 `,
-  'depth-carousel': `import React from 'react';
+  "depth-carousel": `import React from 'react';
 import './base.css';
 import { DepthCarousel } from './components/DepthCarousel/DepthCarousel.jsx';
 
@@ -480,7 +486,7 @@ export default function App() {
   );
 }
 `,
-  'cards-carousel': `import React from 'react';
+  "cards-carousel": `import React from 'react';
 import './base.css';
 import { CardsCarousel } from './components/CardsCarousel/CardsCarousel.jsx';
 
@@ -537,7 +543,7 @@ export default function App() {
   );
 }
 `,
-  'card-spread': `import React from 'react';
+  "card-spread": `import React from 'react';
 import './base.css';
 import { CardSpread } from './components/CardSpread/CardSpread.jsx';
 
@@ -598,15 +604,15 @@ export default function App() {
 };
 
 export const notes = {
-  map: 'Map uses Leaflet and remote OpenStreetMap/CARTO tiles. Preserve visible attribution, allow the tile hosts in your CSP, and check provider terms and capacity before deployment. Supply your own tiles for offline use.',
+  map: "Map uses Leaflet and remote OpenStreetMap/CARTO tiles. Preserve visible attribution, allow the tile hosts in your CSP, and check provider terms and capacity before deployment. Supply your own tiles for offline use.",
   toast:
-    'Wrap callers in ToastProvider and render ToastViewport once. useToast must be called inside the provider. Connect real requests in your application.',
-  'text-loop':
-    'Continuous motion needs a visible pause control. The recipe includes one; reduced-motion preferences are also respected.',
-  'otp-field':
-    'This component collects a code. Verification, expiry and rate limits belong on your server.',
+    "Wrap callers in ToastProvider and render ToastViewport once. useToast must be called inside the provider. Connect real requests in your application.",
+  "text-loop":
+    "Continuous motion needs a visible pause control. The recipe includes one; reduced-motion preferences are also respected.",
+  "otp-field":
+    "This component collects a code. Verification, expiry and rate limits belong on your server.",
   achievement:
-    'Unlocks and rewards in the gallery are local demonstrations. Your application owns authorization and durable progress.',
+    "Unlocks and rewards in the gallery are local demonstrations. Your application owns authorization and durable progress.",
 };
 
 export function recipeFor(entry) {

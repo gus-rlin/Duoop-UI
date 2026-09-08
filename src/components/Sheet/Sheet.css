@@ -1,0 +1,110 @@
+.duoop-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  background: rgb(29 27 27 / 0.3);
+  animation: duoop-sheet-fade 180ms ease-out;
+}
+.duoop-sheet {
+  position: fixed;
+  z-index: 131;
+  box-sizing: border-box;
+  padding: 32px;
+  background: #fff;
+  color: #373434;
+  border: 2px solid #373434;
+  font:
+    400 14px/1.6 'DM Sans',
+    sans-serif;
+  overflow: auto;
+  overscroll-behavior: contain;
+  animation: duoop-sheet-in 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.duoop-sheet[data-side='right'] {
+  inset: 12px 12px 12px auto;
+  width: min(420px, calc(100vw - 24px));
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #1d1b1b;
+  --sheet-x: 32px;
+  --sheet-y: 0px;
+}
+.duoop-sheet[data-side='left'] {
+  inset: 12px auto 12px 12px;
+  width: min(420px, calc(100vw - 24px));
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #1d1b1b;
+  --sheet-x: -32px;
+  --sheet-y: 0px;
+}
+.duoop-sheet[data-side='bottom'] {
+  inset: auto 0 0;
+  max-height: 85dvh;
+  border-radius: 16px 16px 0 0;
+  padding-bottom: max(32px, env(safe-area-inset-bottom));
+  --sheet-x: 0px;
+  --sheet-y: 40px;
+}
+.duoop-sheet[data-side='top'] {
+  inset: 0 0 auto;
+  max-height: 85dvh;
+  border-radius: 0 0 16px 16px;
+  padding-top: max(32px, env(safe-area-inset-top));
+  --sheet-x: 0px;
+  --sheet-y: -40px;
+}
+.duoop-sheet h2 {
+  margin: 0 48px 8px 0;
+  font-size: 24px;
+}
+.duoop-sheet p {
+  color: #686565;
+  margin: 0 0 28px;
+}
+.duoop-sheet__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.duoop-sheet[data-state='closed'] {
+  animation: duoop-sheet-out 160ms ease-in;
+}
+.duoop-sheet-overlay[data-state='closed'] {
+  animation: duoop-sheet-fade 140ms ease-in reverse;
+}
+@keyframes duoop-sheet-in {
+  from {
+    opacity: 0;
+    transform: translate(var(--sheet-x), var(--sheet-y));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes duoop-sheet-out {
+  to {
+    opacity: 0;
+    transform: translate(var(--sheet-x), var(--sheet-y));
+  }
+}
+@keyframes duoop-sheet-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (max-width: 480px) {
+  .duoop-sheet {
+    padding: 24px 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .duoop-sheet,
+  .duoop-sheet[data-state='closed'],
+  .duoop-sheet-overlay,
+  .duoop-sheet-overlay[data-state='closed'] {
+    animation-duration: 1ms;
+  }
+}

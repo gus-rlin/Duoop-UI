@@ -2,9 +2,9 @@
 
 > An open-source catalogue of React components with interactive previews, complete JavaScript/JSX and CSS source files, and installation instructions.
 
-Duoop-UI is for developers and designers building React interfaces. The public catalogue is in English and contains 34 components in seven categories, plus a complete page example. Components are distributed by copying source files or downloading a runnable Vite project, under the Apache-2.0 license.
+Duoop-UI is for developers and designers building React interfaces. The public catalogue is in English and contains 44 components in seven categories, plus a complete page example. Components are distributed by copying source files or downloading a runnable Vite project, under the Apache-2.0 license.
 
-Components use React 19 and plain CSS. Each component page provides Preview, Code and Installation tabs. Import the shared base.css foundation once and preserve the files and dependencies listed in the installation instructions. Some motion components use GSAP; Map uses Leaflet. Duoop-UI is not currently distributed as an npm package.
+Components use React 19 and plain CSS. Each component page provides Preview, Code and Installation tabs. Import the shared base.css foundation once and preserve the files and dependencies listed in the installation instructions. Some motion components use GSAP; Map uses Leaflet. Tooltip, Popover, Slider and Sheet use Radix; calendars use React DayPicker; File Upload uses React Dropzone. Duoop-UI is not currently distributed as an npm package.
 
 The production website is https://duoop-ui.pages.dev/. Component identity is carried by the component query parameter; category, page and example parameters also identify public content. Tab parameters select views of the same documentation. Demonstration brands, prices and forms belong to examples and are not commercial offers or live services from Duoop-UI.
 
@@ -23,7 +23,7 @@ The production website is https://duoop-ui.pages.dev/. Component identity is car
 - [Cards](https://duoop-ui.pages.dev/?category=Cards): Cards, bento grids, carousels and testimonials.
 - [Feedback](https://duoop-ui.pages.dev/?category=Feedback): Badges, dialogs, toasts, progress and achievements.
 - [Motion](https://duoop-ui.pages.dev/?category=Motion): Animated text, decks and interactive visual compositions.
-- [Display](https://duoop-ui.pages.dev/?category=Display): Avatars and maps.
+- [Display](https://duoop-ui.pages.dev/?category=Display): Avatars, maps and tables.
 
 ## Reference components
 

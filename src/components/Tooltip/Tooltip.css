@@ -1,0 +1,51 @@
+.duoop-tooltip {
+  z-index: 120;
+  max-width: min(280px, var(--radix-tooltip-content-available-width));
+  padding: 10px 14px;
+  border: 2px solid #1d1b1b;
+  border-radius: 8px;
+  background: #373434;
+  color: #fff;
+  box-shadow: 0 3px 0 #1d1b1b;
+  font:
+    500 13px/1.5 'DM Sans',
+    sans-serif;
+  overflow-wrap: anywhere;
+  transform-origin: var(--radix-tooltip-content-transform-origin);
+  animation: duoop-tooltip-in 160ms ease-out;
+}
+.duoop-tooltip[data-state='closed'] {
+  animation: duoop-tooltip-out 100ms ease-in;
+}
+.duoop-tooltip__arrow {
+  fill: #373434;
+}
+.duoop-tooltip-disabled {
+  display: inline-flex;
+  border-radius: 10px;
+}
+.duoop-tooltip-disabled:focus-visible {
+  outline: 2px dashed #373434;
+  outline-offset: -3px;
+}
+@keyframes duoop-tooltip-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes duoop-tooltip-out {
+  to {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .duoop-tooltip,
+  .duoop-tooltip[data-state='closed'] {
+    animation: none;
+  }
+}

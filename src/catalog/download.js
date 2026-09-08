@@ -1,16 +1,24 @@
 import { zipSync, strToU8 } from 'fflate';
 import license from '../../LICENSE?raw';
+import thirdPartyNotices from '../../THIRD_PARTY_NOTICES.md?raw';
 
 export const runtimeVersions = {
   react: '^19.2.8',
   'react-dom': '^19.2.8',
   gsap: '^3.15.0',
   leaflet: '^1.9.4',
+  '@radix-ui/react-dialog': '^1.1.23',
+  '@radix-ui/react-popover': '^1.1.23',
+  '@radix-ui/react-slider': '^1.4.7',
+  '@radix-ui/react-tooltip': '^1.2.16',
+  'react-day-picker': '^9.14.0',
+  'react-dropzone': '^14.4.1',
 };
 export function starterFiles(bundle) {
   return [
     ...bundle.files,
     ['LICENSE', license],
+    ['THIRD_PARTY_NOTICES.md', thirdPartyNotices],
     [
       'src/main.jsx',
       "import React from 'react';\nimport { createRoot } from 'react-dom/client';\nimport App from './App.jsx';\nimport './base.css';\n\ncreateRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);\n",

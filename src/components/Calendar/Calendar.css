@@ -1,0 +1,187 @@
+.duoop-calendar {
+  --day-size: 40px;
+  box-sizing: border-box;
+  width: 324px;
+  max-width: 100%;
+  padding: 20px;
+  border: 2px solid #373434;
+  border-radius: 12px;
+  box-shadow: 0 4px 0 #1d1b1b;
+  background: #fff;
+  color: #373434;
+  font:
+    400 14px/1.5 'DM Sans',
+    sans-serif;
+}
+.duoop-calendar .rdp-months {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.duoop-calendar .rdp-month {
+  min-width: 0;
+}
+.duoop-calendar .rdp-month_caption {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  margin-bottom: 16px;
+  padding-inline-end: 86px;
+  font-weight: 600;
+}
+.duoop-calendar .rdp-caption_label {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  white-space: nowrap;
+}
+.duoop-calendar .rdp-dropdowns {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.duoop-calendar .rdp-dropdown_root {
+  position: relative;
+  border-bottom: 1px solid #777474;
+}
+.duoop-calendar .rdp-dropdown {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.duoop-calendar .rdp-dropdown_root:focus-within {
+  border-bottom: 2px dashed #373434;
+}
+.duoop-calendar .rdp-nav {
+  position: absolute;
+  inset-inline-end: 0;
+  top: 0;
+  display: flex;
+  gap: 6px;
+}
+.duoop-calendar .rdp-button_previous,
+.duoop-calendar .rdp-button_next {
+  display: grid;
+  place-items: center;
+  height: 36px;
+  width: 36px;
+  border: 2px solid #777474;
+  border-radius: 8px;
+  background: #fff;
+  color: #373434;
+  box-shadow: 0 2px 0 #1d1b1b;
+}
+.duoop-calendar .rdp-chevron {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+.duoop-calendar .rdp-month_grid {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+.duoop-calendar .rdp-weekday {
+  height: 32px;
+  font-size: 11px;
+  color: #686565;
+  font-weight: 500;
+  text-align: center;
+}
+.duoop-calendar .rdp-day {
+  width: calc(100% / 7);
+  height: 44px;
+  padding: 2px 0;
+  text-align: center;
+}
+.duoop-calendar .rdp-day_button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: var(--day-size);
+  height: 38px;
+  padding: 0;
+  margin: 0 auto;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background 140ms,
+    transform 120ms,
+    box-shadow 140ms;
+}
+.duoop-calendar .rdp-day_button:hover:not(:disabled) {
+  border-color: #777474;
+  background: #f0eeee;
+}
+.duoop-calendar .rdp-day_button:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+.duoop-calendar .rdp-selected .rdp-day_button {
+  border-color: #1d1b1b;
+  background: #373434;
+  color: #fff;
+  box-shadow: 0 2px 0 #1d1b1b;
+  font-weight: 600;
+}
+.duoop-calendar .rdp-selected .rdp-day_button:hover {
+  background: #373434;
+}
+.duoop-calendar .rdp-today:not(.rdp-selected) .rdp-day_button {
+  border-color: #777474;
+}
+.duoop-calendar .rdp-range_middle {
+  background: #f0eeee;
+}
+.duoop-calendar .rdp-range_middle .rdp-day_button {
+  border-color: transparent;
+  background: transparent;
+  color: #373434;
+  box-shadow: none;
+}
+.duoop-calendar .rdp-outside {
+  color: #777474;
+}
+.duoop-calendar .rdp-disabled {
+  opacity: 0.35;
+}
+.duoop-calendar button:disabled {
+  cursor: not-allowed;
+}
+.duoop-calendar button:focus-visible {
+  outline: none;
+  border: 2px dashed currentColor;
+}
+.duoop-calendar .rdp-hidden {
+  visibility: hidden;
+}
+.duoop-calendar .rdp-footer {
+  margin-top: 16px;
+  font-size: 12px;
+  color: #686565;
+}
+@media (max-width: 480px) {
+  .duoop-calendar {
+    --day-size: 34px;
+    padding: 12px;
+  }
+  .duoop-calendar .rdp-month_caption {
+    font-size: 12px;
+  }
+  .duoop-calendar .rdp-dropdowns {
+    gap: 5px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .duoop-calendar .rdp-day_button {
+    transition: none;
+  }
+}

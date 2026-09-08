@@ -1,0 +1,24 @@
+.duoop-separator {
+  --separator-color: #777474;
+  flex-shrink: 0;
+  background: var(--separator-color);
+  border: 0;
+  border-radius: 1px;
+}
+.duoop-separator[data-orientation="horizontal"] {
+  block-size: 1px;
+  inline-size: 100%;
+  margin-block: 24px;
+}
+.duoop-separator[data-orientation="vertical"] {
+  inline-size: 1px;
+  align-self: stretch;
+  min-block-size: 24px;
+  margin-inline: 16px;
+}
+@media (forced-colors: active) {
+  .duoop-separator {
+    background: CanvasText;
+    forced-color-adjust: none;
+  }
+}

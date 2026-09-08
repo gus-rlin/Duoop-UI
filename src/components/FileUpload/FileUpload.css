@@ -1,0 +1,154 @@
+.duoop-file-upload {
+  width: 100%;
+  color: #373434;
+  font:
+    400 14px/1.6 'DM Sans',
+    sans-serif;
+}
+.duoop-file-upload h3 {
+  margin: 0 0 16px;
+  font-size: 15px;
+}
+.duoop-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 32px 24px;
+  border: 2px dashed #777474;
+  border-radius: 12px;
+  background: #fff;
+  transition:
+    background 160ms,
+    border-color 160ms;
+}
+.duoop-dropzone[data-active] {
+  border-color: #373434;
+  border-style: solid;
+  background: #f0eeee;
+}
+.duoop-dropzone[data-disabled] {
+  opacity: 0.5;
+}
+.duoop-dropzone__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 60px;
+  border: 2px solid #373434;
+  border-radius: 9px;
+  box-shadow: 0 4px 0 #1d1b1b;
+  background: #f7f6f6;
+  transition: transform 200ms;
+}
+.duoop-dropzone[data-active] .duoop-dropzone__icon {
+  transform: translateY(-4px) rotate(-4deg);
+}
+.duoop-dropzone__icon svg {
+  width: 30px;
+  height: 30px;
+}
+.duoop-dropzone p {
+  margin: -8px 0 0;
+  font-size: 13px;
+  color: #686565;
+}
+.duoop-dropzone small {
+  font-size: 12px;
+  color: #686565;
+}
+.duoop-file-upload__errors p,
+.duoop-file-upload__info p {
+  color: #a51d2d;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.duoop-file-upload__list {
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+.duoop-file-upload__list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #d0cccc;
+  border-radius: 10px;
+  background: #fff;
+  animation: duoop-file-in 200ms ease-out;
+}
+.duoop-file-upload__list li[data-state='error'] {
+  border-color: #a51d2d;
+  background: #fff2f3;
+}
+.duoop-file-upload__preview {
+  width: 40px;
+  height: 44px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+}
+.duoop-file-upload__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.duoop-file-upload__preview svg {
+  width: 28px;
+  height: 28px;
+}
+.duoop-file-upload__info {
+  flex: 1;
+  min-width: 0;
+}
+.duoop-file-upload__info strong {
+  display: block;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+.duoop-file-upload__info small {
+  display: block;
+  color: #686565;
+  font-size: 12px;
+}
+.duoop-file-upload__success {
+  width: 24px;
+  color: #356247;
+}
+.duoop-file-upload__list .duoop-button svg {
+  width: 18px;
+  height: 18px;
+}
+@keyframes duoop-file-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (max-width: 480px) {
+  .duoop-dropzone {
+    padding: 24px 16px;
+  }
+  .duoop-file-upload__list li {
+    padding: 10px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .duoop-dropzone,
+  .duoop-dropzone__icon,
+  .duoop-file-upload__list li {
+    animation: none;
+    transition: none;
+  }
+}

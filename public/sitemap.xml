@@ -45,4 +45,15 @@
   <url><loc>https://duoop-ui.pages.dev/?component=builtin-card-spread</loc></url>
   <url><loc>https://duoop-ui.pages.dev/?component=builtin-avatar</loc></url>
   <url><loc>https://duoop-ui.pages.dev/?component=builtin-map</loc></url>
+  <url><loc>https://duoop-ui.pages.dev/?component=builtin-tooltip</loc></url>
+  <url><loc>https://duoop-ui.pages.dev/?component=builtin-popover</loc></url>
+  <url><loc>https://duoop-ui.pages.dev/?component=builtin-slider</loc></url>
+  <url><loc>https://duoop-ui.pages.dev/?component=builtin-calendar</loc></url>
+  <url><loc>https://duoop-ui.pages.dev/?component=builtin-date-picker</loc></url>
+  <url><loc>https://duoop-ui.pages.dev/?component=builtin-table</loc></url>
+  <url><loc>https://duoop-ui.pages.dev/?component=builtin-pagination</loc></url>
+  <url><loc>https://duoop-ui.pages.dev/?component=builtin-sheet</loc></url>
+  <url><loc>https://duoop-ui.pages.dev/?component=builtin-file-upload</loc></url>
+  <url><loc>https://duoop-ui.pages.dev/?component=builtin-skeleton</loc></url>
+  <url><loc>https://duoop-ui.pages.dev/?component=builtin-alert</loc></url>
 </urlset>
