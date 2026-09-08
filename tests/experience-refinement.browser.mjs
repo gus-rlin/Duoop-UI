@@ -9,16 +9,6 @@ const card=(name,title)=>page.getByRole('article',{name:`${name}: ${title}`,exac
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
 await mkdir('artifacts',{recursive:true});
 try {
-  await openCatalog(page, `${base}/?component=builtin-achievement`);
-  for(const title of ['With illustration','Unlocked badge','Sizes','Dark surface']) {
-    const scope=card('Achievement',title);
-    await scope.scrollIntoViewIfNeeded(); await page.waitForTimeout(350);
-    assert.ok(await scope.locator('.achievement-emblem').evaluateAll(nodes=>nodes.every(el=>el.children.length===1 && el.firstElementChild.tagName.toLowerCase()==='svg')));
-    const colors=await scope.locator('.achievement-emblem').evaluateAll(nodes=>nodes.map(el=>getComputedStyle(el).color));
-    assert.ok(colors.every(color=>['rgb(55, 52, 52)','rgb(243, 238, 238)'].includes(color)),`${title}: neutral trophy`);
-    assert.ok(await scope.locator('.achievement-emblem').evaluateAll(nodes=>nodes.every(el=>{const r=el.getBoundingClientRect(),svg=el.firstElementChild.getBoundingClientRect();return Math.abs(r.width-svg.width)<1 && Math.abs(r.height-svg.height)<1})),`${title}: SVG fits frame`);
-    await scope.screenshot({path:`artifacts/refine-achievement-${title.replaceAll(' ','-')}.png`});
-  }
   await openCatalog(page, `${base}/?component=builtin-reaction-button`);
   assert.equal(await page.locator('.reaction-emoji').count(),0);
   assert.equal(await card('Reaction Button','Custom icon').locator('.reaction-glyph svg').count(),1);

@@ -65,7 +65,7 @@ Use a React bundler such as Vite. For Next.js, import the stylesheet in the root
 | Forms | [Inputs, selection, and validation](https://duoop-ui.com/?category=Forms) |
 | Navigation | [Menus and tabs](https://duoop-ui.com/?category=Navigation) |
 | Cards | [Cards and composed layouts](https://duoop-ui.com/?category=Cards) |
-| Feedback | [Toasts, progress, and achievements](https://duoop-ui.com/?category=Feedback) |
+| Feedback | [Toasts and progress](https://duoop-ui.com/?category=Feedback) |
 | Motion | [Animated text and expressive interactions](https://duoop-ui.com/?category=Motion) |
 | Display | [Avatars, maps, and more](https://duoop-ui.com/?category=Display) |
 

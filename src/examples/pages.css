@@ -416,30 +416,6 @@
   font-size: 24px;
   line-height: 32px;
 }
-.forma-carousel .cards-carousel__rail {
-  gap: var(--forma-gutter);
-  padding: 8px 0 16px;
-  scroll-padding-inline: 0;
-}
-.forma-carousel .cards-carousel__card {
-  flex-basis: calc((100% - 2 * var(--forma-gutter)) / 3);
-}
-.forma-carousel .cards-carousel__copy {
-  min-height: 112px;
-  padding: 24px;
-}
-.forma-carousel .cards-carousel__copy strong {
-  margin-top: 8px;
-  font-size: 24px;
-  line-height: 32px;
-}
-.forma-carousel .cards-carousel__image {
-  height: 208px;
-}
-.forma-carousel .cards-carousel__card-footer {
-  padding: 16px 24px;
-  gap: 16px;
-}
 .forma-carousel .cards-carousel__navigation {
   padding: 16px 0 0;
   gap: 16px;
@@ -452,20 +428,12 @@
   height: 48px;
   padding: 8px;
 }
-@container forma (max-width: 1023px) {
-  .forma-carousel .cards-carousel__card {
-    flex-basis: calc((100% - var(--forma-gutter)) / 2);
-  }
-}
 @container forma (max-width: 639px) {
   .forma-carousel .cards-carousel__card {
-    flex-basis: 88%;
+    flex-basis: min(280px, 88%);
   }
   .forma-carousel .cards-carousel__hint {
     display: none;
-  }
-  .forma-carousel .cards-carousel__image {
-    height: 192px;
   }
 }
 .forma .forma-pricing {

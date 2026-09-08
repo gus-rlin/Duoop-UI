@@ -1,0 +1,36 @@
+.duoop-folder { position: relative; isolation: isolate; container-type: inline-size; width: min(100%, 500px); aspect-ratio: 1.12; color: #373434; font-family: var(--duoop-font, 'DM Sans', sans-serif); }
+.duoop-folder__back { position: absolute; width: 80%; height: auto; left: 10%; bottom: 12px; z-index: 0; }
+.duoop-folder__cover { position: absolute; z-index: 2; left: 10%; bottom: 12px; width: 80%; aspect-ratio: 400 / 250; }
+.duoop-folder__front { position: relative; isolation: isolate; width: 100%; height: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px; text-align: start; padding: 16.25% 8.75% 8.75%; border: 0; background: transparent; color: inherit; transform-origin: center 94%; transform: perspective(220cqw) rotateX(0deg); transition: transform 420ms cubic-bezier(.22,.61,.36,1) 80ms; cursor: pointer; }
+.duoop-folder__flap { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; overflow: visible; }
+.duoop-folder__flap-face { transition: fill 150ms; }
+.duoop-folder[data-state='preview'] .duoop-folder__front { transform: perspective(220cqw) rotateX(-52deg); transition-duration: 300ms; transition-delay: 0ms; }
+.duoop-folder[data-state='expanded'] .duoop-folder__front { transform: perspective(220cqw) rotateX(-62deg); transition-duration: 300ms; transition-delay: 0ms; }
+.duoop-folder__front:focus-visible .duoop-folder__flap-face { stroke-dasharray: 5 3; }
+.duoop-folder__toggle { display: flex; flex-direction: column; gap: 8px; }
+.duoop-folder__caption { min-width: 0; }
+.duoop-folder__caption strong { font-size: clamp(18px, 5.6cqw, 28px); font-weight: 800; letter-spacing: .025em; text-transform: uppercase; line-height: 1.08; overflow-wrap: anywhere; }
+.duoop-folder__toggle { align-items: center; font-size: 11px; flex-shrink: 0; width: 48px; text-align: center; line-height: 1.4; }
+.duoop-folder__toggle svg { width: 24px; height: 24px; transition: transform 240ms; }
+.duoop-folder[data-open='true'] .duoop-folder__toggle svg { transform: rotate(180deg); }
+.duoop-folder__documents { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.duoop-folder__document { position: absolute; left: 50%; bottom: 14%; width: 44%; aspect-ratio: 1.6; min-height: 92px; display: flex; flex-direction: column; align-items: stretch; gap: 8px; padding: clamp(9px, 3cqw, 16px); text-align: start; border: 2px solid #1d1b1b; border-radius: 10px; background: #fff; color: #373434; box-shadow: 0 4px 0 #1d1b1b; opacity: 0; visibility: hidden; transform: translate(-50%, 12%) rotate(calc(var(--offset) * 2deg)); transition: transform 360ms cubic-bezier(.4,0,.2,1), opacity 100ms ease 240ms, visibility 0s linear 360ms, background-color 150ms, box-shadow 150ms; }
+.duoop-folder__document-top { display: flex; justify-content: space-between; align-items: center; font-size: 10px; font-weight: 600; letter-spacing: .06em; }
+.duoop-folder__document-top svg { width: 19px; height: 19px; flex-shrink: 0; }
+.duoop-folder__document strong { font-size: clamp(11px, 2.8cqw, 14px); font-weight: 750; line-height: 1.35; overflow-wrap: anywhere; }
+.duoop-folder__meta { margin-top: auto; font-size: 10px; line-height: 1.4; color: #686565; overflow-wrap: anywhere; }
+.duoop-folder[data-state='preview'] .duoop-folder__document:nth-child(-n+3) { transition-delay: 0ms; opacity: 1; visibility: visible; transform: translate(-50%, 0) rotate(calc(var(--offset) * 2deg)); }
+.duoop-folder[data-open='true'] .duoop-folder__document { transition-delay: 0ms; pointer-events: auto; opacity: 1; visibility: visible; transform: translate(calc(-50% + var(--offset) * 55%), var(--rise)) rotate(calc(var(--offset) * 8deg)); }
+.duoop-folder[data-open='true'] .duoop-folder__document:hover, .duoop-folder[data-open='true'] .duoop-folder__document:focus-visible { transform: translate(calc(-50% + var(--offset) * 55%), calc(var(--rise) - 8%)) rotate(0deg); z-index: 3; }
+.duoop-folder__document[aria-pressed='true'] { background: #f0eeee; z-index: 2; }
+.duoop-folder__front:hover .duoop-folder__flap-face { fill: #faf9f8; }
+.duoop-folder__document:active { box-shadow: 0 1px 0 #1d1b1b; }
+.duoop-folder button:focus-visible { outline: none; border-style: dashed; }
+.duoop-folder__document:disabled { color: #777171; background: #f0eeee; cursor: not-allowed; }
+.duoop-folder__empty { position: absolute; top: 16%; inset-inline: 0; text-align: center; font-size: 13px; opacity: 0; visibility: hidden; }
+.duoop-folder[data-open='true'] .duoop-folder__empty { opacity: 1; visibility: visible; }
+/* Large collections use a scrollable landscape-card grid above the cover. */
+.duoop-folder[data-open='true'] .duoop-folder__documents[data-many='true'] { inset: 0 4% 56%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; overflow-y: auto; padding: 8px 4px; pointer-events: auto; }
+.duoop-folder[data-open='true'] .duoop-folder__documents[data-many='true'] .duoop-folder__document { position: relative; left: auto; bottom: auto; width: 100%; transform: none; }
+@media (max-width: 480px) { .duoop-folder__front { gap: 8px; padding-inline: 6%; } .duoop-folder__document { gap: 5px; } .duoop-folder__toggle { width: 40px; font-size: 10px; } }
+@media (prefers-reduced-motion: reduce) { .duoop-folder *, .duoop-folder *::before { transition: none; } }

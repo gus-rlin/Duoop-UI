@@ -9,7 +9,6 @@ import { Autocomplete } from '../components/Autocomplete/Autocomplete';
 import { Progress } from '../components/Progress/Progress';
 import { Toast } from '../components/Toast/Toast';
 import { ReactionButton } from '../components/ReactionButton/ReactionButton';
-import { Achievement } from '../components/Achievement/Achievement';
 import { Stepper } from '../components/Stepper/Stepper';
 import {
   Accordion,
@@ -82,20 +81,6 @@ export function PrimitivePreview({ id }) {
         <ReactionButton kind="like" defaultValue={{ count: 24 }} size="sm" />
         <ReactionButton kind="favorite" presentation="icon" size="sm" />
       </div>
-    );
-  if (id === 'achievement')
-    return (
-      <Achievement
-        item={{
-          id: 'first',
-          title: 'First milestone',
-          description: 'A good idea, brought to life.',
-          state: 'unlocked',
-          icon: 'trophy',
-        }}
-        presentation="compact"
-        size="sm"
-      />
     );
   if (id === 'stepper')
     return (

@@ -32,23 +32,6 @@ try {
   await slider.fill('42');
   assert.equal(await lab.locator('.progress-value').innerText(),'42%');
   await page.emulateMedia({reducedMotion:'no-preference'});
-  await openCatalog(page, `${base}/?component=builtin-achievement`);
-  const achievement=page.getByRole('region',{name:'Achievement playground'});
-  await achievement.getByRole('button',{name:'Share the last note'}).click();
-  await page.waitForTimeout(240);
-  assert.notEqual(await achievement.locator('.achievement-unlock-body .achievement-emblem').evaluate(node=>getComputedStyle(node).transform),'none');
-  assert.equal(await achievement.locator('.achievement-confetti i').count(),12);
-  await achievement.screenshot({path:'artifacts/achievement-in-motion.png'});
-  await page.waitForTimeout(1300);
-  assert.equal(await achievement.locator('.achievement-unlock-body h4').evaluate(node=>getComputedStyle(node).opacity),'1');
-  await achievement.screenshot({path:'artifacts/achievement-choreography.png'});
-  await page.setViewportSize({width:320,height:1000});
-  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
-  await page.emulateMedia({reducedMotion:'reduce'});
-  await achievement.getByRole('button',{name:'Reset',exact:true}).click();
-  await achievement.getByRole('button',{name:'Share the last note'}).click();
-  assert.equal(await achievement.locator('.achievement-unlock-body h4').evaluate(node=>getComputedStyle(node).opacity),'1');
-  assert.equal(await achievement.locator('.achievement-confetti').evaluate(node=>getComputedStyle(node).display),'none');
   assert.deepEqual(errors,[]);
-  console.log('PASS: synchronized numeric motion, interruption, real ARIA values, verification before success, staged unlock, particles, 320 px and reduced motion.');
+  console.log('PASS: synchronized numeric motion, interruption, real ARIA values, verification before success, reduced motion.');
 } finally {await browser.close();}

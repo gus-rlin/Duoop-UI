@@ -2,6 +2,16 @@
 import { essentialRecipes } from "./essential-recipes";
 export const recipes = {
   ...essentialRecipes,
+  folder: `import React from 'react';
+import './base.css';
+import { Folder } from './components/Folder/Folder.jsx';
+export default function App() {
+  return <Folder label="Project files" items={[
+    { id: 'brief', title: 'Project brief', type: 'DOC', description: '4 pages' },
+    { id: 'notes', title: 'Studio notes', type: 'TXT', description: 'Updated today' },
+  ]} />;
+}
+`,
   breadcrumb:
     "import React from 'react';\nimport './base.css';\nimport { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbPage, BreadcrumbSeparator } from './components/Breadcrumb/Breadcrumb.jsx';\n\nexport default function App() {\n  return <Breadcrumb><BreadcrumbList><BreadcrumbItem><BreadcrumbLink href=\"/\">Home</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbLink href=\"/products\">Products</BreadcrumbLink></BreadcrumbItem><BreadcrumbSeparator /><BreadcrumbItem><BreadcrumbPage>Shoes</BreadcrumbPage></BreadcrumbItem></BreadcrumbList></Breadcrumb>;\n}\n",
   separator:
@@ -425,24 +435,6 @@ export default function App() {
   );
 }
 `,
-  achievement: `import React from 'react';
-import './base.css';
-import { Achievement } from './components/Achievement/Achievement.jsx';
-
-export default function App() {
-  return (
-    <Achievement
-      item={{
-        id: 'first-project',
-        title: 'First project',
-        description: 'A good idea, brought to life.',
-        state: 'unlocked',
-        icon: 'trophy',
-      }}
-    />
-  );
-}
-`,
   "shuffle-deck": `import React from 'react';
 import './base.css';
 import { ShuffleDeck } from './components/ShuffleDeck/ShuffleDeck.jsx';
@@ -563,8 +555,6 @@ export const notes = {
     "Continuous motion needs a visible pause control. The recipe includes one; reduced-motion preferences are also respected.",
   "otp-field":
     "This component collects a code. Verification, expiry and rate limits belong on your server.",
-  achievement:
-    "Unlocks and rewards in the gallery are local demonstrations. Your application owns authorization and durable progress.",
 };
 
 export function recipeFor(entry) {

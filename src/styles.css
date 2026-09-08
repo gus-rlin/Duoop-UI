@@ -817,7 +817,7 @@ button {
 .component-detail .showcase-heading {
   display: none;
 }
-.component-detail .documentation-content > .doc-section:first-of-type {
+.component-detail .documentation-content > .showcase-heading + .doc-section {
   margin-top: 10px;
 }
 .component-detail .doc-section[id$='-source'] {

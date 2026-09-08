@@ -13,7 +13,7 @@ const noOverflow = async () => assert.ok(await page.evaluate(() => document.docu
 await mkdir('artifacts', { recursive:true });
 try {
   await openCatalog(page, base);
-  for (const name of ['Stepper','Reaction Button','Achievement']) assert.equal(await page.getByRole('link', { name:`Explore ${name}`,exact:true }).count(),1);
+  for (const name of ['Stepper','Reaction Button']) assert.equal(await page.getByRole('link', { name:`Explore ${name}`,exact:true }).count(),1);
   await page.locator('.catalog-grid').screenshot({ path:'artifacts/experience-library.png' });
   await openCatalog(page, `${base}/?component=builtin-stepper`);
   assert.equal(await page.locator('.gallery-card').count(),22);
@@ -120,52 +120,9 @@ try {
   await page.getByRole('region',{ name:'Reaction Button playground' }).screenshot({ path:'artifacts/reaction-desktop.png' });
   await noOverflow();
 
-  await openCatalog(page, `${base}/?component=builtin-achievement`);
-  assert.equal(await page.locator('.gallery-card').count(),30);
-  const secret = card('Achievement','Secret achievement');
-  assert.equal(await secret.getByRole('heading',{ name:'The hidden chapter',exact:true }).count(),0);
-  await secret.getByRole('button',{ name:'Simulate discovery' }).click();
-  assert.equal(await secret.getByRole('heading',{ name:'The hidden chapter',exact:true }).count(),1);
-  const checklist = card('Achievement','Checklist');
-  await checklist.getByRole('group',{ name:'Complete the achievement criteria' }).getByRole('checkbox',{ name:'Add a useful reference' }).check();
-  await checklist.getByRole('group',{ name:'Complete the achievement criteria' }).getByRole('checkbox',{ name:'Share it with the team' }).check();
-  assert.equal(await checklist.locator('.duoop-achievement').getAttribute('data-state'),'unlocked');
-  const claim = card('Achievement','Claim a reward');
-  await claim.getByRole('switch',{ name:'Simulate a claim error' }).check();
-  await claim.getByRole('button',{ name:'Claim reward',exact:true }).click();
-  await claim.getByRole('button',{ name:'Failed. Retry',exact:true }).waitFor();
-  assert.equal(await claim.locator('.duoop-achievement').getAttribute('data-state'),'claimable');
-  await claim.getByRole('switch',{ name:'Simulate a claim error' }).uncheck();
-  await claim.getByRole('button',{ name:'Failed. Retry',exact:true }).click();
-  await claim.locator('[data-state=claimed]').waitFor();
-  const repeat = card('Achievement','Repeatable achievement');
-  await repeat.getByRole('button',{ name:'Share a note' }).click({ clickCount:2,delay:80 });
-  await repeat.getByRole('button',{ name:'Start next week' }).click();
-  assert.equal(await repeat.locator('.duoop-achievement').getAttribute('data-state'),'available');
-  const dialogCard = card('Achievement','Celebration dialog');
-  await dialogCard.getByRole('button',{ name:'Replay unlock' }).click();
-  const celebration = page.getByRole('dialog',{ name:'A moment well earned.' });
-  await celebration.waitFor();
-  assert.equal(await celebration.locator('.achievement-confetti i').count(),12);
-  await celebration.getByRole('button',{ name:'Keep going' }).click();
-  assert.equal(await dialogCard.getByRole('button',{ name:'Replay unlock' }).evaluate(el => el === document.activeElement),true);
-  const toastCard = card('Achievement','Unlock toast');
-  await toastCard.getByRole('button',{ name:'Replay unlock' }).click();
-  await page.locator('.achievement-toast').getByRole('button',{ name:'Dismiss: Unlocked: First steps' }).click();
-  assert.equal(await page.locator('.achievement-toast').count(),0);
-  await page.getByRole('region',{ name:'Achievement playground' }).screenshot({ path:'artifacts/achievement-desktop.png' });
-
-  // Copyable examples and top-layer integrations also work inside the source viewer.
-  await toastCard.getByRole('button',{ name:'View code: Achievement Unlock toast' }).click();
-  const sourceDialog = page.getByRole('dialog',{ name:'Unlock toast',exact:true });
-  await sourceDialog.getByRole('button',{ name:'Replay unlock' }).click();
-  assert.equal(await sourceDialog.locator('.achievement-toast').count(),1);
-  await page.keyboard.press('Escape');
-  await noOverflow();
-
   for (const width of [1000,768,390,320]) {
     await page.setViewportSize({ width,height:900 });
-    for (const [id,count] of [['stepper',22],['reaction-button',25],['achievement',30]]) {
+    for (const [id,count] of [['stepper',22],['reaction-button',25]]) {
       await openCatalog(page, `${base}/?component=builtin-${id}`);
       assert.equal(await page.locator('.gallery-card').count(),count);
       await noOverflow();
@@ -173,14 +130,9 @@ try {
     }
   }
   await page.emulateMedia({ reducedMotion:'reduce' });
-  await openCatalog(page, `${base}/?component=builtin-achievement`);
-  await card('Achievement','Celebration dialog').getByRole('button',{ name:'Replay unlock' }).click();
-  assert.equal(await page.locator('dialog[open] .achievement-confetti').evaluate(el => getComputedStyle(el).display),'none');
-  assert.equal(await page.locator('dialog[open] .achievement-emblem').evaluate(el => getComputedStyle(el).animationName),'none');
-  await page.keyboard.press('Escape');
   await openCatalog(page, `${base}/?component=builtin-reaction-button`);
   await card('Reaction Button','Like with count').locator('.reaction-button').click();
   assert.equal(await card('Reaction Button','Like with count').locator('.reaction-particles').evaluate(el => getComputedStyle(el).display),'none');
   assert.deepEqual(errors,[]);
-  console.log('Passed: 77 examples, journeys, reactions, claims, dialogs, source previews, responsive layouts and reduced motion.');
+  console.log('Passed: 47 examples, journeys, reactions, responsive layouts and reduced motion.');
 } finally { await browser.close(); }

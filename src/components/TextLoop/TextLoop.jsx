@@ -1,240 +1,194 @@
-import React, { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-
+import React, { useLayoutEffect, useMemo, useRef, useState } from 'react';
+import gsap from 'gsap';
 import './TextLoop.css';
 
-const VIEW_W = 1200;
-const VIEW_H = 520;
-const CX = VIEW_W / 2;
-const CY = VIEW_H / 2;
-const EDGE_PAD = 6;
+const TAU = Math.PI * 2;
+const modulo = (n, size) => ((n % size) + size) % size;
+const bounded = (value, min, max) => Math.max(min, Math.min(max, Number(value) || 0));
 
-const buildPath = (shape, curviness, ribbonWidth) => {
-  const c = Math.max(0, curviness);
-  const room = Math.max(20, CY - Math.max(0, ribbonWidth) / 2 - EDGE_PAD);
-
-  switch (shape) {
-    case 'circle': {
-      const r = Math.min(90 + c * 0.95, room);
-      return `M ${CX - r} ${CY} A ${r} ${r} 0 1 1 ${CX + r} ${CY} A ${r} ${r} 0 1 1 ${CX - r} ${CY} Z`;
-    }
-    case 'arch': {
-      const rise = Math.min(120 + c * 1.1, room * 2);
-      return `M 120 ${CY + rise / 2} Q ${CX} ${CY - rise * 1.5} ${VIEW_W - 120} ${CY + rise / 2}`;
-    }
-    case 'line':
-      return `M -320 ${CY} L ${VIEW_W + 320} ${CY}`;
-    case 'wave':
-    default: {
-      const a = Math.min(c * 2.2, room * 2);
-      return `M -320 ${CY} Q -160 ${CY - a} 0 ${CY} T 320 ${CY} T 640 ${CY} T 960 ${CY} T 1280 ${CY} T ${VIEW_W + 320} ${CY}`;
-    }
+// Parametric drawings; custom paths use the same sampled arc-length lookup.
+function drawTrack(shape, curvature, thickness) {
+  const amplitude = Math.min(150, curvature * 1.25, 215 - thickness / 2);
+  if (shape === 'circle') {
+    const radius = Math.min(215 - thickness / 2, 90 + curvature);
+    return `M600,${260 - radius} A${radius},${radius} 0 1 1 600,${260 + radius} A${radius},${radius} 0 1 1 600,${260 - radius} Z`;
   }
-};
+  const points = Array.from({ length: 121 }, (_, i) => {
+    const t = i / 120;
+    const x = -120 + 1440 * t;
+    const y = shape === 'line' ? 260 : shape === 'arch'
+      ? 330 - amplitude * Math.sin(t * Math.PI)
+      : 260 + amplitude * Math.sin(t * TAU);
+    return [x, y];
+  });
+  return points.map(([x, y], i) => `${i ? 'L' : 'M'}${x.toFixed(2)},${y.toFixed(2)}`).join(' ') + (shape === 'circle' ? ' Z' : '');
+}
 
-export const TextLoop = ({
-  text = 'Made to move',
-  shape = 'wave',
-  path,
-  speed = 90,
-  direction = 'forward',
-  separator = '✦',
-  curviness = 90,
-  fontSize = 46,
-  fontWeight = 800,
-  letterSpacing = 2,
-  uppercase = true,
-  color = 'var(--feedback-ink, #373434)',
-  ribbon = true,
-  ribbonColor = 'var(--feedback-face, #ffffff)',
-  ribbonWidth = 86,
-  pauseOnHover = true,
-  paused = false,
-  className = '',
-  style = {}
-}) => {
-  const rootRef = useRef(null);
-  const hoverPathRef = useRef(null);
-  const pathRef = useRef(null);
-  const measureRef = useRef(null);
-  const headRef = useRef(null);
-  const tailRef = useRef(null);
-  const tweenRef = useRef(null);
-  const pausedRef = useRef(paused);
-  pausedRef.current = paused;
+function sampleTrack(node) {
+  const length = node.getTotalLength();
+  if (!Number.isFinite(length) || length < 1) return null;
+  const samples = Array.from({ length: 361 }, (_, i) => node.getPointAtLength(length * i / 360));
+  return {
+    length,
+    at(distance) {
+      const position = bounded(distance / length, 0, 1) * 360;
+      const index = Math.min(359, Math.floor(position));
+      const a = samples[index];
+      const b = samples[index + 1];
+      const mix = position - index;
+      return { x: a.x + (b.x - a.x) * mix, y: a.y + (b.y - a.y) * mix, angle: Math.atan2(b.y - a.y, b.x - a.x) };
+    },
+  };
+}
 
-  const [metrics, setMetrics] = useState({ length: 0, reps: 1 });
-
-  const rawId = useId();
-  const pathId = `text-loop-${rawId.replace(/:/g, '')}`;
-  const d = useMemo(() => path || buildPath(shape, curviness, ribbonWidth), [path, shape, curviness, ribbonWidth]);
-
-  const unit = useMemo(() => {
-    const base = uppercase ? String(text).toUpperCase() : String(text);
-    if (!base.trim()) return '';
-    const gap = separator ? `\u00A0${separator}\u00A0` : '\u00A0\u00A0\u00A0';
-    return `${base}${gap}`;
-  }, [text, separator, uppercase]);
-
-  const textStyle = useMemo(
-    () => ({ fontSize: `${fontSize}px`, fontWeight, letterSpacing: `${letterSpacing}px` }),
-    [fontSize, fontWeight, letterSpacing]
-  );
+export function TextLoop({
+  text = 'Made to move', shape = 'wave', path, speed = 90,
+  direction = 'forward', separator = '✦', curviness = 90,
+  fontSize = 46, fontWeight = 800, letterSpacing = 2, uppercase = true,
+  color = 'var(--feedback-ink, #373434)', ribbon = true,
+  ribbonColor = 'var(--feedback-face, #ffffff)', ribbonWidth = 86,
+  expression = 0.65, pauseOnHover = true, paused = false,
+  className = '', style = {},
+}) {
+  const svgRef = useRef(null);
+  const trackRef = useRef(null);
+  const lettersRef = useRef(null);
+  const accentsRef = useRef(null);
+  const controlRef = useRef(null);
+  const [drawing, setDrawing] = useState(null);
+  const size = bounded(fontSize, 8, 160);
+  const thickness = Math.max(size * 1.35, bounded(ribbonWidth, 12, 200));
+  const energy = bounded(expression, 0, 1);
+  const content = uppercase ? String(text).toLocaleUpperCase() : String(text);
+  const route = useMemo(() => path || drawTrack(shape, bounded(curviness, 0, 120), thickness), [path, shape, curviness, thickness]);
 
   useLayoutEffect(() => {
-    const pathEl = pathRef.current;
-    const measureEl = measureRef.current;
-    if (!pathEl || !measureEl) return undefined;
-
-    let cancelled = false;
-
+    let disposed = false;
     const measure = () => {
-      if (cancelled) return;
-      let length = 0;
-      let unitWidth = 0;
-      try {
-        length = pathEl.getTotalLength();
-        unitWidth = measureEl.getComputedTextLength();
-      } catch {
-        return;
-      }
-      if (!length) return;
-
-      const reps = unitWidth > 0 ? Math.max(1, Math.floor(length / unitWidth)) : 1;
-      setMetrics(prev => (prev.length === length && prev.reps === reps ? prev : { length, reps }));
+      if (disposed) return;
+      let track;
+      try { track = sampleTrack(trackRef.current); } catch { setDrawing(null); return; }
+      if (!track || !content.trim()) { setDrawing(null); return; }
+      const canvas = document.createElement('canvas').getContext('2d');
+      if (!canvas) return;
+      canvas.font = `${fontWeight} ${size}px ${getComputedStyle(svgRef.current).fontFamily}`;
+      const phrase = separator ? `${content} ${separator} ` : `${content}  `;
+      // Graphemes preserve combining accents and emoji sequences.
+      const characters = typeof Intl.Segmenter === 'function'
+        ? Array.from(new Intl.Segmenter(undefined, { granularity: 'grapheme' }).segment(phrase), part => part.segment)
+        : Array.from(phrase);
+      let advance = 0;
+      const unit = characters.map(character => {
+        const width = Math.max(size * .18, canvas.measureText(character).width + bounded(letterSpacing, -4, 40));
+        const glyph = { character, distance: advance + width / 2 };
+        advance += width;
+        return glyph;
+      });
+      const closed = !path && shape === 'circle';
+      const repeats = Math.max(1, Math.round(track.length / advance));
+      const lap = closed ? track.length : Math.max(track.length, advance);
+      const spacing = lap / (repeats * advance);
+      const glyphs = Array.from({ length: repeats }, (_, repeat) => unit.map(glyph => ({
+        character: glyph.character, distance: (repeat * advance + glyph.distance) * spacing,
+      }))).flat();
+      const seams = [-1, 1].map(side => Array.from({ length: 121 }, (_, i) => {
+        const p = track.at(track.length * i / 120);
+        const inset = side * (thickness / 2 - 9);
+        return `${i ? 'L' : 'M'}${(p.x - Math.sin(p.angle) * inset).toFixed(2)},${(p.y + Math.cos(p.angle) * inset).toFixed(2)}`;
+      }).join(' '));
+      setDrawing({ track, glyphs, lap, seams, closed, glyphSize: size * Math.min(1, spacing) });
     };
-
     measure();
-    if (typeof document !== 'undefined' && document.fonts?.ready) {
-      document.fonts.ready.then(measure).catch(() => {});
-    }
+    document.fonts?.ready.then(measure);
+    document.fonts?.addEventListener('loadingdone', measure);
+    return () => { disposed = true; document.fonts?.removeEventListener('loadingdone', measure); };
+  }, [route, content, separator, size, fontWeight, letterSpacing, thickness, path, shape]);
 
-    return () => {
-      cancelled = true;
+  useLayoutEffect(() => {
+    if (!drawing) return;
+    const nodes = Array.from(lettersRef.current.children);
+    const accents = Array.from(accentsRef.current.children);
+    const clock = { travel: 0, beat: 0 };
+    const paint = () => {
+      // A closed loop rotates as one rigid group, including across its seam.
+      lettersRef.current.setAttribute('transform', drawing.closed
+        ? `rotate(${clock.travel / drawing.track.length * 360} 600 260)` : '');
+      drawing.glyphs.forEach((glyph, index) => {
+        const distance = modulo(glyph.distance + (drawing.closed ? 0 : clock.travel), drawing.lap);
+        const p = drawing.track.at(Math.min(distance, drawing.track.length));
+        nodes[index].setAttribute('transform', `translate(${p.x} ${p.y}) rotate(${p.angle * 180 / Math.PI})`);
+        const fade = drawing.closed ? 1 : bounded(Math.min(distance, drawing.track.length - distance) / size, 0, 1);
+        nodes[index].setAttribute('opacity', String(fade));
+      });
+      accents.forEach((node, i) => {
+        const bob = Math.sin(clock.beat * TAU + i * 1.5);
+        node.setAttribute('transform', `translate(${i ? 930 : 270} ${i ? 410 : 100}) rotate(${energy * bob * 14}) scale(${1 + energy * bob * .12})`);
+      });
     };
-  }, [d, unit, fontSize, fontWeight, letterSpacing]);
-
-  useEffect(() => {
-    const { length } = metrics;
-    const head = headRef.current;
-    const tail = tailRef.current;
-    if (!head || !tail || !length) return undefined;
-
-    const apply = offset => {
-      const partner = offset >= 0 ? offset - length : offset + length;
-      head.setAttribute('startOffset', String(offset));
-      tail.setAttribute('startOffset', String(partner));
-    };
-
-    apply(0);
-
-    if (speed <= 0 || !String(text).trim()) return undefined;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    const state = { offset: 0 };
-    const tween = gsap.to(state, {
-      offset: direction === 'reverse' ? -length : length,
-      duration: length / speed,
-      ease: 'none',
-      repeat: -1,
-      paused: true,
-      onUpdate: () => apply(state.offset)
-    });
-
-    const root = rootRef.current;
-    const hoverPath = hoverPathRef.current;
-    let hovered = false;
+    paint();
+    const motion = gsap.timeline({ paused: true, onUpdate: paint });
+    const velocity = bounded(speed, 0, 1000);
+    motion.to(clock, { travel: (direction === 'reverse' ? -1 : 1) * drawing.lap, duration: drawing.lap / Math.max(1, velocity), repeat: -1, ease: 'none' }, 0);
+    motion.to(clock, { beat: 1, duration: 3.6, repeat: -1, ease: 'none' }, 0);
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     let visible = false;
-    const sync = () => tween.paused(pausedRef.current || reduced.matches || hovered || !visible || document.hidden);
-    tweenRef.current = sync;
-    const pause = () => { hovered = true; sync(); };
-    const resume = () => { hovered = false; sync(); };
-    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); });
-    observer.observe(root);
-    reduced.addEventListener('change', sync);
-    document.addEventListener('visibilitychange', sync);
-
-    if (pauseOnHover && hoverPath) {
-      hovered = hoverPath.matches(':hover');
-      sync();
-      hoverPath.addEventListener('pointerenter', pause);
-      hoverPath.addEventListener('pointerleave', resume);
+    let hovering = false;
+    let requestedPause = paused;
+    const sync = () => motion.paused(requestedPause || !velocity || reduced.matches || !visible || document.hidden || hovering);
+    controlRef.current = value => { requestedPause = value; sync(); };
+    const observer = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); });
+    observer.observe(svgRef.current);
+    const hit = svgRef.current.querySelector('.text-loop-hit');
+    const enter = () => { hovering = true; sync(); };
+    const leave = () => { hovering = false; sync(); };
+    if (pauseOnHover) {
+      hovering = hit.matches(':hover');
+      hit.addEventListener('pointerenter', enter);
+      hit.addEventListener('pointerleave', leave);
     }
-
+    document.addEventListener('visibilitychange', sync);
+    reduced.addEventListener('change', sync);
+    sync();
     return () => {
-      tween.kill();
-      tweenRef.current = null;
+      motion.kill();
       observer.disconnect();
-      reduced.removeEventListener('change', sync);
       document.removeEventListener('visibilitychange', sync);
-      if (pauseOnHover && hoverPath) {
-        hoverPath.removeEventListener('pointerenter', pause);
-        hoverPath.removeEventListener('pointerleave', resume);
-      }
+      reduced.removeEventListener('change', sync);
+      hit.removeEventListener('pointerenter', enter);
+      hit.removeEventListener('pointerleave', leave);
+      controlRef.current = null;
     };
-  }, [metrics, speed, direction, pauseOnHover, text]);
+  }, [drawing, direction, speed, energy, pauseOnHover, path, shape, size]);
 
-  useEffect(() => { tweenRef.current?.(); }, [paused]);
+  useLayoutEffect(() => { controlRef.current?.(paused); }, [paused]);
 
-  const loopText = unit.repeat(metrics.reps);
-  const fitLength = metrics.length || undefined;
-
-  return (
-    <div ref={rootRef} className={`text-loop ${className}`.trim()} style={style}>
-      <svg
-        className="text-loop-svg"
-        viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-        preserveAspectRatio="xMidYMid meet"
-        role="img"
-        aria-label={text}
-        style={{ pointerEvents: 'none' }}
-      >
-        {ribbon && <g fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d={d} stroke="var(--feedback-edge, #1d1b1b)" strokeWidth={ribbonWidth + 8} transform="translate(0 8)" />
-          <path d={d} stroke="var(--feedback-edge, #1d1b1b)" strokeWidth={ribbonWidth + 8} />
+  return <div className={`text-loop ${className}`.trim()} style={style}>
+    <svg ref={svgRef} className="text-loop-svg" viewBox="0 0 1200 520" role="img" aria-label={String(text)}>
+      <g aria-hidden="true" className="text-loop-art">
+        {ribbon && <g fill="none" strokeLinejoin="round">
+          <path d={route} className="text-loop-edge" strokeWidth={thickness + 5} transform="translate(0 9)" />
+          <path d={route} className="text-loop-edge" strokeWidth={thickness + 5} />
+          <path d={route} stroke={ribbonColor} strokeWidth={thickness} />
+          {drawing?.seams.map((seam, i) => <path key={i} d={seam} className="text-loop-stitch" />)}
         </g>}
-        <path
-          ref={pathRef}
-          id={pathId}
-          d={d}
-          fill="none"
-          stroke={ribbon ? ribbonColor : 'none'}
-          strokeWidth={ribbon ? ribbonWidth : 0}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-
-        <text ref={measureRef} className="text-loop-measure" style={textStyle} aria-hidden="true">
-          {unit}
-        </text>
-
-        <text className="text-loop-text" style={textStyle} fill={color} dominantBaseline="central" aria-hidden="true">
-          <textPath ref={headRef} href={`#${pathId}`} startOffset={0} textLength={fitLength} lengthAdjust="spacing">
-            {loopText}
-          </textPath>
-        </text>
-
-        <text className="text-loop-text" style={textStyle} fill={color} dominantBaseline="central" aria-hidden="true">
-          <textPath ref={tailRef} href={`#${pathId}`} startOffset={-metrics.length} textLength={fitLength} lengthAdjust="spacing">
-            {loopText}
-          </textPath>
-        </text>
-        <path
-          ref={hoverPathRef}
-          d={d}
-          fill="none"
-          stroke="transparent"
-          strokeWidth={ribbon ? ribbonWidth + 16 : fontSize * 1.2}
-          transform={ribbon ? 'translate(0 4)' : undefined}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          style={{ pointerEvents: 'stroke' }}
-          aria-hidden="true"
-        />
-      </svg>
-    </div>
-  );
-};
+        <path ref={trackRef} className="text-loop-track" d={route} fill="none" stroke="none" />
+        <g ref={accentsRef} className="text-loop-accents" display={energy && ribbon && drawing ? undefined : 'none'}>
+          {[0, 1].map(i => <g key={i} transform={`translate(${i ? 930 : 270} ${i ? 410 : 100})`}>
+            <path d="M0,-23 Q4,-4 23,0 Q4,4 0,23 Q-4,4 -23,0 Q-4,-4 0,-23Z" fill={ribbonColor} />
+            <path d="M33,-23 l5,-9 M-29,20 l-7,5" fill="none" />
+          </g>)}
+        </g>
+        <g ref={lettersRef} fill={color} fontSize={drawing?.glyphSize || size} fontWeight={fontWeight} textAnchor="middle" dominantBaseline="central">
+          {drawing?.glyphs.map((glyph, index) => {
+            const p = drawing.track.at(Math.min(glyph.distance, drawing.track.length));
+            return <text key={index} className="text-loop-glyph" transform={`translate(${p.x} ${p.y}) rotate(${p.angle * 180 / Math.PI})`}>{glyph.character}</text>;
+          })}
+        </g>
+        {!drawing && content.trim() && <text x="600" y="260" fill={color} fontSize={size} textAnchor="middle">{content}</text>}
+      </g>
+      <path className="text-loop-hit" d={route} fill="none" stroke="transparent" strokeWidth={ribbon ? thickness + 8 : size * 1.4} aria-hidden="true" />
+    </svg>
+  </div>;
+}
 
 export default TextLoop;
-

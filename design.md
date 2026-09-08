@@ -10,6 +10,24 @@ Build restrained, precise, tactile interfaces: light surfaces, clear typography,
 
 Preserve the existing visual family. Refine resting, hover, pressed, focus, and transitional states equally. Give content room; fix recurring defects in shared primitives. Reuse existing components and animation before inventing alternatives. Do not replace the established buttons, SVG icons, outlines, and shadows with generic circular avatars, dots, boxes, or pictograms.
 
+### Primary visual reference — Text Loop
+
+**Text Loop is THE visual reference for Duoop UI.** Its approved rendering sets the standard for graphic style, SVG construction, contour quality, depth, typography and motion. Inspect [Text Loop in the local catalog](http://127.0.0.1:5173/?component=builtin-text-loop) before creating or materially restyling a component. Use its current implementation in [TextLoop.jsx](src/components/TextLoop/TextLoop.jsx) and [TextLoop.css](src/components/TextLoop/TextLoop.css) as concrete references. The local URL requires the development server.
+
+Apply this visual standard throughout the collection while preserving each component's purpose, accessibility and specific interaction rules. The reference does not make continuous animation or ribbon decoration mandatory for every component.
+
+**Explicit user preference — a very clean comic-book feel ("très propre / bande dessinée").** This is what the user especially likes about Text Loop. Carry that illustrated character into other components: precise ink-like contours, smooth flowing curves, white faces on warm gray, and solid offset shadows that give the drawing a simple, tactile thickness. Generous empty space and bold, carefully spaced lettering keep the composition clear. Small drawn accents can add personality when they belong to the object.
+
+Treat this as polished vector illustration: consistent strokes, crisp silhouettes, clean joins, and controlled movement. Avoid rough sketch effects, distressed textures, blurred shadows, excessive ornament, or exaggerated cartoon bouncing. The comic-book character should come from the quality of the shapes and their depth; heavier typography alone does not capture this preference.
+
+- **Palette and material:** white faces, warm light-gray supporting surfaces, dark gray ink (`#373434`) and almost-black outlines and shadows (`#1d1b1b`). Keep surfaces flat and crisp; depth comes from the silhouette and its offset shadow.
+- **SVG geometry:** draw actual vector shapes with smooth curves, deliberate proportions and clean joins. A circle must have equal horizontal and vertical radii. Preserve aspect ratio. Build the face and shadow from the same geometry; keep rear layers inside the intended silhouette so they cannot protrude through lower corners.
+- **Contours and depth:** continuous, confident outlines with consistent weight. Short, solid, unblurred shadows; no stray strokes, doubled edges, notches or dirty corner intersections. Text Loop's ribbon uses an outline stroke 5 SVG units wider than its face stroke and a shadow offset of 9 SVG units downward; these scale with the SVG rather than prescribing CSS pixels for every component. Its stage uses a 2 px border, 10 px radius and 4 px downward shadow.
+- **Typography:** DM Sans, bold uppercase display lettering (Text Loop defaults to weight 800), clearly readable on the light face. Use measured spacing, including word gaps and separators. Keep supporting labels quieter. Do not force uppercase display typography onto ordinary form labels or body copy.
+- **Composition and details:** generous breathing room around the main object, restrained supporting text, rounded shapes and precise alignment. Four-point SVG accents and subtle dashed stitching belong to the ribbon illustration; use them only where they serve the object. Do not add arbitrary decorative lines to fill blank space—the line across the Folder face was explicitly rejected.
+- **Motion:** smooth, steady travel that preserves the composition. Letters remain aligned to the track; no independent lifting, bouncing, tilting or scaling. Circle rotates as one group. Repeated phrases and separators must cross the loop junction without gaps, overlap, disappearing letters or visible jumps. The expression setting affects surrounding accents only, never the letters.
+- **Control and finishing:** retain pause/resume, hover pause, off-screen and hidden-tab suspension, and reduced-motion support for continuous animation. Inspect motion through at least a full loop, and inspect outlines and corners at enlarged scale, on desktop and mobile. A recognizable shape is insufficient if its rendering is less clean than Text Loop.
+
 ## 2. Palette and materials
 
 | Role | Reference |
@@ -166,9 +184,7 @@ Illustrations must be structured SVG, not HTML/CSS shapes posing as an image. Th
 
 Rail, selected tab, and panel need confident dark outlines and tactile depth. The indicator moves smoothly, briefly overshoots/bounces, and settles sharply; a background change or sluggish slide is insufficient. Hover lifts, press compresses, and selection responds, with reduced-motion adaptation. Measure `start`, `center`, and `end`; centered free space must be equal. Panels use a short reveal/fade rather than misleading lateral slides. Use actual SVG icons. Keyboard focus and selection follow the activation mode without breaking the indicator.
 
-### Achievement, Reaction Button, and Stepper
-
-Trophies and their illustrations remain **neutral in every state**, including celebration. Color surrounding badges/gauges, never the trophy. Each Achievement illustration is a standalone SVG: frame, shadow, medallion, and pictogram share SVG coordinates, without HTML overlays. Preserve aspect ratio and check large sizes.
+### Reaction Button and Stepper
 
 Reaction Button uses SVG icons only, including custom reactions and the picker; no emoji. Leave 12 px between reaction-series micro-headings and buttons and clearly separate successive groups.
 

@@ -26,7 +26,6 @@ export * from './components/Badge/Badge.jsx';
 export * from './components/Dialog/Dialog.jsx';
 export * from './components/Toast/Toast.jsx';
 export * from './components/Progress/Progress.jsx';
-export * from './components/Achievement/Achievement.jsx';
 export * from './components/KineticType/KineticType.jsx';
 export * from './components/ShuffleDeck/ShuffleDeck.jsx';
 export * from './components/TextLoop/TextLoop.jsx';
@@ -44,3 +43,5 @@ export * from './components/FileUpload/FileUpload.jsx';
 export * from './components/Skeleton/Skeleton.jsx';
 export * from './components/Alert/Alert.jsx';
 export * from './components/IconButton/IconButton.jsx';
+
+export * from './components/Folder/Folder.jsx';

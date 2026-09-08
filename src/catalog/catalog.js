@@ -311,16 +311,6 @@ export const entries = [
     "ProgressDemos",
   ),
   define(
-    "achievement",
-    "Achievement",
-    "Feedback",
-    "Achievement",
-    "Achievement",
-    "AchievementShowcase",
-    "Make progress worth keeping.",
-    "AchievementDemos",
-  ),
-  define(
     "kinetic-type",
     "Kinetic Type",
     "Motion",
@@ -481,6 +471,7 @@ export const entries = [
     "A message that stays. Clear context, useful actions and considered tones.",
     "AlertDemos",
   ),
+  define("folder", "Folder", "Cards", "Folder", "Folder", "FolderShowcase", "A tabbed folder that unfolds into selectable documents.", "FolderDemos"),
 ];
 
 export const legacyCategories = { Animations: "Motion", Other: "Feedback" };

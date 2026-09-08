@@ -4,7 +4,8 @@ import { Avatar } from '../Avatar/Avatar';
 import './Testimonials.css';
 
 export function QuoteMark() {
-  return <svg className="testimonials__mark" viewBox="0 0 48 40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden="true"><path d="M5 22C5 12 10 6 20 5v6c-5 1-8 4-8 8h8v15H5V22Zm24 0c0-10 5-16 15-17v6c-5 1-8 4-8 8h8v15H29V22Z" /></svg>;
+  const shape = 'M8 42C8 23 19 12 38 10V22C28 24 23 29 23 37H38V66H8V42ZM54 42C54 23 65 12 84 10V22C74 24 69 29 69 37H84V66H54V42Z';
+  return <svg className="testimonials__mark" viewBox="0 0 94 80" stroke="#1d1b1b" strokeWidth="2.5" strokeLinejoin="round" aria-hidden="true"><path d={shape} fill="#1d1b1b" transform="translate(0 6)" /><path d={shape} fill="#fff" /></svg>;
 }
 function Author({ item }) {
   return <figcaption className="testimonials__author"><Avatar name={item.name} src={item.image} size="sm" /><span><strong>{item.name}</strong><small>{item.role} · {item.company}</small></span></figcaption>;
@@ -36,11 +37,15 @@ const Arrow = ({ back }) => <svg viewBox="0 0 24 24" fill="none" stroke="current
 /** Items use stable unique IDs. Switching is immediate; only the incoming content animates. */
 export function Testimonials({ items = [], variant = 'spotlight', eyebrow = 'In good company', title = 'Good work. Shared words.', description, label = 'Customer testimonials' }) {
   const [selected, setSelected] = useState(null);
+  const [direction, setDirection] = useState(1);
   const heading = useId();
   const index = Math.max(0, items.findIndex(item => item.id === selected));
   const item = items[index];
-  const change = delta => setSelected(items[(index + delta + items.length) % items.length].id);
-  return <section className={`testimonials testimonials--${variant}`} aria-label={label}>
+  const change = delta => {
+    setDirection(delta);
+    setSelected(items[(index + delta + items.length) % items.length].id);
+  };
+  return <section className={`testimonials testimonials--${variant}`} aria-label={label} style={{ '--testimonial-direction': direction }}>
     <header className="testimonials__heading"><span className="testimonials__eyebrow">{eyebrow}</span><h3 id={heading}>{title}</h3>{description && <p>{description}</p>}</header>
     {!item ? <p className="testimonials__empty">No stories to share yet.</p> : variant === 'wall' ? <TestimonialWall items={items} /> : <div className="testimonials__stage">
       {variant === 'voices' && <div className="testimonials__choices" role="group" aria-label="Choose a customer story">{items.map(entry => <Button key={entry.id} variant="outline" selected={entry.id === item.id} onClick={() => setSelected(entry.id)}><span className="testimonials__choice"><strong>{entry.company}</strong><small>{entry.name}</small></span></Button>)}</div>}

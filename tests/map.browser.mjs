@@ -17,6 +17,7 @@ try {
   assert.match(await tile.getAttribute('src'), /\/12\/1206\/1539\.png/);
   const paneTransform = () => page.locator('.leaflet-map-pane').evaluate(el => el.style.transform);
   const before = await paneTransform();
+  await map.scrollIntoViewIfNeeded();
   const box = await map.boundingBox();
   await page.mouse.move(box.x + 200, box.y + 250);
   await page.mouse.down();
@@ -27,8 +28,10 @@ try {
   await page.getByRole('button', { name:'Zoom in', exact:true }).click();
   await page.waitForTimeout(500);
   assert.ok(await page.locator('.leaflet-tile[src*="/13/"]').count() > 0);
+  assert.equal(await page.locator('.duoop-map-readout strong').textContent(), '13');
   await page.getByRole('button', { name:'Reset view', exact:true }).click();
   await page.waitForTimeout(700);
+  assert.equal(await page.locator('.duoop-map-readout strong').textContent(), '12');
   await map.focus();
   await page.keyboard.press('ArrowRight');
   await page.waitForTimeout(400);
@@ -48,7 +51,7 @@ try {
   await page.getByRole('button', { name:'Zoom out', exact:true }).click();
   await page.getByRole('button', { name:'Reset view', exact:true }).click();
   await page.getByRole('button', { name:'View code: Map New York', exact:true }).click();
-  await page.getByRole('dialog').locator('.leaflet-tile').first().waitFor();
+  await page.getByRole('dialog').locator('pre').waitFor();
   await page.getByRole('button', { name:'Close example', exact:true }).click();
   await page.route('**/tile.openstreetmap.org/**', route => route.abort());
   await page.reload();

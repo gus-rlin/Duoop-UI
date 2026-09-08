@@ -17,7 +17,7 @@ export function TestimonialsShowcase() {
       ['variant', 'spotlight (default), wall, or voices. The wall features the first quote in a wide center card, with independent stacks around it. It collapses to one column on mobile.'],
       ['eyebrow / title / description', 'Section heading and optional introduction. Text wraps naturally.'],
       ['label', 'Accessible section name. Give each instance a distinct label.'],
-      ['Motion', '320 ms incoming story reveal; immediate state changes support rapid clicks. No autoplay or timers.'],
+      ['Motion', '420 ms directional story reveal; customer selectors cross-fade; immediate state changes support rapid clicks. No autoplay or timers.'],
       ['Dependencies', 'React, shared Button and Avatar components and their styles. No new package.'],
     ]} sources={[[ 'Testimonials.jsx',component ],[ 'Testimonials.css',css ],[ 'TestimonialsDemos.jsx',demos ]]} />;
 }

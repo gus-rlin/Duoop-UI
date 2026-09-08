@@ -8,7 +8,7 @@ const base = process.env.TEST_URL || 'http://127.0.0.1:5176';
 const card = (kind,title) => page.getByRole('article',{ name:`${kind}: ${title}`,exact:true });
 await mkdir('artifacts',{ recursive:true });
 try {
-  for (const [id,name] of [['stepper','Stepper'],['reaction-button','Reaction Button'],['achievement','Achievement']]) {
+  for (const [id,name] of [['stepper','Stepper'],['reaction-button','Reaction Button']]) {
     await openCatalog(page, `${base}/?component=builtin-${id}`);
     const lab = page.getByRole('region',{ name:`${name} playground` });
     await lab.getByRole('switch',{ name:'Dark surface' }).check();
@@ -19,14 +19,6 @@ try {
     }
     await page.waitForTimeout(350);
     await lab.screenshot({ path:`artifacts/${id}-dark.png` });
-    if (id === 'achievement') {
-      const ratios = await lab.locator('.duoop-badge').evaluateAll(nodes => nodes.map(el => {
-        const luminance = value => value.match(/[\d.]+/g).slice(0,3).map(Number).map(c => { c /= 255; return c <= .04045 ? c / 12.92 : ((c + .055) / 1.055) ** 2.4; }).reduce((sum,c,index) => sum+c*[.2126,.7152,.0722][index],0);
-        const style = getComputedStyle(el); const a = luminance(style.color), b = luminance(style.backgroundColor);
-        return (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
-      }));
-      assert.ok(ratios.every(ratio => ratio >= 4.5));
-    }
     await card(name,'Right to left').screenshot({ path:`artifacts/${id}-rtl.png` });
   }
   await openCatalog(page, `${base}/?component=builtin-stepper`);
@@ -48,16 +40,8 @@ try {
   await like.screenshot({ path:'artifacts/reaction-motion.png',animations:'allow' });
   await page.waitForTimeout(550);
   assert.ok(await like.locator('.reaction-particles i').evaluateAll(nodes => nodes.every(el => getComputedStyle(el).opacity === '0')));
-  await openCatalog(page, `${base}/?component=builtin-achievement`);
-  await card('Achievement','Celebration dialog').getByRole('button',{ name:'Replay unlock' }).click();
-  const modal = page.getByRole('dialog',{ name:'A moment well earned.' });
-  assert.ok(await modal.locator('.achievement-emblem').evaluate(el => el.getAnimations().length > 0));
-  await modal.screenshot({ path:'artifacts/achievement-motion.png',animations:'allow' });
-  await page.waitForTimeout(750);
-  await modal.screenshot({ path:'artifacts/achievement-settled.png' });
-  await page.keyboard.press('Escape');
   await openCatalog(page, base);
-  await page.getByRole('link', { name:'Explore Achievement',exact:true }).scrollIntoViewIfNeeded();
+  await page.getByRole('link', { name:'Explore Reaction Button',exact:true }).scrollIntoViewIfNeeded();
   await page.screenshot({ path:'artifacts/experience-library-new.png' });
   console.log('Passed: theme contrast, RTL, tactile hover, stable labels and transient motion. Captured desktop, dark, RTL, in-flight and settled states.');
 } finally { await browser.close(); }

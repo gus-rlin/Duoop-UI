@@ -13,6 +13,7 @@ function CardImage({ src, alt = '', className = '' }) {
 /** A scroll-snap collection with native touch scrolling and modal card details. */
 export function CardsCarousel({ items = [], title = 'A little more to discover.', label = 'Featured stories', size = 'large', theme = 'light', className = '' }) {
   const rail = useRef(null);
+  const progress = useRef(null);
   const dialog = useRef(null);
   const headingId = useId();
   const detailId = useId();
@@ -25,6 +26,8 @@ export function CardsCarousel({ items = [], title = 'A little more to discover.'
   useEffect(() => {
     const node = rail.current;
     const measure = () => {
+      const distance = node.scrollWidth - node.clientWidth;
+      progress.current?.style.setProperty('--collection-progress', String(distance > 0 ? Math.max(0, Math.min(1, node.scrollLeft / distance)) : 1));
       const next = { start: node.scrollLeft <= 2, end: node.scrollLeft + node.clientWidth >= node.scrollWidth - 2 };
       setPosition(previous => previous.start === next.start && previous.end === next.end ? previous : next);
     };
@@ -52,7 +55,7 @@ export function CardsCarousel({ items = [], title = 'A little more to discover.'
     const node = rail.current;
     const card = node.firstElementChild;
     if (!card) return;
-    const step = card.getBoundingClientRect().width + 20;
+    const step = card.offsetWidth + parseFloat(getComputedStyle(node).columnGap);
     node.scrollBy({ left: direction * step, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
   }
   function navigate(event) {
@@ -71,12 +74,12 @@ export function CardsCarousel({ items = [], title = 'A little more to discover.'
     <div className="cards-carousel__rail" ref={rail} onKeyDown={navigate} aria-labelledby={headingId}>
       {items.map((item, index) => <button key={item.id} className="cards-carousel__card" type="button" aria-label={`Read ${item.title}`} aria-haspopup="dialog" onClick={() => setSelectedId(item.id)}>
         <span className="cards-carousel__copy"><span className="cards-carousel__eyebrow">{item.category}</span><strong>{item.title}</strong></span>
-        <CardImage key={item.src} src={item.src} alt="" className="cards-carousel__image" />
+        <span className="cards-carousel__window"><CardImage key={item.src} src={item.src} alt="" className="cards-carousel__image" /></span>
         <span className="cards-carousel__card-footer"><span>{String(index + 1).padStart(2, '0')} / Explore story</span><span className="cards-carousel__plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M5 12h14M12 5v14" /></svg></span></span>
       </button>)}
       {!items.length && <p className="cards-carousel__empty">No stories to display.</p>}
     </div>
-    <footer className="cards-carousel__navigation"><span>Scroll to explore. Select a card to go deeper.</span><div><Button variant="outline" iconPosition="only" icon={<Arrow back />} aria-label="Previous cards" disabled={position.start} onClick={() => move(-1)} /><Button variant="outline" iconPosition="only" icon={<Arrow />} aria-label="Next cards" disabled={position.end} onClick={() => move(1)} /></div></footer>
+    <footer className="cards-carousel__navigation"><span>Scroll to explore. Select a card to go deeper.<span ref={progress} className="cards-carousel__progress" aria-hidden="true"><span /></span></span><div><Button variant="outline" iconPosition="only" icon={<Arrow back />} aria-label="Previous cards" disabled={position.start} onClick={() => move(-1)} /><Button variant="outline" iconPosition="only" icon={<Arrow />} aria-label="Next cards" disabled={position.end} onClick={() => move(1)} /></div></footer>
     <dialog ref={dialog} className="cards-carousel__dialog" aria-labelledby={detailId} onCancel={event => { event.preventDefault(); event.stopPropagation(); close(); }} onClose={event => { event.stopPropagation(); setSelectedId(null); }} onClick={event => { if (event.target === event.currentTarget) { const rect = event.currentTarget.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) close(); } }}>
       {selected && <>
         <div className="cards-carousel__detail-toolbar"><span className="cards-carousel__eyebrow">The collection <span aria-hidden="true">/</span> Field notes</span><Button variant="outline" iconPosition="only" aria-label="Close story" onClick={close} icon={<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m6 6 12 12M18 6 6 18" /></svg>} /></div>

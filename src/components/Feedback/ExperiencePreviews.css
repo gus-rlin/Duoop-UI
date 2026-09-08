@@ -12,11 +12,4 @@
 .mini-reactions svg { width:20px; height:20px; }
 .mini-reactions strong,.mini-reactions b { font-size:12px; }
 .mini-reactions strong+b { padding-inline-start:10px; border-inline-start:1px solid #777474; }
-.mini-achievement { display:flex; align-items:center; gap:18px; color:#373434; }
-.mini-achievement .achievement-emblem { --emblem-width:67px; }
-.mini-achievement>span:last-child { display:flex; flex-direction:column; align-items:flex-start; gap:10px; }
-.mini-achievement small { font-size:8px; letter-spacing:.1em; }
-.mini-achievement strong { font-size:16px; }
-.mini-achievement em { display:flex; align-items:center; gap:5px; font-size:9px; font-style:normal; padding:4px 6px; border:2px solid #234631; border-radius:5px; color:#356247; background:#edf5ef; box-shadow:0 2px 0 #234631; }
-.mini-achievement em svg { width:12px; height:12px; }
-.mini-stepper .duoop-check,.mini-stepper .duoop-check path,.mini-achievement .duoop-check,.mini-achievement .duoop-check path { animation:none; stroke-dashoffset:0; }
+.mini-stepper .duoop-check,.mini-stepper .duoop-check path { animation:none; stroke-dashoffset:0; }

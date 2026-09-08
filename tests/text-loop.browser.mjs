@@ -11,9 +11,9 @@ try {
   await openCatalog(page, process.env.TEST_URL || 'http://127.0.0.1:5176');
   assert.ok(await page.getByRole('link', { name:'Explore Text Loop', exact: true }).isVisible());
   await page.getByRole('link', { name:'Explore Text Loop', exact: true }).click();
-  const lab = page.getByRole('region', { name: 'Text Loop playground' });
-  const head = lab.locator('textPath').first();
-  const offset = () => head.getAttribute('startOffset');
+  const lab = page.getByRole('article', { name: 'Text Loop playground', exact: true });
+  const head = lab.locator('.text-loop-glyph').first();
+  const offset = () => head.getAttribute('transform');
   await page.mouse.move(0, 0);
   await page.waitForTimeout(150);
   const first = await offset();
@@ -34,13 +34,22 @@ try {
   for (const shape of ['Circle', 'Arch', 'Line', 'Wave']) {
     await lab.getByRole('combobox', { name: /^Shape / }).click();
     await page.getByRole('option', { name: shape, exact: true }).click();
-    assert.ok(await lab.locator('path[id]').evaluate(node => node.getTotalLength() > 0));
+    assert.ok(await lab.locator('.text-loop-track').evaluate(node => node.getTotalLength() > 0));
   }
+  await lab.getByRole('combobox', { name: /^Shape / }).click();
+  await page.getByRole('option', { name: 'Line', exact: true }).click();
   await lab.getByRole('button', { name: 'Reverse', exact: true }).click();
   await page.mouse.move(0, 0);
   await page.waitForTimeout(160);
-  assert.ok(Number(await offset()) < 0, 'Reverse travels backwards');
+  const x = async () => Number((await lab.locator('.text-loop-glyph').nth(8).getAttribute('transform')).match(/translate\(([-\d.]+)/)[1]);
+  const reverseStart = await x();
+  await page.waitForTimeout(160);
+  assert.ok(await x() < reverseStart, 'Reverse travels backwards');
   await lab.getByLabel('Your words').fill('');
+  await head.waitFor({ state: 'detached' });
+  assert.equal(await lab.locator('.text-loop-glyph').count(), 0, 'Empty text has no stray glyphs');
+  await lab.getByLabel('Your words').fill('Café 👩‍🎨');
+  assert.ok((await lab.locator('.text-loop-glyph').allTextContents()).includes('👩‍🎨'), 'Emoji is a single grapheme');
   await lab.getByLabel('Your words').fill('Curiosity & craft');
   assert.equal(await lab.locator('.text-loop-svg').getAttribute('aria-label'), 'Curiosity & craft');
   await page.emulateMedia({ reducedMotion: 'reduce' });

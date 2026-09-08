@@ -29,13 +29,13 @@ const primitiveIds = new Set([
   "progress",
   "toast",
   "reaction-button",
-  "achievement",
   "stepper",
   "accordion",
   "menu",
 ]);
 
 const previewModules = {
+  folder: ["Folder/FolderDemos", "FolderPreview"],
   breadcrumb: ["Breadcrumb/BreadcrumbDemos", "BreadcrumbPreview"],
   separator: ["Separator/SeparatorDemos", "SeparatorPreview"],
   "kinetic-type": ["KineticType/KineticTypeDemos", "KineticPreview"],
@@ -196,13 +196,7 @@ export function CatalogPreview({ entry }) {
         </CardHeader>
       </Card>
     );
-  else
-    content = (
-      <div className="preview-achievement">
-        <Icon name="check" size={36} />
-        <Badge>FIRST MILESTONE</Badge>
-      </div>
-    );
+  else content = null;
   return (
     <div
       ref={root}

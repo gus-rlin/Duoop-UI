@@ -3,21 +3,26 @@ import assert from 'node:assert/strict';
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const browser = await chromium.launch({ headless:true });
 const page = await browser.newPage({ viewport:{ width:1440, height:1100 } });
+if (process.env.TEST_LOCAL_IMAGES === '1') await page.route('https://images.unsplash.com/**', route => route.fulfill({ contentType:'image/svg+xml', body:'<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="600" height="400" fill="#c8d3ce"/><path d="M0 400 210 80 400 400 500 190 600 400" fill="#637b70"/></svg>' }));
 const errors = [];
 page.on('pageerror', error => errors.push(error.message));
 try {
   await openCatalog(page, process.env.TEST_URL || 'http://127.0.0.1:5176');
   assert.ok(await page.locator('.catalog-card-preview-link').count() >= 30);
   await page.getByRole('link', { name:'Explore Cards Carousel', exact:true }).click();
-  const lab = page.getByRole('region', { name:'Cards Carousel playground', exact:true });
+  const lab = page.getByRole('article', { name:'Cards Carousel playground', exact:true });
   const collection = lab.getByRole('region', { name:'Studio stories', exact:true });
   const cards = collection.locator('.cards-carousel__card');
   await cards.first().locator('img').waitFor();
-  await page.waitForFunction(() => [...document.querySelectorAll('.cards-playground img')].every(img => img.complete && img.naturalWidth > 0));
+  await cards.first().locator('img').evaluate(img => img.decode());
   assert.ok(await collection.getByRole('button', { name:'Previous cards' }).isDisabled());
+  await cards.first().hover();
+  await page.waitForTimeout(350);
+  assert.ok(await cards.first().evaluate(node => new DOMMatrix(getComputedStyle(node).transform).m42 <= -7), 'Hover lifts the card');
   await collection.getByRole('button', { name:'Next cards' }).click();
   await page.waitForTimeout(600);
   assert.ok(await collection.locator('.cards-carousel__rail').evaluate(node => node.scrollLeft > 100));
+  assert.ok(await collection.locator('.cards-carousel__progress').evaluate(node => Number(node.style.getPropertyValue('--collection-progress')) > 0), 'Progress follows scroll');
   await cards.first().focus();
   await cards.first().press('End');
   assert.ok(await cards.last().evaluate(node => node === document.activeElement));
@@ -62,6 +67,7 @@ try {
     await page.keyboard.press('Escape');
   }
   await page.emulateMedia({ reducedMotion:'reduce' });
+  assert.equal(await cards.first().evaluate(node => getComputedStyle(node).transform), 'none');
   await cards.first().press('ArrowRight');
   assert.ok(await cards.nth(1).evaluate(node => node === document.activeElement));
   const single = page.getByRole('region', { name:'Single story', exact:true });
@@ -73,10 +79,9 @@ try {
   await page.setViewportSize({ width:1440, height:1100 });
   await page.getByRole('button', { name:'View code: Cards Carousel Compact cards', exact:true }).click();
   const example = page.getByRole('dialog', { name:'Compact cards', exact:true });
-  await example.getByRole('button', { name:'Read Find a different point of view.', exact:true }).click();
-  await page.keyboard.press('Escape');
-  assert.ok(await example.isVisible());
+  await example.locator('pre').waitFor();
+  assert.match(await example.innerText(), /CardsCarousel/);
   await example.getByRole('button', { name:'Close example' }).click();
   assert.deepEqual(errors, []);
-  console.log('Cards Carousel: catalogue, scroll, keyboard, modal, focus, dark, responsive, nested dialog and reduced motion passed.');
+  console.log('Cards Carousel: catalogue, scroll, keyboard, modal, focus, dark, responsive, source dialog, hover, scroll progress and reduced motion passed.');
 } finally { await browser.close(); }

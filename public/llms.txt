@@ -66,7 +66,6 @@ Dedicated TypeScript declarations are not supplied. Next.js and server rendering
 - [Dialog](https://duoop-ui.com/?component=builtin-dialog): Make space for a focused decision.
 - [Toast](https://duoop-ui.com/?component=builtin-toast): Timely confirmations, useful actions and honest outcomes.
 - [Progress](https://duoop-ui.com/?component=builtin-progress): Measured movement, from the first byte to done.
-- [Achievement](https://duoop-ui.com/?component=builtin-achievement): Make progress worth keeping.
 - [Tooltip](https://duoop-ui.com/?component=builtin-tooltip): Context at the right moment. Focus, hover, timing and collision-aware hints.
 - [Popover](https://duoop-ui.com/?component=builtin-popover): A little more room, right next to the action. Non-modal by design.
 - [Sheet](https://duoop-ui.com/?component=builtin-sheet): Bring the details in. A focused panel from any side of the screen.
@@ -95,3 +94,5 @@ Dedicated TypeScript declarations are not supplied. Next.js and server rendering
 - [Duoop-UI on GitHub](https://github.com/gus-rlin/Duoop-UI): README, contribution guide, design guidelines, validation scope and Apache-2.0 license.
 
 Component identity is carried by the `component` query parameter; `category`, `page` and `example` select other public content. The `tab` parameter selects a view of the same documentation. Search results are not canonical catalog pages.
+
+- [Folder](https://duoop-ui.com/?component=builtin-folder): A tabbed folder with selectable documents.

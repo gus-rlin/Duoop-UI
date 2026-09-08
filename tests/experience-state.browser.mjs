@@ -13,7 +13,6 @@ try {
     const { createRoot } = (await import(dependency('react-dom_client'))).default;
     const { ReactionButton, formatReactionCount } = await import('/src/components/ReactionButton/ReactionButton.jsx');
     const { Stepper } = await import('/src/components/Stepper/Stepper.jsx');
-    const { Achievement } = await import('/src/components/Achievement/Achievement.jsx');
     const fixture = document.createElement('div'); fixture.id = 'experience-fixture'; document.body.prepend(fixture);
     window.experienceProbe = { calls:0, changes:0, formats:[formatReactionCount(-1),formatReactionCount(1248,'capped'),formatReactionCount(1248,'exact','fr')] };
     const root = createRoot(fixture);
@@ -23,7 +22,6 @@ try {
       return React.createElement(React.Fragment,null,
         React.createElement(ReactionButton,{ value,onValueChange:next => { window.experienceProbe.changes++; setValue(next); },onReact:(next,{ signal }) => { window.experienceProbe.calls++; window.experienceProbe.signal = signal; return new Promise((resolve,reject) => { window.experienceProbe.resolve = resolve; window.experienceProbe.reject = reject; }); },counter:'separate' }),
         React.createElement(Stepper,{ value:'one',items:[{ id:'one',title:'One',state:'complete' },{ id:'two',title:'Two',state:'blocked' },{ id:'three',title:'Three',state:'upcoming' }],onValueChange:() => {},progress:10 }),
-        React.createElement(Achievement,{ item:{ id:'bounds',title:'Bounded goal',state:'progress',progress:90,target:3 } })
       );
     }
     root.render(React.createElement(React.StrictMode,null,React.createElement(Probe)));
@@ -44,7 +42,6 @@ try {
   assert.equal(await page.evaluate(() => window.experienceProbe.changes),1);
   assert.equal(await fixture.locator('[data-step=two]').isDisabled(),true);
   assert.equal(await fixture.locator('[data-step=three]').isDisabled(),true);
-  assert.equal(await fixture.getByRole('progressbar',{ name:'Bounded goal progress' }).getAttribute('aria-valuenow'),'3');
   const formats = await page.evaluate(() => window.experienceProbe.formats);
   assert.equal(formats[0],'0'); assert.equal(formats[1],'99+'); assert.equal(formats[2].replace(/\s/g,''),'1248');
   await react.click();
