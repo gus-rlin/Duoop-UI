@@ -1,35 +1,35 @@
-# Validation de la bibliothèque publique
+# Public library validation
 
-Vérifications réalisées le 7 septembre 2026 avec Node.js 24.18.0, React 19, Vite 8.2.2 et Chromium via Playwright 1.63.
+Historical checks performed on **September 7, 2026**, with Node.js 24.18.0, React 19, Vite 8.2.2, and Chromium through Playwright 1.63. These results describe that delivery snapshot, not a guarantee that every subsequent revision passes the same checks.
 
-## Résultat
+## Recorded results
 
-Le catalogue, ses 34 composants, les sources de ses 504 variantes et les deux compositions complètes sont utilisables. Aucun blocage technique de compilation ou d’exécution n’a été identifié dans le périmètre vérifié. Le dossier `dist/` est prêt pour un hébergement statique.
+The checked catalog contained 34 components, 504 variant sources, and two full compositions. No build or runtime blocker was identified within that snapshot's tested scope.
 
-| Vérification | Résultat |
+| Check | Recorded result |
 | --- | --- |
-| Compilation du catalogue et vérification des imports | Réussite ; 198 fichiers contrôlés, y compris la casse des chemins pour Linux. |
-| Parcours publics | 7 scénarios réussis : découverte, recherche, historique, code, copie réelle, installation, téléchargements, pages et clavier. |
-| Projets téléchargés | **540 / 540 compilés** : 34 premiers exemples, 504 variantes et 2 pages. Chaque archive est extraite dans un dossier neuf ; ses imports locaux et dépendances déclarées sont contrôlés avant compilation. |
-| Régressions des primitives | **25 / 25 suites réussies**, couvrant formulaires, sélection, overlays, animations, carrousels, cartes, avatars, notifications et états asynchrones. |
-| Accessibilité des galeries | Aucun problème détecté par axe WCAG A/AA sur les 34 galeries à 1440 et 390 px ; aucun débordement de document à 390 et 320 px. |
-| Responsive du site | Six parcours vérifiés à 1440, 1024, 768, 390 et 320 px. Contrôles axe à 1440 et 390 px. |
-| Deux pages hors du catalogue | Compilation, interactions et contrôles axe réussis à 1440, 768, 390 et 320 px, avec les fichiers des téléchargements. |
-| Intégration vierge | Application React/Vite créée hors du dépôt avec ses propres `node_modules`, en suivant le README : compilation, clic, Espace, relief et affichage mobile validés. |
-| Dépendances de production | `npm audit --omit=dev` : aucune vulnérabilité signalée lors du contrôle. |
+| Catalog build and imports | Passed; 198 files checked, including Linux path casing. |
+| Public journeys | 7 scenarios passed: discovery, search, history, source, real clipboard copying, installation, downloads, pages, and keyboard use. |
+| Downloaded projects | **540/540 built**: 34 initial examples, 504 variants, and 2 pages. Each archive was extracted into a fresh directory; local imports and declared dependencies were checked before building. |
+| Primitive regressions | **25/25 suites passed**, covering forms, selection, overlays, animations, carousels, maps, avatars, notifications, and asynchronous states. |
+| Gallery accessibility | No axe WCAG A/AA violations detected across 34 galleries at 1440 and 390 px; no document overflow at 390 and 320 px. |
+| Site responsiveness | Six journeys checked at 1440, 1024, 768, 390, and 320 px; axe checks at 1440 and 390 px. |
+| Standalone pages | Builds, interactions, and axe checks passed at 1440, 768, 390, and 320 px using downloaded files. |
+| Fresh integration | Independent React/Vite app with its own dependencies followed the README: build, click, Space activation, tactile depth, and mobile rendering passed. |
+| Production dependencies | `npm audit --omit=dev` reported no vulnerabilities at the time. |
 
-La revue visuelle couvre l’accueil, le code, l’installation, les compositions et leurs formats mobiles. La navigation mobile retient le focus et se ferme avec Échap ; les onglets fonctionnent aux flèches. Les tests vérifient aussi le maintien des modifications entre aperçu et code, la validation des champs masqués par un onglet, l’annulation et la persistance des paramètres.
+Visual review covered the home page, source view, installation, compositions, and mobile layouts. Mobile navigation trapped focus and closed with Escape; tabs supported arrow keys. Checks also covered retaining edits between preview and code, validation in hidden tabs, cancellation, and settings persistence.
 
-## Corrections issues des vérifications
+## Fixes from that validation
 
-- Suppression des débordements à 320 px et amélioration des contrastes des textes secondaires.
-- Isolation des styles de Tabs pour permettre leur imbrication sans altérer les onglets enfants.
-- Noms accessibles et suivi de l’option active dans Select ; sémantique des badges nommés ; cible de redimensionnement du Textarea agrandie.
-- Résolution des imports multiligne et des fichiers partagés dans les téléchargements. Correction d’un import Avatar dont la casse empêchait une reproduction sur Linux.
-- Retrait du double aperçu dans les fenêtres de code ; implémentations formatées, fichiers explicites, dépendances et licence incluses.
-- Exclusion des artefacts de test de la surveillance et de l’analyse des dépendances de Vite, pour éviter des rechargements du catalogue pendant les vérifications.
+- Removed 320 px overflow and improved secondary text contrast.
+- Isolated Tabs styles so nested tabs do not affect each other.
+- Improved Select accessible names and active-option tracking, named badge semantics, and the Textarea resize target.
+- Resolved multiline imports and shared files in downloads; fixed Avatar import casing for Linux.
+- Removed duplicate code-dialog previews; included formatted implementations, explicit files, dependencies, and the license.
+- Excluded test artifacts from Vite watching and dependency discovery to avoid reloads during verification.
 
-## Reproduire les contrôles
+## Reproduce the checks
 
 ```sh
 npm ci
@@ -39,21 +39,27 @@ npm run test:pages
 npm run test:integration
 ```
 
-Pour les tests des primitives et des galeries, démarrer le catalogue dans un autre terminal avec `npm run dev -- --port 5176 --strictPort`, puis lancer :
+For primitive and gallery checks, start `npm run dev -- --port 5176 --strictPort` in another terminal, then run:
 
 ```sh
 npm run test:primitives
 npm run test:a11y
 ```
 
-Les preuves générées sont dans `artifacts/` : `public-test-results.json`, `gallery-coverage.json`, `download-builds.json`, `primitive-regressions.json`, `accessibility.json`, `gallery-accessibility.json`, `standalone-pages.json`, `fresh-integration.json` et captures d’écran. Elles sont exclues de Git.
+Generated evidence is stored in ignored `artifacts/`: `public-test-results.json`, `gallery-coverage.json`, `download-builds.json`, `primitive-regressions.json`, `accessibility.json`, `gallery-accessibility.json`, `standalone-pages.json`, `fresh-integration.json`, and screenshots.
 
-## Publication et limites
+## Subsequent findings and CI scope
 
-Le site n’a pas été publié : l’hébergement et le domaine restent à configurer. Servir `dist/` en HTTPS pour la copie dans le presse-papiers. Les liens profonds utilisent des paramètres et ne nécessitent pas de réécriture de routes.
+On September 8, the SEO build and four SEO tests passed. An additional public test, `discover, search, deep-link, use history and copy real source`, failed because it expected the `A little more focus` switch on a home page that no longer displayed it. See [SEO.md](SEO.md). The full functional suite has therefore not been revalidated by those checks.
 
-La distribution vérifiée est la copie de sources JSX/CSS dans React 19 avec Vite. Aucun paquet npm Duoop, typage TypeScript complet ou validation de rendu serveur n’est annoncé. Les indications Next.js décrivent les adaptations nécessaires ; elles ne remplacent pas un test dans ce framework.
+The GitHub CI workflow runs the production build, import checks, and the four SEO browser tests. Its badge reflects that scope; it does not certify the full download, primitive, or accessibility suites.
 
-Les créations de studio, préférences, récompenses et requêtes des exemples sont des démonstrations locales. Les applications qui les réutilisent doivent brancher leurs services. Les images et tuiles distantes gardent leurs propres conditions d’utilisation et contraintes de disponibilité. Les tests de récupération d’images utilisent une réponse contrôlée pour vérifier le comportement du composant indépendamment du CDN.
+## Deployment and limitations
 
-Les contrôles axe et clavier ne constituent pas une certification exhaustive avec tous les lecteurs d’écran et navigateurs.
+At the September 7 validation, hosting was not configured. The production domain is now [duoop-ui.pages.dev](https://duoop-ui.pages.dev/); see [SEO.md](SEO.md) for the subsequent deployment record. Serve `dist/` over HTTPS for clipboard access. Query-based deep links do not require route rewrites.
+
+The verified distribution is JSX/CSS source copied into React 19 with Vite. No Duoop npm package, complete TypeScript declarations, or server-rendering validation is claimed. Next.js notes describe adaptations, not a completed framework integration test.
+
+Studio creation, settings, rewards, and example requests are local demonstrations that require application services in production. Remote images and map tiles retain their own terms and availability limits. Image-recovery tests use controlled responses to isolate component behavior from the CDN.
+
+Axe and keyboard checks are not an exhaustive certification across all screen readers and browsers.

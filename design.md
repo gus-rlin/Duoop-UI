@@ -1,298 +1,212 @@
-# Duoop-UI — Direction artistique et règles de finition
+# Duoop UI — Design and finishing guidelines
 
-Ce document sert de référence pour créer, modifier et vérifier les composants du catalogue. Il rassemble la direction visuelle existante et les exigences exprimées dans les retours sur Checkbox, Textarea, Input Group, Card, Badge et Tabs.
+Use this reference when creating, changing, or reviewing catalog components. It captures the existing visual direction and feedback on Checkbox, Textarea, Input Group, Card, Badge, and Tabs. Values are existing references or design targets; this document is not an audit claiming every example already meets every rule.
 
-Les valeurs indiquées sont des repères issus du système actuel ou des cibles de conception explicitement présentées comme telles. Ce document décrit le résultat attendu ; il ne constitue pas un audit attestant que chaque exemple existant respecte déjà toutes les règles.
+## 1. Intent
 
-## 1. L’intention
+Build restrained, precise, tactile interfaces: light surfaces, clear typography, confident outlines, and short shadows. Creativity comes from composition, proportion, and movement.
 
-Une interface sobre, précise et tactile. Des surfaces claires, une typographie nette, des contours assumés et des ombres courtes donnent aux contrôles une présence physique. La créativité vient de la composition, des proportions et du mouvement.
+**Animation is central to the design.** It explains actions, accompanies state changes, and confirms results. Functional behavior with weak feedback is unfinished.
 
-**L’animation est reine.** Elle fait partie du design dès le départ : elle explique l’action, accompagne le changement d’état et confirme le résultat. Un composant qui fonctionne mais réagit pauvrement n’est pas terminé.
+Preserve the existing visual family. Refine resting, hover, pressed, focus, and transitional states equally. Give content room; fix recurring defects in shared primitives. Reuse existing components and animation before inventing alternatives. Do not replace the established buttons, SVG icons, outlines, and shadows with generic circular avatars, dots, boxes, or pictograms.
 
-- Préserver la famille visuelle des composants déjà présents.
-- Soigner autant le repos que le survol, l’appui, le focus et les états transitoires.
-- Donner de l’espace au contenu plutôt que le compresser pour conserver une grille.
-- Traiter les défauts récurrents dans les primitives et les styles partagés.
-- Réutiliser les composants et animations existants avant d’en inventer d’autres.
-- Ne jamais remplacer le langage visuel du projet par des avatars ronds, pastilles, cases ou pictogrammes génériques. Partir des boutons, icônes, contours et ombres déjà établis.
+## 2. Palette and materials
 
-## 2. Palette et matériaux
-
-### Base actuelle
-
-| Rôle | Repère |
+| Role | Reference |
 | --- | --- |
-| Fond principal | `#ffffff` |
-| Fond de navigation | `#f7f8fa` |
-| Fond d’aperçu | `#fafbfc` |
-| Texte de l’application | `#252a34` |
-| Navigation et actions du catalogue | `#303b51` |
-| Texte et faces des contrôles tactiles | `#373434` |
-| Bordure neutre des contrôles | `#777474` |
-| Ombre tactile sombre | `#1d1b1b` |
-| Surface neutre sélectionnée | `#f0eeee` |
-| Séparateurs du catalogue | `#e7e9ed` |
-| Texte secondaire du catalogue | `#717781` |
-| Texte secondaire des contrôles | `#686565` |
+| Main background | `#ffffff` |
+| Navigation background | `#f7f8fa` |
+| Preview background | `#fafbfc` |
+| Application text | `#252a34` |
+| Catalog navigation/actions | `#303b51` |
+| Tactile control text/faces | `#373434` |
+| Neutral control border | `#777474` |
+| Dark tactile shadow | `#1d1b1b` |
+| Selected neutral surface | `#f0eeee` |
+| Catalog separators | `#e7e9ed` |
+| Catalog secondary text | `#717781` |
+| Control secondary text | `#686565` |
 
-Le bleu grisé structure le catalogue ; le gris chaud porte les composants. Éviter d’introduire une couleur d’accent différente pour chaque variante.
+Blue-gray structures the catalog; warm gray anchors components. Avoid a different accent color for every variant.
 
-### États sémantiques
+### Semantic states
 
-Un état possède une **palette complète**, pas seulement une bordure colorée.
+A state needs a complete palette, not just a colored border.
 
-| État | Encre / face forte | Fond léger | Appui / ombre |
+| State | Ink / strong face | Light background | Press / shadow |
 | --- | --- | --- | --- |
-| Erreur, thème clair | `#a51d2d` | `#fff2f3` à `#fff5f5` | Rouge cohérent ; `#761725` pour une action pleine |
-| Succès, thème clair | `#356247` | `#edf5ef` | `#234631` |
-| Erreur, surface sombre | `#ff9dab` | `#3b282d` | `#ad6070` selon le relief |
+| Light error | `#a51d2d` | `#fff2f3` to `#fff5f5` | Consistent red; `#761725` for a solid action |
+| Light success | `#356247` | `#edf5ef` | `#234631` |
+| Dark-surface error | `#ff9dab` | `#3b282d` | `#ad6070`, adapted to depth |
 
-Pour une checkbox invalide cochée, la face, le bord et l’ombre appartiennent à la famille rouge ; la coche reste contrastée. Pour une checkbox invalide vide, conserver un fond clair et une bordure/ombre rouges. Le libellé, les indications et le message doivent soutenir ce même état.
+A checked invalid checkbox uses red for face, border, and shadow, with a contrasting check. An unchecked invalid checkbox keeps a light face with red border/shadow. Labels, help, and messages support the same state. Never combine a black box and added red border, a gray shadow below a red box, or conflicting error colors. Watch the “Accept terms” and “Publish externally” regression cases. Color must be accompanied by shape, icon, or explicit text.
 
-**À proscrire :** une case noire avec un bord rouge rapporté, une ombre grise sous une case rouge, ou des couleurs d’erreur contradictoires entre le contrôle et son message. Les exemples « Accept terms » et « Publish externally » sont les cas de régression à surveiller.
+Dark Checkbox references: background `#252323`, text `#f3eeee`, secondary text `#bdb5b5`, border `#b0a6a6`, selected surface `#383333`. Adapt the entire palette, including error and success; do not simply invert colors or reuse pale backgrounds. Use semantic variables inherited by nested controls.
 
-La couleur accompagne une forme, une icône ou un texte explicite : elle ne porte jamais seule le sens.
+## 3. Outlines, shadows, and focus
 
-### Thème sombre
+Distinguish the normal outline (shape), tactile shadow (depth), and extra outer ring (unwanted in this visual direction). **Never remove the normal outline or shadow to eliminate an extra ring.**
 
-Repères des surfaces Checkbox : fond `#252323`, texte `#f3eeee`, secondaire `#bdb5b5`, bord `#b0a6a6`, surface sélectionnée `#383333`.
+Control borders are typically **2 px**; radii are **10 px** for buttons, fields, and selection cards, and **5 px** for small checkboxes. Catalog cards generally use **1 px** borders and **10–12 px** radii. Shadows are short, sharp, and unblurred: about **2 px** for checkboxes and **3–5 px** for buttons.
 
-Adapter toute la palette : fond, texte, bord, ombre, erreur et succès. Ne pas simplement inverser les couleurs ou réutiliser un fond pastel clair dans un panneau sombre. Utiliser des variables sémantiques héritées par les composants imbriqués.
+Keyboard focus must remain obvious without an extra outer ring:
 
-## 3. Contours, ombres et focus
+- Checkbox: change the existing outline, currently to a dashed keyboard-focus border.
+- Button: a contrasting inset marker that preserves depth.
+- Composite field: one container treatment, avoiding duplicate parent/input focus styles.
+- Link or small action: an inset marker or stronger underline.
 
-Trois notions à distinguer :
+Use `:focus-visible`; check programmatic focus after errors. Never apply global `outline: none` without a visible replacement. Inspect global rules, `:focus`, `:focus-visible`, `:focus-within`, native styles, and pseudo-elements. Fix shared causes rather than layering overrides and `!important`.
 
-1. **Contour normal** : définit la forme du contrôle et reste présent.
-2. **Ombre tactile** : donne de la profondeur et accompagne l’appui.
-3. **Pourtour supplémentaire** : anneau extérieur ajouté au clic ou au focus ; il est indésirable dans cette DA.
+## 4. Typography and sizing
 
-**Ne jamais supprimer le contour normal ou l’ombre pour faire disparaître l’anneau supplémentaire.**
+Use **DM Sans** with a sans-serif fallback and monospace for code. Public documentation and new interface copy use English consistently.
 
-Repères : bordures de contrôle de **2 px**, rayons de **10 px** pour boutons/champs/cartes de sélection, **5 px** pour la petite case. Les cartes du catalogue utilisent plutôt un bord de **1 px** et des rayons de **10–12 px**. Les ombres tactiles sont courtes, nettes et sans flou : environ **2 px** pour une case, **3–5 px** pour un bouton.
-
-Le focus clavier reste clairement perceptible, sans anneau extérieur :
-
-- Checkbox : variation du contour existant, actuellement en pointillés au focus clavier.
-- Bouton : repère intérieur contrasté, sans modifier son relief.
-- Champ composé : un traitement commun au conteneur ; éviter de cumuler celui du parent et celui de l’input.
-- Lien ou petite action : repère intérieur ou soulignement renforcé.
-
-Employer `:focus-visible` pour le clavier. Vérifier aussi le focus programmatique après une erreur. Ne pas appliquer un `outline: none` global sans alternative visible.
-
-Lors d’un défaut, inspecter les règles globales, `:focus`, `:focus-visible`, `:focus-within`, les styles natifs et les pseudo-éléments. Corriger la cause commune ; éviter les couches de correctifs et les `!important` successifs.
-
-## 4. Typographie et tailles
-
-**Police : DM Sans**, avec repli sans-serif. Le code utilise une police monospace. Conserver la langue et les conventions du catalogue existant ; ne pas mélanger les langues au hasard entre variantes.
-
-| Usage | Taille de référence | Graisse / rythme |
+| Use | Reference size | Weight / rhythm |
 | --- | --- | --- |
-| Titre de composant | 34 px desktop, 29 px mobile | 600, approche légèrement resserrée |
-| Titre de page | 29 px desktop, 25 px mobile | 600 |
-| Titre de section | 19–21 px | 550–600 |
-| Sous-section | 15 px | 550–600 |
-| Libellé / titre de carte d’exemple | 13–14 px | 500–600 |
-| Texte d’aide / description | 12–13 px | 400–450, interligne 1,6–1,8 |
-| Métadonnée / compteur / badge | 10–11 px | Secondaire, sans information critique isolée |
-| Code | 12 px | Monospace, interligne proche de 1,85 |
+| Component heading | 34 px desktop / 29 px mobile | 600, slightly tight tracking |
+| Page heading | 29 / 25 px | 600 |
+| Section heading | 19–21 px | 550–600 |
+| Subheading | 15 px | 550–600 |
+| Label / example title | 13–14 px | 500–600 |
+| Help / description | 12–13 px | 400–450; 1.6–1.8 line height |
+| Metadata / counter / badge | 10–11 px | Secondary; never the sole critical information |
+| Code | 12 px | Monospace; about 1.85 line height |
 
-Les micro-libellés de 9–10 px restent réservés aux repères éditoriaux non essentiels. Ne jamais réduire une instruction ou une erreur pour la faire rentrer.
+Reserve 9–10 px micro-labels for nonessential editorial details. Never shrink instructions or errors to fit. Field sizes use **12/14/16 px** type and approximately **36/44/52 px** heights. Checkboxes use **16/20/24 px** boxes and **12/13/15 px** labels. The drawn box is not the whole click target.
 
-Tailles actuelles des champs : **12 / 14 / 16 px** pour petit / standard / grand, avec des hauteurs proches de **36 / 44 / 52 px**. Pour les checkboxes : case **16 / 20 / 24 px**, texte **12 / 13 / 15 px**. Le dessin de la case n’est pas la taille de la zone cliquable.
+Aim for **44 px** important touch targets. Prefer **16 px** mobile input text where needed to avoid disruptive automatic zoom; adapt the control instead of disabling browser zoom.
 
-Cible ergonomique : **44 px** pour les zones tactiles importantes. Pour les saisies mobiles, privilégier **16 px** lorsque nécessaire pour éviter un zoom automatique gênant ; adapter le contrôle plutôt que désactiver le zoom du navigateur.
+## 5. Spacing and composition
 
-## 5. Espacement et composition
+Working scale: **4, 8, 12, 16, 20, 24, 28, 32, 40, 48 px**. Optical adjustments are allowed for real alignment problems.
 
-Échelle de travail : **4, 8, 12, 16, 20, 24, 28, 32, 40, 48 px**. Une valeur optique intermédiaire reste possible si elle résout un alignement réel.
-
-| Relation | Espacement cible |
+| Relationship | Target |
 | --- | --- |
-| Icône et texte / case et libellé | 8–12 px |
-| Libellé et aide associée | 5–10 px |
-| Actions d’une même ligne | 10–12 px |
-| Options simples d’un groupe | 8–14 px, en tenant compte de leur padding |
-| Blocs d’un formulaire | 20–24 px |
-| Padding d’une carte de sélection | 16–22 px |
-| Padding d’un panneau de préférences | 28 px desktop, 20 px mobile |
-| Sections internes d’un panneau | 24–28 px |
-| Gouttières de galerie | 18–22 px |
-| Grandes sections de documentation | 40–52 px |
+| Icon/text or checkbox/label | 8–12 px |
+| Label/help | 5–10 px |
+| Actions in one row | 10–12 px |
+| Simple grouped options | 8–14 px, accounting for padding |
+| Form blocks | 20–24 px |
+| Selection-card padding | 16–22 px |
+| Preferences-panel padding | 28 px desktop / 20 px mobile |
+| Internal panel sections | 24–28 px |
+| Gallery gutters | 18–22 px |
+| Major documentation sections | 40–52 px |
 
-La proximité exprime la relation. Le titre et sa description restent ensemble ; le groupe suivant dispose d’une vraie séparation. Ne pas empiler des contrôles contre une carte sélectionnée.
+Proximity communicates relationships. Keep headings and descriptions together and separate subsequent groups. Do not crowd controls against selected cards.
 
 ### Theme & Direction
 
-Composer un véritable panneau : repère discret, titre, courte introduction, option principale, préférences secondaires, note finale si utile. Différencier les niveaux par l’espace et la typographie, pas par une accumulation de cadres.
-
-Présenter les thèmes sur deux colonnes lorsque la largeur le permet, puis sur une colonne mobile. En RTL, utiliser les propriétés logiques et vérifier l’ordre des icônes, de la case, des badges et des textes. L’alignement doit rester intentionnel dans les deux directions.
+Compose a complete panel: subtle marker, heading, short introduction, primary option, secondary preferences, and a closing note when useful. Establish hierarchy with space and type rather than extra frames. Use two theme columns when space allows and one on mobile. For RTL, use logical properties and inspect icon, checkbox, badge, and text ordering.
 
 ### With Illustration
 
-L’illustration doit représenter le contenu sélectionné : document, aperçu ou objet identifiable. Lui réserver une place, une échelle et une relation claire avec le libellé.
+Illustrations must depict the selected content: a document, preview, or recognizable object, with intentional space, scale, and relation to its label. The stacked-document illustration has a corner control and title/metadata below. Its SVG stays **strictly static**: no sheet motion on hover, internal transitions, or animated check drawing. Card/state animations must not animate the SVG internals. Avoid large gray bands supporting tiny icons or generic filler illustrations; preserve readability and a fully clickable surface.
 
-La composition actuelle du document utilise des feuilles superposées, un contrôle dans l’angle et un bloc titre/métadonnées en dessous. Cette illustration SVG reste **strictement statique** : aucun déplacement des feuilles au survol, aucune transition interne et aucun tracé animé de la coche. Les animations éventuelles appartiennent à la carte ou à son changement d’état, jamais aux éléments internes de ce SVG.
+## 6. Motion
 
-Éviter la grosse bande grise servant de support à une icône minuscule. Ne pas ajouter une illustration générique pour remplir un vide. Préserver la lisibilité et une surface entièrement cliquable.
+Aim for **strong interaction feedback and little resting movement**. Every motion expresses cause and result. Avoid endless bouncing or competing decorative animations.
 
-## 6. Mouvement — une exigence de premier ordre
-
-Niveau attendu : **présence forte dans les interactions, faible agitation au repos**. Chaque mouvement exprime une cause et un résultat. Pas de rebonds continus ni d’animations décoratives concurrentes.
-
-| Interaction | Durée cible | Comportement |
+| Interaction | Target duration | Behavior |
 | --- | --- | --- |
-| Survol / couleur / bord | 120–180 ms | Réponse immédiate, fluide |
-| Appui | 80–120 ms | Descente courte ; l’ombre se réduit |
-| Retour tactile | 180–240 ms | Retour légèrement souple, sans saut |
-| Coche / indéterminé | 140–180 ms | Tracé ou transition nette dans une géométrie stable |
-| Validation / erreur | 220–360 ms | Apparition, tracé, stabilisation |
-| Illustration réactive, lorsqu’elle est autorisée | 240–320 ms | Déplacement de quelques pixels ou rotation discrète ; exclure le SVG statique des Card |
-| Ouverture de dialogue | 180–260 ms | Opacité et déplacement léger |
+| Hover / color / border | 120–180 ms | Immediate, smooth response |
+| Press | 80–120 ms | Short descent, reduced shadow |
+| Tactile return | 180–240 ms | Slightly elastic return without jumps |
+| Check / indeterminate | 140–180 ms | Clear drawing/transition with stable geometry |
+| Validation / error | 220–360 ms | Appear, draw, settle |
+| Reactive illustration, where permitted | 240–320 ms | Small movement/rotation; excludes static Card SVGs |
+| Dialog opening | 180–260 ms | Opacity and slight displacement |
 
-Les timings doivent former une famille. Utiliser `ease-out` pour les révélations, une courbe proche de `cubic-bezier(.2,.8,.2,1)` pour les surfaces et un retour plus souple pour les boutons tactiles.
+Keep timings related. Use `ease-out` for reveals, a curve near `cubic-bezier(.2,.8,.2,1)` for surfaces, and a softer return for tactile buttons.
 
-### Feedback d’une action importante
+### Important action feedback
 
-Pour enregistrer, valider, envoyer, copier ou terminer une recherche :
+For saving, validating, sending, copying, or completing a search:
 
-1. Donner une réponse d’appui immédiate.
-2. Si une opération est réellement en cours, afficher un chargement local et compréhensible.
-3. À la réussite, animer la confirmation : coche tracée, évolution du bouton ou de l’icône et message contextualisé.
-4. À l’échec, identifier le champ ou l’action concernée, afficher un message utile et permettre la correction.
-5. Après modification ou réinitialisation, retirer le succès devenu obsolète et rétablir l’action.
+1. Respond immediately to the press.
+2. Show local, understandable loading only while an operation is actually pending.
+3. On success, animate confirmation with a drawn check, button/icon transition, and contextual message.
+4. On failure, identify the affected field/action, explain the issue, and allow correction.
+5. Clear stale success after editing/resetting and restore the action.
 
-**Un simple remplacement par « Terms accepted » ne suffit pas.** Réutiliser `Button` avec son `status` et `ActionFeedback` pour garder un langage commun. Ne pas doubler les messages inutilement : le bouton confirme, le texte peut expliquer la conséquence.
+Changing text to “Terms accepted” alone is insufficient. Reuse `Button`, its `status`, and `ActionFeedback`. Avoid redundant messages: the button confirms; text may explain the consequence. Never show success prematurely or add artificial spinner delays. Identify simulated async demos. Every permitted retry must produce perceptible feedback.
 
-Ne jamais afficher un succès avant que l’action ait réussi. Ne pas introduire de délai artificiel pour montrer un spinner. Une démo asynchrone simulée doit être identifiée comme telle. Une nouvelle exécution autorisée doit produire à nouveau un feedback perceptible.
+Prefer `transform` and `opacity`, with short targeted color/border/shadow transitions. Avoid `transition: all`. Reserve label/status space to prevent width jumps. Handle rapid clicks, interruption, closing, and unmounting. Clean up timers/animations and prevent stuck loading. Under `prefers-reduced-motion`, preserve state, icons, and messages while removing disruptive movement and drawing animations.
 
-### Robustesse
+## 7. Component-specific checks
 
-- Animer surtout `transform` et `opacity` ; transitions courtes et ciblées pour les couleurs, bords et ombres. Éviter `transition: all`.
-- Réserver l’espace des libellés et statuts : pas de bouton qui change brusquement de largeur.
-- Supporter les clics rapides, l’interruption, la fermeture et le démontage du composant.
-- Nettoyer les timers et animations ; ne pas laisser un état de chargement bloqué.
-- Respecter `prefers-reduced-motion` : conserver l’état, l’icône et le message, supprimer les déplacements et tracés animés gênants.
+### Checkbox and groups
 
-## 7. Points de vigilance par famille
+No extra click ring in cards, error, dark, or RTL states. Preserve unchecked, checked, indeterminate, and disabled states. Parents reflect child selection; partial selection does not require cycling three states on click. Bulk changes preserve disabled options. Provide clickable labels, accessible names for standalone boxes, visible focus, and associated messages. Selected cards remain readable without stacked borders, halos, double shadows, or excessive fill.
 
-### Checkbox et groupes
+### Textarea, scrolling, and Vertical Resize
 
-- Aucun anneau supplémentaire au clic, y compris en carte, en erreur, en sombre et en RTL.
-- Conserver les états vide, coché et indéterminé, ainsi que leurs versions désactivées.
-- Le parent reflète ses enfants ; une sélection partielle ne signifie pas qu’il faut faire défiler trois états au clic.
-- Préserver les options désactivées lors d’une sélection collective.
-- Libellé cliquable, nom accessible pour une case seule, focus visible et messages liés au contrôle.
-- Une carte sélectionnée reste lisible sans empiler bordure, halo, double ombre et fond trop marqué.
+Use one visual shell without duplicate borders or stray inner backgrounds. Preserve text padding near the bottom and resize handle. Scrolling and resizing are distinct functions. Scrollbars are thin, neutral, and rounded: **7 px**, thumb `#aaa5a5`, hover `#777171`, subtle track. Avoid oversized native scroll elements or diagonal grips that clash with the design. Custom handles must be identifiable, keyboard-operable, and easy to target. Keep a usable native fallback. Test fixed height, auto-growth, overflow, resize, and mobile widths.
 
-### Textarea, scroll et Vertical Resize
+### Input Group and embedded actions
 
-- Une seule enveloppe visuelle : pas de double bordure ou de fond intérieur parasite.
-- Le texte conserve ses marges, y compris près du bas du champ et de la poignée.
-- Distinguer le défilement du redimensionnement : ce sont deux fonctions différentes.
-- Scrollbars fines, neutres et arrondies ; repère actuel : **7 px**, pouce `#aaa5a5`, survol `#777171`, piste discrète.
-- Aucun gros élément natif de défilement ou grip diagonal qui casse la DA. Une poignée personnalisée doit rester identifiable, utilisable au clavier et suffisamment facile à viser.
-- Conserver une solution native utilisable lorsque la personnalisation n’est pas supportée.
-- Tester hauteur fixe, croissance automatique, débordement, redimensionnement et largeur mobile.
-
-### Input Group et actions intégrées
-
-- Le groupe est une seule surface : input, préfixe, suffixe et bouton doivent sembler conçus ensemble.
-- Éviter les barres de séparation sans rôle et le texte brut ajouté sans hiérarchie.
-- Une icône d’envoi doit être lisible : viser **20–24 px** dans une zone d’action confortable, sans anneau rapporté autour de la flèche.
-- « Text Button » doit être une action intégrée, avec proportions, alignement et animation assumés ; pas un mot coincé à côté d’une petite flèche.
-- « Search with Clear » possède une seule action d’effacement. Vérifier les contrôles natifs du navigateur avant d’ajouter une seconde croix ou flèche.
-- « Loading Indicator » doit correspondre à une opération déclenchée et avoir une sortie claire : résultat ou erreur. Aucun spinner permanent ou inexpliqué.
+Input, prefix, suffix, and button form one surface. Avoid purposeless separators or unstructured text. Send icons should be **20–24 px** within comfortable action targets, without added rings. “Text Button” must be an intentionally proportioned and animated action, not text wedged beside a tiny arrow. “Search with Clear” has one clear action; inspect native controls before adding another. “Loading Indicator” corresponds to a triggered operation with a result or error, never an unexplained permanent spinner.
 
 ### Multiline
 
-Traiter ces exemples comme de vrais composeurs : zone de rédaction prioritaire, barre d’actions lisible, compteur secondaire et envoi clairement placé. Préférer une composition aboutie à plusieurs variantes faiblement différenciées.
-
-Éviter les barres rigides, les ruptures de fond, les textes flottants, les actions sous-dimensionnées et les zones d’écriture écrasées. Vérifier le contenu long, les retours à la ligne, l’envoi, la correction et le comportement mobile.
+Build actual composers: prioritize writing space, make the action bar readable, keep the counter secondary, and place send clearly. Prefer a finished composition over weakly differentiated variants. Avoid rigid bars, background breaks, floating labels, undersized actions, and cramped writing areas. Test long text, line breaks, submission, correction, and mobile behavior.
 
 ### Card
 
-- Une carte de texte simple centre réellement son contenu horizontalement et verticalement. Ne pas laisser une phrase flotter contre un bord ou dans une zone trop haute.
-- Les cartes possèdent un contour sombre continu de **2 px**. Les côtés et le bord supérieur ne doivent jamais devenir gris tandis que l’ombre inférieure reste noire.
-- Les variantes élevées conservent un véritable contour noir en plus de leur ombre tactile courte ; l’ombre ne remplace pas la bordure.
-- Les titres, sélections et cartes interactives reçoivent un mouvement lisible et cohérent avec les boutons du projet. Une carte entièrement statique alors qu’elle représente une interaction est inachevée.
-- Une illustration annoncée comme telle doit être un véritable SVG structuré, pas un empilement de `div`, de texte ou de formes CSS qui imitent une image.
-- Le SVG des feuilles de notes est une exception volontaire au principe d’animation : il reste fixe dans **toutes** ses occurrences pour éviter les sauts et défauts de rendu.
-- Les avatars à initiales dans un cercle, points de menu, pictogrammes et marqueurs génériques sont interdits lorsqu’une icône tactile existe. Employer la famille SVG et la mécanique de `Button`/`IconButton` : trait cohérent, face claire, contour sombre et ombre courte.
-- Les listes de membres, statuts, actions et cadres doivent prolonger le style tactile initial du projet. Ne pas livrer une liste de ronds génériques ou un badge pastel sans contour dans une carte pourtant travaillée.
+Center simple text horizontally and vertically. Maintain a continuous dark **2 px** outline on all sides; top and side edges must not turn gray while the bottom shadow stays black. Raised cards retain their outline in addition to a short tactile shadow. Titles, selections, and interactive cards need readable motion consistent with buttons.
+
+Illustrations must be structured SVG, not HTML/CSS shapes posing as an image. The stacked-note SVG is intentionally static in **every** occurrence. Do not use generic initial avatars, menu dots, pictograms, or markers when a tactile icon exists. Reuse the SVG family and `Button`/`IconButton` mechanics: consistent stroke, light face, dark outline, short shadow. Member lists, statuses, actions, and frames must extend this style.
 
 ### Badge
 
-- **Chaque badge possède un contour visible**, y compris les variantes `solid`, `soft`, `outline`, les compteurs et les statuts intégrés aux cartes.
-- Un badge n’est pas une simple pilule pastel générique. Sa forme, son contour, son ombre, son icône ou marqueur et sa typographie doivent appartenir au langage tactile du projet.
-- Chaque combinaison apparence × ton doit être vérifiée séparément. Interdire le gris sur gris, le gris sur rouge foncé, le texte trop pâle sur une face colorée et toute combinaison dont la lecture dépend du zoom.
-- Les variantes pleines utilisent une encre très contrastée, généralement blanche sur une face forte. Les variantes douces et contour utilisent une encre sombre issue de la même famille sémantique.
-- Un statut ne dépend pas uniquement de la couleur : employer texte, icône ou marqueur géométrique cohérent. Éviter le point rond générique par défaut.
-- Les matrices de démonstration ne doivent pas ressembler à une grille de cases grises. Elles servent à comparer des badges compacts, individualisés et clairement délimités.
+**Every badge has a visible outline**, including solid, soft, outline, counters, and embedded statuses. Shape, shadow, icon/marker, and typography belong to the tactile system. Check every appearance × tone separately: no gray-on-gray, gray-on-dark-red, washed-out text, or combinations readable only when zoomed. Solid badges generally use white ink on a strong face; soft/outline use dark semantic ink. Do not convey status solely through color or default generic dots. Demo matrices should compare compact, individual badges rather than gray boxes.
 
 ### Tabs
 
-- Le rail, l’onglet sélectionné et le panneau possèdent des contours sombres assumés et une profondeur tactile. Aucun exemple de la page ne doit revenir à une barre grise plate sans contour.
-- L’indicateur sélectionné doit être dynamique : déplacement fluide, dépassement/rebond court et stabilisation nette. Une simple variation de fond ou une translation molle est insuffisante.
-- Le survol soulève légèrement, l’appui comprime le relief et la sélection produit un retour perceptible. Appliquer cette logique à toutes les variantes, avec une réduction adaptée sous `prefers-reduced-motion`.
-- Les alignements `start`, `center` et `end` sont des comportements mesurables. Pour `center`, les espaces libres gauche et droite doivent être égaux ; ne pas valider au jugé.
-- Les panneaux accompagnent le changement d’onglet sans glissement latéral trompeur. Préférer une apparition courte et souple ou un fondu.
-- Les icônes sont de vrais SVG issus de la même famille que les boutons, jamais des caractères Unicode décoratifs.
-- Le clavier doit déplacer le focus et la sélection conformément au mode d’activation, sans casser l’indicateur.
+Rail, selected tab, and panel need confident dark outlines and tactile depth. The indicator moves smoothly, briefly overshoots/bounces, and settles sharply; a background change or sluggish slide is insufficient. Hover lifts, press compresses, and selection responds, with reduced-motion adaptation. Measure `start`, `center`, and `end`; centered free space must be equal. Panels use a short reveal/fade rather than misleading lateral slides. Use actual SVG icons. Keyboard focus and selection follow the activation mode without breaking the indicator.
 
-### Achievement, Reaction Button et Stepper
+### Achievement, Reaction Button, and Stepper
 
-- Les trophées et leurs illustrations restent **toujours neutres**, dans tous les états et pendant les célébrations. Le succès peut colorer les badges, les jauges ou les éléments autour, jamais le trophée lui-même.
-- Chaque visuel Achievement est un SVG autonome : cadre, ombre, médaillon et pictogramme partagent les coordonnées du SVG. Aucun pictogramme HTML positionné au-dessus. La taille conserve le ratio du dessin ; vérifier particulièrement l’icône en grande taille.
-- Reaction Button emploie uniquement des icônes SVG, y compris les réactions personnalisées et le sélecteur. Les emojis sont interdits.
-- Les micro-titres des séries de réactions disposent de 12 px avant le bouton ; les groupes successifs restent clairement séparés.
-- Dans le Stepper intégré, conserver au moins 16 px entre le texte d’étape et la carte de contenu, y compris pour la dernière étape.
-- Les connecteurs passent derrière tous les indicateurs, sans couper leurs contours, notamment l’indicateur clair sur fond sombre. Avec des libellés à côté, les segments occupent l’espace libre entre les contrôles et ne traversent pas les textes.
-- Un parcours condensé conserve des cases de largeur minimale, un déclencheur de taille cohérente et des connecteurs continus. Préférer un défilement explicite au chevauchement des libellés. Les exemples déclarés larges doivent réellement occuper la largeur de la galerie.
+Trophies and their illustrations remain **neutral in every state**, including celebration. Color surrounding badges/gauges, never the trophy. Each Achievement illustration is a standalone SVG: frame, shadow, medallion, and pictogram share SVG coordinates, without HTML overlays. Preserve aspect ratio and check large sizes.
 
-### Aperçus de la bibliothèque
+Reaction Button uses SVG icons only, including custom reactions and the picker; no emoji. Leave 12 px between reaction-series micro-headings and buttons and clearly separate successive groups.
 
-Les vignettes de la page « All components » sont des représentations du composant, pas des images indépendantes oubliées après la première livraison.
+Stepper leaves at least 16 px between step text and content cards, including the last step. Connectors run behind indicators without crossing outlines, especially light indicators on dark backgrounds. With adjacent labels, segments occupy free space between controls without crossing text. Compact flows retain minimum cell widths, consistent triggers, and continuous connectors. Prefer explicit scrolling to overlapping labels. Wide examples must actually fill the gallery width.
 
-- Toute modification matérielle de Card, Badge ou Tabs impose la mise à jour de sa preview `.mini-*` dans `src/main.jsx` et `src/styles.css`.
-- La preview doit reprendre les traits distinctifs actuels : contours, ombres, icônes, formes, contraste et état sélectionné.
-- Vérifier les trois previews ensemble dans la grille principale après chaque modification. Une page de détail à jour avec une vignette ancienne est une régression.
-- Garder la preview compacte et statique quand son animation ne peut pas être représentée de façon fiable ; elle doit néanmoins montrer clairement le style tactile actuel.
+### Catalog previews
 
-## 8. Contrôle avant livraison
+“All components” thumbnails represent current components. Material Card, Badge, or Tabs changes require updating corresponding `.mini-*` previews in `src/main.jsx` and `src/styles.css`. Match current outlines, shadows, icons, shapes, contrast, and selected states. Review all three together in the main grid. A current detail page with a stale thumbnail is a regression. Compact static previews are acceptable when animation cannot be represented reliably, but they must show the current tactile style.
 
-- [ ] Le repos, le survol, l’appui et le clavier ont été vus dans le navigateur.
-- [ ] Aucun anneau extérieur parasite ; les contours normaux et les ombres sont conservés.
-- [ ] Erreurs, succès et désactivation possèdent des couleurs cohérentes.
-- [ ] Les actions importantes ont un feedback animé explicite et honnête.
-- [ ] Les animations ont été observées pendant leur déroulement et après stabilisation.
-- [ ] Les SVG explicitement statiques ne possèdent ni animation interne, ni transition, ni déplacement au survol.
-- [ ] Les clics répétés, la correction et la réinitialisation fonctionnent.
-- [ ] Les panneaux respirent ; les libellés longs ne cassent pas la composition.
-- [ ] Les champs composés n’ont ni doublons d’icônes ni doubles bordures.
-- [ ] Les scrollbars, poignées et composeurs respectent la même direction artistique.
-- [ ] Le rendu est vérifié sur desktop, largeur intermédiaire et mobile, ainsi qu’en sombre/RTL lorsque proposés.
-- [ ] Le focus reste perceptible, les messages accessibles et le mode mouvement réduit utilisable.
-- [ ] Toutes les bordures attendues sont présentes sur les quatre côtés et utilisent la couleur sombre du système, pas un gris hérité accidentellement.
-- [ ] Chaque badge reste lisible dans chaque combinaison apparence × ton et possède un contour visible.
-- [ ] Les Tabs `start`, `center` et `end` ont été mesurés ; l’indicateur, le rebond, l’appui et le clavier ont été testés.
-- [ ] Aucun avatar, badge, pictogramme, point de menu ou conteneur générique ne remplace une primitive visuelle déjà définie dans le projet.
-- [ ] Les previews de la bibliothèque ont été mises à jour et comparées aux pages Card, Badge et Tabs.
-- [ ] La compilation et les tests pertinents passent ; les sources copiables correspondent au rendu.
+## 8. Delivery checklist
 
-## 9. Repères dans le projet
+- [ ] Inspect resting, hover, pressed, and keyboard states in a browser.
+- [ ] Preserve normal outlines/shadows without stray outer rings; verify all four border sides use the intended dark color.
+- [ ] Keep error, success, and disabled palettes consistent.
+- [ ] Give important actions explicit, honest animated feedback; observe motion during playback and after settling.
+- [ ] Keep designated static SVGs free of internal animation, transitions, and hover displacement.
+- [ ] Verify repeated clicks, correction, reset, and async cleanup.
+- [ ] Give panels space; handle long labels and avoid duplicate icons/borders in composite fields.
+- [ ] Keep scrollbars, handles, and composers consistent with the design.
+- [ ] Check desktop, intermediate, and mobile widths, plus dark/RTL variants where offered.
+- [ ] Preserve perceptible focus, accessible messages, and usable reduced motion.
+- [ ] Check badge readability and outlines for every appearance × tone.
+- [ ] Measure tab alignments and test indicator movement, bounce, press, and keyboard behavior.
+- [ ] Reuse established visual primitives instead of generic avatars, badges, icons, menu dots, or containers.
+- [ ] Compare updated catalog previews against Card, Badge, and Tabs detail pages.
+- [ ] Run the build and relevant tests; verify copied sources match the rendered example.
 
-- `src/styles.css` : cadre du catalogue, typographie, navigation, focus global et scrollbars.
-- `src/components/Button/Button.jsx` et `Button.css` : mécanique tactile, statuts et `ActionFeedback`.
-- `src/components/Button/showcase.css` : galeries, documentation, dialogues et présentation du code.
-- `src/components/Forms/Forms.css`, `EnrichedForms.css`, `NumericForms.css` : champs, composeurs, resize et états de validation.
-- `src/components/Checkbox/Checkbox.css` : cases, cartes, palettes, focus, illustrations et mouvement.
-- `src/components/Checkbox/CheckboxShowcase.css` : composition des panneaux et exemples.
-- `src/components/Card/Card.css`, `CardDemos.jsx` et `CardShowcase.css` : cartes, cadres, icônes tactiles et SVG statique.
-- `src/components/Badge/Badge.css` et `BadgeShowcase.css` : contrastes, contours et matrices apparence × ton.
-- `src/components/Tabs/Tabs.css` et `TabsDemos.jsx` : indicateur rebondissant, alignements, panneaux et navigation clavier.
-- `src/main.jsx` et `src/styles.css` : previews compactes de la bibliothèque, à synchroniser avec les composants.
-- `tests/checkbox.browser.mjs` et `tests/feedback.browser.mjs` : interactions et régressions visuelles ciblées.
+## 9. Source map
 
-Pour tout nouveau composant : relire les règles communes, examiner les primitives voisines, définir les états et leur mouvement, puis vérifier le résultat rendu. La finition fait partie du travail demandé.
+- `src/styles.css`: catalog shell, typography, navigation, global focus, scrollbars.
+- `src/components/Button/Button.jsx` and `Button.css`: tactile mechanics, states, `ActionFeedback`.
+- `src/components/Button/showcase.css`: galleries, documentation, dialogs, code presentation.
+- `src/components/Forms/Forms.css`, `EnrichedForms.css`, `NumericForms.css`: fields, composers, resizing, validation.
+- `src/components/Checkbox/Checkbox.css` and `CheckboxShowcase.css`: controls, cards, palettes, focus, illustrations, motion, panels.
+- `src/components/Card/Card.css`, `CardDemos.jsx`, `CardShowcase.css`: cards, frames, tactile icons, static SVG.
+- `src/components/Badge/Badge.css` and `BadgeShowcase.css`: contrast, outlines, appearance/tone matrices.
+- `src/components/Tabs/Tabs.css` and `TabsDemos.jsx`: bouncing indicator, alignment, panels, keyboard navigation.
+- `src/main.jsx` and `src/styles.css`: compact catalog previews; keep them synchronized with components.
+- `tests/checkbox.browser.mjs` and `tests/feedback.browser.mjs`: focused interaction and visual regressions.
+
+For each new component, read the shared rules, inspect neighboring primitives, define states and motion, then verify the rendered result. Finishing is part of the work.

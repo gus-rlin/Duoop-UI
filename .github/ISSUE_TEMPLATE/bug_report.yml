@@ -1,0 +1,36 @@
+name: Bug report
+description: Report a reproducible component or catalog problem.
+title: '[Bug]: '
+body:
+  - type: input
+    id: component
+    attributes:
+      label: Component or page
+      description: Include the catalog URL or source file.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include a minimal example or reproduction link when possible.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, OS, viewport, React and Node.js versions if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or logs
+      description: Remove credentials and personal information before posting.
