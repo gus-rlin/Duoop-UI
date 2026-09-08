@@ -30,7 +30,6 @@ const primitiveIds = new Set([
 const previewModules = {
   'kinetic-type': ['KineticType/KineticTypeDemos', 'KineticPreview'],
   'shuffle-deck': ['ShuffleDeck/ShuffleDeckDemos', 'ShufflePreview'],
-  'reset-limit': ['ResetLimit/ResetLimit', 'ResetLimitPreview'],
   'text-loop': ['TextLoop/TextLoopDemos', 'TextLoopPreview'],
   'depth-carousel': ['DepthCarousel/DepthCarouselDemos', 'DepthPreview'],
   'cards-carousel': ['CardsCarousel/CardsCarouselDemos', 'CardsCarouselPreview'],
@@ -40,10 +39,7 @@ const previewModules = {
   'bento-grid': ['BentoGrid/BentoGridDemos', 'BentoPreview'],
   map: ['Map/MapDemos', 'MapPreview'],
 };
-const modules = import.meta.glob([
-  '../components/**/*Demos.jsx',
-  '../components/ResetLimit/ResetLimit.jsx',
-]);
+const modules = import.meta.glob('../components/**/*Demos.jsx');
 const previews = Object.fromEntries(
   Object.entries(previewModules).map(([key, [path, name]]) => [
     key,

@@ -11,7 +11,7 @@ page.on('pageerror', error => errors.push(error.message));
 await mkdir('artifacts', { recursive: true });
 try {
   await openCatalog(page, base);
-  assert.equal(await page.locator('.catalog-card-preview-link').count(), 34);
+  assert.equal(await page.locator('.catalog-card-preview-link').count(), 33);
   await page.getByRole('link', { name:'Explore Kinetic Type', exact: true }).click();
   const playground = page.getByRole('region', { name: 'Kinetic Type playground' });
   const letters = playground.locator('.kinetic-type__letter');

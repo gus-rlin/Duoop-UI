@@ -33,7 +33,7 @@ try {
         await page.screenshot({ path: `artifacts/field-filters-${width}.png` });
       }
     }
-    console.log(`${width}px: all 34 component filters use Button and work`);
+    console.log(`${width}px: all 33 component filters use Button and work`);
   }
 } finally {
   await browser.close();

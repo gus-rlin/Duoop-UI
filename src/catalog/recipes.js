@@ -290,14 +290,6 @@ export default function App() {
   );
 }
 `,
-  'reset-limit': `import React from 'react';
-import './base.css';
-import { ResetLimit } from './components/ResetLimit/ResetLimit.jsx';
-
-export default function App() {
-  return <ResetLimit />;
-}
-`,
   map: `import React from 'react';
 import './base.css';
 import { Map } from './components/Map/Map.jsx';
@@ -611,8 +603,6 @@ export const notes = {
     'Wrap callers in ToastProvider and render ToastViewport once. useToast must be called inside the provider. Connect real requests in your application.',
   'text-loop':
     'Continuous motion needs a visible pause control. The recipe includes one; reduced-motion preferences are also respected.',
-  'reset-limit':
-    'This is a visual reset demonstration. Connect application quotas and permissions in your own application; it does not reset any external service.',
   'otp-field':
     'This component collects a code. Verification, expiry and rate limits belong on your server.',
   achievement:

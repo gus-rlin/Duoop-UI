@@ -96,7 +96,7 @@ function Hero() {
           </Button>
         </div>
         <div className="hero-meta">
-          <span>34 components</span>
+          <span>33 components</span>
           <i />
           React + CSS
           <i />

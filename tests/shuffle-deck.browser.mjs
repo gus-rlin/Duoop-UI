@@ -6,7 +6,7 @@ const page = await browser.newPage({ viewport:{width:1440,height:1100} });
 const errors = []; page.on('pageerror', e => errors.push(e.message));
 try {
   await openCatalog(page, process.env.TEST_URL || 'http://127.0.0.1:5176');
-  assert.equal(await page.locator('.catalog-card-preview-link').count(),34);
+  assert.equal(await page.locator('.catalog-card-preview-link').count(),33);
   await page.getByRole('link', { name:'Explore Shuffle Deck',exact:true}).click();
   const lab=page.getByRole('region',{name:'Shuffle Deck playground'});
   const deck=lab.getByRole('region',{name:'Studio deck'});

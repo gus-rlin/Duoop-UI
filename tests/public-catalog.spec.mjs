@@ -40,7 +40,7 @@ test('discover, search, deep-link, use history and copy real source', async ({ p
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Small details.Big difference.');
-  await expect(page.locator('.catalog-card')).toHaveCount(34);
+  await expect(page.locator('.catalog-card')).toHaveCount(33);
   await page.getByRole('switch', { name: 'A little more focus' }).uncheck();
   await page.getByRole('checkbox', { name: 'Make something worth sharing' }).check();
   await page.keyboard.press('Control+k');
@@ -63,7 +63,7 @@ test('discover, search, deep-link, use history and copy real source', async ({ p
   await page.getByRole('searchbox').fill('nothingmatches123');
   await expect(page.getByRole('heading', { name: 'No matching components.' })).toBeVisible();
   await page.getByRole('button', { name: 'Clear search' }).click();
-  await expect(page.locator('.catalog-card')).toHaveCount(34);
+  await expect(page.locator('.catalog-card')).toHaveCount(33);
   expect(errors).toEqual([]);
 });
 

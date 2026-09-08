@@ -311,16 +311,6 @@ export const entries = [
     'ShuffleDeckDemos',
   ),
   define(
-    'reset-limit',
-    'Reset Limit',
-    'Motion',
-    'ResetLimit',
-    'ResetLimit',
-    'ResetLimitShowcase',
-    'A sculpted control with expressive reset feedback.',
-    'ResetLimitDemos',
-  ),
-  define(
     'text-loop',
     'Text Loop',
     'Motion',

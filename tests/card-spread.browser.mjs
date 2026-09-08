@@ -7,7 +7,7 @@ const errors = [];
 page.on('pageerror', error => errors.push(error.message));
 try {
   await openCatalog(page, process.env.TEST_URL || 'http://127.0.0.1:5176');
-  assert.equal(await page.locator('.catalog-card-preview-link').count(), 34);
+  assert.equal(await page.locator('.catalog-card-preview-link').count(), 33);
   await page.getByRole('link', { name:'Explore Card Spread', exact:true}).click();
   const lab = page.getByRole('region', {name:'Card Spread playground'});
   const fan = lab.locator('.card-spread');
@@ -77,5 +77,5 @@ try {
   assert.equal(await page.getByRole('dialog').locator('.card-spread__card').count(),7);
   await page.getByRole('button',{name:'Close example'}).click();
   assert.deepEqual(errors, []);
-  console.log('PASS: 34 components, images, hover, keyboard, selection/reset, dark surface, responsive widths, reduced motion and code dialog.');
+  console.log('PASS: 33 components, images, hover, keyboard, selection/reset, dark surface, responsive widths, reduced motion and code dialog.');
 } finally { await browser.close(); }
