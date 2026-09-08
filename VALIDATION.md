@@ -1,4 +1,6 @@
-# Public library validation
+# Historical library validation — September 7, 2026
+
+The current catalogue, as of September 8, 2026, contains **46 components in seven categories**. See the [current README](README.md) and [catalogue summary](https://duoop-ui.pages.dev/llms.txt). The component and variant totals below describe an older test snapshot, not the current collection. A current total variant count is not published.
 
 Historical checks performed on **September 7, 2026**, with Node.js 24.18.0, React 19, Vite 8.2.2, and Chromium through Playwright 1.63. These results describe that delivery snapshot, not a guarantee that every subsequent revision passes the same checks.
 
@@ -52,7 +54,7 @@ Generated evidence is stored in ignored `artifacts/`: `public-test-results.json`
 
 On September 8, the SEO build and four SEO tests passed. An additional public test, `discover, search, deep-link, use history and copy real source`, failed because it expected the `A little more focus` switch on a home page that no longer displayed it. See [SEO.md](SEO.md). The full functional suite has therefore not been revalidated by those checks.
 
-The GitHub CI workflow runs the production build, import checks, and the four SEO browser tests. Its badge reflects that scope; it does not certify the full download, primitive, or accessibility suites.
+The GitHub CI workflow now runs the production build, import checks, essential-component browser checks, and the four SEO browser tests. Its badge reflects that scope; it does not certify the full download, primitive, or accessibility suites.
 
 ## Deployment and limitations
 
