@@ -31,21 +31,31 @@ import './pages.css';
 
 const inspiration = [
   ['forest', 'Into the forest', 'photo-1441974231531-c6227db76b6e',
+    'Slow down beneath the canopy.',
+    'Pause on your next walk and notice three sounds around you.',
     'Follow a winding trail beneath the canopy, where sunlight filters through the leaves and the sounds of everyday life fade away. There is room here to slow down, look closer and enjoy the walk.',
     'Share a quiet moment among the trees, notice the textures of bark and moss, and let the path set the pace. A forest escape is an invitation to discover how much there is to see when you take your time.'],
   ['coast', 'Ocean air', 'photo-1518837695005-2083093ee35b',
+    'Let the shoreline set the pace.',
+    'Find a coastal viewpoint and spend a few minutes watching the waves.',
     'Follow the shoreline with salt in the air and an open horizon ahead. From coastal paths to quiet stretches of sand, every turn offers a different view of the sea.',
     'Take time to watch the waves, share a picnic and enjoy the rhythm of a day outdoors. Whether you come for a long walk or a gentle wander, the coast gives you space to breathe.'],
   ['mountains', 'Above the clouds', 'photo-1464822759023-fed622ff2c3b',
+    'A new perspective with every step.',
+    'Choose a trail suited to your experience and check the forecast before setting off.',
     'Step onto mountain trails where the landscape opens up with every bend. Rocky ridges, alpine meadows and distant peaks turn the journey into an experience of its own.',
     'Choose a route that matches your experience and take it at your own pace. Pause for the view, enjoy the company and leave room for the small discoveries along the way.'],
   ['lake', 'Still waters', 'photo-1470770841072-f978cf4d019e',
+    'Make time for stillness.',
+    'Pack a picnic and pick a lakeside spot where you can leave no trace.',
     'Find a quieter kind of adventure beside the water. Walk along the shore, watch the reflections shift and settle into the calm of a landscape framed by trees and mountains.',
     'A lakeside escape leaves time for simple pleasures: a scenic stroll, a picnic with friends and a moment to sit without rushing anywhere. Let the view be the occasion.'],
   ['desert', 'Desert light', 'photo-1509316785289-025f5b846b35',
+    'See the landscape in a different light.',
+    'Notice how the colours and shadows change as the sun moves across the landscape.',
     'Discover wide horizons, sculpted dunes and the subtle colours of an open landscape. As the light changes, familiar shapes become something entirely new.',
     'Plan your outing around the conditions, with a suitable route, plenty of water and time to pause. The desert rewards a thoughtful pace and a curious eye for its quiet details.'],
-].map(([id, title, photo, introduction, description]) => ({ id, title, category: 'Outdoor escapes', alt: title, src: `https://images.unsplash.com/${photo}?auto=format&fit=crop&w=700&q=85`, content: <><p>{introduction}</p><p>{description}</p></> }));
+].map(([id, title, photo, heading, takeaway, introduction, description]) => ({ id, title, takeaway, category: 'Outdoor escapes', alt: title, src: `https://images.unsplash.com/${photo}?auto=format&fit=crop&w=700&q=85`, content: <><h3>{heading}</h3><p>{introduction}</p><p>{description}</p></> }));
 
 
 export default function LandingPage({ embedded = false }) {
@@ -103,7 +113,30 @@ export default function LandingPage({ embedded = false }) {
         <CardsCarousel items={inspiration} title="Your next escape" label="Your next escape" className="forma-carousel" />
       </section>
       <div className="forma-section">
-        <BentoGridDemo />
+        <BentoGridDemo copy={{
+          eyebrow: 'NATURE / YOUR NEXT ESCAPE',
+          titleFirst: 'A little fresh air.',
+          titleSecond: 'A world to discover.',
+          introFirst: 'Make room for your next adventure.',
+          introSecond: 'Leave time for the unexpected.',
+          footer: 'Your escape. Your rhythm.',
+          essentialsEyebrow: 'MONTHS OF DISCOVERY',
+          essentialsTitle: 'Every season, a new view.',
+          essentialsDescription: 'From spring trails to winter landscapes, find inspiration all year round.',
+          saveEyebrow: 'MOMENTS TO KEEP',
+          saveTitleFirst: 'Shared adventures.',
+          saveTitleSecond: 'Lasting memories.',
+          saveDescription: 'Forest walks, open horizons and time together. Keep this idea for your next escape.',
+          saveButton: 'Save this escape',
+          savedStatus: 'Escape saved for this visit.',
+          idleStatus: 'Keep a little outdoor inspiration.',
+          wideEyebrow: 'FIND YOUR PACE',
+          wideTitle: 'Short walks. Wide horizons.',
+          wideDescription: 'From a gentle lakeside stroll to a full day on the trails.',
+          quietEyebrow: 'CLOSER TO NATURE',
+          quietTitle: 'Room to breathe.',
+          quietDescription: 'Fresh air. Quiet trails. Time to slow down and enjoy the world around you.',
+        }} />
       </div>
       <section id="forma-pricing" className="forma-section forma-pricing">
         <div>

@@ -267,25 +267,25 @@
 .forma :is(.forma-section, .forma-footer) {
   margin-top: var(--forma-section-gap);
 }
-.forma :is(h1, h2, h3, p) {
+.forma :is(h1, h2, h3, p):where(:not(.cards-carousel__dialog *)) {
   margin: 0;
 }
-.forma :is(h1, h2) {
+.forma :is(h1, h2):where(:not(.cards-carousel__dialog *)) {
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.04em;
   text-wrap: balance;
 }
-.forma h2 {
+.forma h2:where(:not(.cards-carousel__dialog *)) {
   font-size: var(--forma-heading);
 }
-.forma :is(h3, .duoop-card__title) {
+.forma :is(h3, .duoop-card__title):where(:not(.cards-carousel__dialog *)) {
   font-size: 24px;
   font-weight: 600;
   line-height: 1.3333;
   letter-spacing: -0.02em;
 }
-.forma p,
+.forma p:where(:not(.cards-carousel__dialog *)),
 .forma .duoop-card__description,
 .forma .duoop-accordion__content {
   font-size: 16px;

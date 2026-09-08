@@ -21,21 +21,21 @@ function LayoutDrawing({ compact }) {
 
 export const bentoExamples = [['Studio overview', 'Composition'], ['Quiet surface', 'Composition'], ['Dark surface', 'Theme']];
 
-export function BentoGridDemo({ example = 'Studio overview' }) {
+export function BentoGridDemo({ example = 'Studio overview', copy = {} }) {
   const [compact, setCompact] = useState(false);
   const [saved, setSaved] = useState(false);
   return <div className="bento-demo feedback-surface" data-theme={example === 'Dark surface' ? 'dark' : 'light'}>
     <BentoGrid label={`${example} grid`}>
       <BentoItem span="feature" tone={example === 'Quiet surface' ? 'default' : 'soft'}>
-        <div className="bento-kicker"><span>STUDIO / COLLECTION 031</span><ExperienceIcon name="spark" /></div>
-        <div className="bento-hero-copy"><h3>A place for<br />every good idea.</h3><p>Give your work a little structure.<br />Leave room for the unexpected.</p></div>
+        <div className="bento-kicker"><span>{copy.eyebrow ?? 'STUDIO / COLLECTION 031'}</span><ExperienceIcon name="spark" /></div>
+        <div className="bento-hero-copy"><h3>{copy.titleFirst ?? 'A place for'}<br />{copy.titleSecond ?? 'every good idea.'}</h3><p>{copy.introFirst ?? 'Give your work a little structure.'}<br />{copy.introSecond ?? 'Leave room for the unexpected.'}</p></div>
         <LayoutDrawing compact={compact} />
-        <div className="bento-footer"><span>One grid. Your rhythm.</span><Button variant="outline" size="sm" selected={compact} onClick={() => setCompact(value => !value)} icon={<ExperienceIcon name="arrow" />} iconPosition="right">Change layout</Button></div>
+        <div className="bento-footer"><span>{copy.footer ?? 'One grid. Your rhythm.'}</span><Button variant="outline" size="sm" selected={compact} onClick={() => setCompact(value => !value)} icon={<ExperienceIcon name="arrow" />} iconPosition="right">Change layout</Button></div>
       </BentoItem>
-      <BentoItem><div className="bento-kicker"><span>THE ESSENTIALS</span><ExperienceIcon name="file" /></div><div className="bento-metric">12<span> / 12</span></div><h3>Everything in place.</h3><p>A considered set of foundations, ready for your next project.</p><div className="bento-meter" aria-hidden="true">{Array.from({ length: 12 }, (_, index) => <i key={index} />)}</div></BentoItem>
-      <BentoItem><div className="bento-kicker"><span>MADE TO FEEL</span><ExperienceIcon name="plus" /></div><h3>Small details.<br />A lasting impression.</h3><p>Press, release, repeat. A little depth goes a long way.</p><div className="bento-save"><Button variant="outline" status={saved ? 'success' : 'idle'} successLabel="Added" onClick={() => setSaved(true)} icon={<ExperienceIcon name="plus" />}>Add to collection</Button>{saved && <Button size="sm" variant="ghost" onClick={() => setSaved(false)}>Undo</Button>}</div><span className="bento-status" role="status">{saved ? 'Added to this demo collection.' : 'Try the tactile feedback.'}</span></BentoItem>
-      <BentoItem span="wide"><div className="bento-bottom-copy"><span className="bento-kicker">BUILT TO ADAPT</span><h3>Different sizes. Same language.</h3><p>From a generous canvas to the palm of your hand.</p></div><div className="bento-formats" aria-hidden="true"><span /><span /><span /></div></BentoItem>
-      <BentoItem tone="soft"><div className="bento-kicker"><span>LESS, BUT BETTER</span><ExperienceIcon name="heart" /></div><h3>Room to breathe.</h3><p>Clear hierarchy. Warm neutrals. Nothing competing for your attention.</p></BentoItem>
+      <BentoItem><div className="bento-kicker"><span>{copy.essentialsEyebrow ?? 'THE ESSENTIALS'}</span><ExperienceIcon name="file" /></div><div className="bento-metric">12<span> / 12</span></div><h3>{copy.essentialsTitle ?? 'Everything in place.'}</h3><p>{copy.essentialsDescription ?? 'A considered set of foundations, ready for your next project.'}</p><div className="bento-meter" aria-hidden="true">{Array.from({ length: 12 }, (_, index) => <i key={index} />)}</div></BentoItem>
+      <BentoItem><div className="bento-kicker"><span>{copy.saveEyebrow ?? 'MADE TO FEEL'}</span><ExperienceIcon name="plus" /></div><h3>{copy.saveTitleFirst ?? 'Small details.'}<br />{copy.saveTitleSecond ?? 'A lasting impression.'}</h3><p>{copy.saveDescription ?? 'Press, release, repeat. A little depth goes a long way.'}</p><div className="bento-save"><Button variant="outline" status={saved ? 'success' : 'idle'} successLabel="Added" onClick={() => setSaved(true)} icon={<ExperienceIcon name="plus" />}>{copy.saveButton ?? 'Add to collection'}</Button>{saved && <Button size="sm" variant="ghost" onClick={() => setSaved(false)}>Undo</Button>}</div><span className="bento-status" role="status">{saved ? (copy.savedStatus ?? 'Added to this demo collection.') : (copy.idleStatus ?? 'Try the tactile feedback.')}</span></BentoItem>
+      <BentoItem span="wide"><div className="bento-bottom-copy"><span className="bento-kicker">{copy.wideEyebrow ?? 'BUILT TO ADAPT'}</span><h3>{copy.wideTitle ?? 'Different sizes. Same language.'}</h3><p>{copy.wideDescription ?? 'From a generous canvas to the palm of your hand.'}</p></div><div className="bento-formats" aria-hidden="true"><span /><span /><span /></div></BentoItem>
+      <BentoItem tone="soft"><div className="bento-kicker"><span>{copy.quietEyebrow ?? 'LESS, BUT BETTER'}</span><ExperienceIcon name="heart" /></div><h3>{copy.quietTitle ?? 'Room to breathe.'}</h3><p>{copy.quietDescription ?? 'Clear hierarchy. Warm neutrals. Nothing competing for your attention.'}</p></BentoItem>
     </BentoGrid>
   </div>;
 }
