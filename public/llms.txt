@@ -2,7 +2,7 @@
 
 > Tactile React components with plain CSS, interactive previews, complete JSX/CSS source files and runnable downloads.
 
-Duoop UI has 44 components across 7 categories and one public page example. These counts refer to catalog entries; compound components and helpers are additional named exports. The production website is https://duoop-ui.com/.
+Duoop UI has 45 components across 7 categories and one public page example. These counts refer to catalog entries; compound components and helpers are additional named exports. The production website is https://duoop-ui.com/.
 
 ## Installation
 
@@ -96,3 +96,5 @@ Dedicated TypeScript declarations are not supplied. Next.js and server rendering
 Component identity is carried by the `component` query parameter; `category`, `page` and `example` select other public content. The `tab` parameter selects a view of the same documentation. Search results are not canonical catalog pages.
 
 - [Folder](https://duoop-ui.com/?component=builtin-folder): A tabbed folder with selectable documents.
+
+- [Achievement](https://duoop-ui.com/?component=builtin-achievement): Make progress worth keeping.

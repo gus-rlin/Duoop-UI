@@ -29,6 +29,7 @@ const primitiveIds = new Set([
   "progress",
   "toast",
   "reaction-button",
+  "achievement",
   "stepper",
   "accordion",
   "menu",

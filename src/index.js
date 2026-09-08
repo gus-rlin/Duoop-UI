@@ -45,3 +45,5 @@ export * from './components/Alert/Alert.jsx';
 export * from './components/IconButton/IconButton.jsx';
 
 export * from './components/Folder/Folder.jsx';
+
+export * from './components/Achievement/Achievement.jsx';

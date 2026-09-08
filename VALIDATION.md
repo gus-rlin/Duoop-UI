@@ -1,6 +1,10 @@
 # Validation status
 
-This document records verification scope, not a blanket certification. The current catalog contains **44 components across 7 categories** and one public page example. The package is published as `duoop-ui`. See the [README](README.md) for installation and [SEO.md](SEO.md) for deployment checks.
+This document records verification scope, not a blanket certification. The current catalog contains **45 components across 7 categories** and one public page example. The package is published as `duoop-ui`. See the [README](README.md) for installation and [SEO.md](SEO.md) for deployment checks.
+
+## Achievement restoration — September 8, 2026
+
+Restored the Achievement section from `c32dfaa`, including the original medallion and playground. Site and library builds, import checks, documentation checks, all five SEO tests, and `node tests/achievement.browser.mjs` pass. The targeted browser test covers progress, unlock/reset, light/dark, WCAG A/AA automated checks, 768/390/320 px overflow, reduced motion, and compilation of the downloaded starter. Desktop and mobile screenshots were inspected. The broader public-catalog suite was interrupted after its discovery/search/copy test exceeded 90 seconds; it is not reported as passing.
 
 ## Documentation audit — September 8, 2026
 

@@ -435,6 +435,24 @@ export default function App() {
   );
 }
 `,
+  achievement: `import React from 'react';
+import './base.css';
+import { Achievement } from './components/Achievement/Achievement.jsx';
+
+export default function App() {
+  return (
+    <Achievement
+      item={{
+        id: 'first-project',
+        title: 'First project',
+        description: 'A good idea, brought to life.',
+        state: 'unlocked',
+        icon: 'trophy',
+      }}
+    />
+  );
+}
+`,
   "shuffle-deck": `import React from 'react';
 import './base.css';
 import { ShuffleDeck } from './components/ShuffleDeck/ShuffleDeck.jsx';
@@ -548,6 +566,7 @@ export default function App() {
 };
 
 export const notes = {
+  achievement: "Unlocks and rewards in the gallery are local demonstrations. Your application owns authorization and durable progress.",
   map: "Map uses Leaflet and remote OpenStreetMap/CARTO tiles. Preserve visible attribution, allow the tile hosts in your CSP, and check provider terms and capacity before deployment. Supply your own tiles for offline use.",
   toast:
     "Wrap callers in ToastProvider and render ToastViewport once. useToast must be called inside the provider. Connect real requests in your application.",

@@ -311,6 +311,16 @@ export const entries = [
     "ProgressDemos",
   ),
   define(
+    "achievement",
+    "Achievement",
+    "Feedback",
+    "Achievement",
+    "Achievement",
+    "AchievementShowcase",
+    "Make progress worth keeping.",
+    "AchievementDemos",
+  ),
+  define(
     "kinetic-type",
     "Kinetic Type",
     "Motion",
