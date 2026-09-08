@@ -47,3 +47,4 @@ export * from './components/IconButton/IconButton.jsx';
 export * from './components/Folder/Folder.jsx';
 
 export * from './components/Achievement/Achievement.jsx';
+export * from './components/Chart/Chart.jsx';

@@ -1,6 +1,6 @@
 # Validation status
 
-This document records verification scope, not a blanket certification. The current catalog contains **45 components across 7 categories** and one public page example. The package is published as `duoop-ui`. See the [README](README.md) for installation and [SEO.md](SEO.md) for deployment checks.
+This document records verification scope, not a blanket certification. The current catalog contains **46 components across 7 categories** and one public page example. The package is published as `duoop-ui`. See the [README](README.md) for installation and [SEO.md](SEO.md) for deployment checks.
 
 ## Achievement restoration — September 8, 2026
 

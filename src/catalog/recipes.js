@@ -1,6 +1,16 @@
 // Complete, runnable first examples. Keep their paths consistent with the downloadable bundles.
 import { essentialRecipes } from "./essential-recipes";
 export const recipes = {
+  chart: `import React from 'react';
+import './base.css';
+import { Chart } from './components/Chart/Chart.jsx';
+export default function App() {
+  return <Chart title="The bigger picture" type="area" data={[
+    { label: 'Jan', projects: 24 }, { label: 'Feb', projects: 38 },
+    { label: 'Mar', projects: 31 }, { label: 'Apr', projects: 56 },
+  ]} series={[{ key: 'projects', label: 'Projects', color: '#d6e4c4' }]} />;
+}
+`,
   ...essentialRecipes,
   folder: `import React from 'react';
 import './base.css';

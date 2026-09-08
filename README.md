@@ -8,7 +8,7 @@
 
 Tactile React components with crisp outlines, playful motion, and satisfying feedback.
 
-**45 components across 7 categories — interactive previews, source code, and downloadable examples.**
+**46 components across 7 categories — interactive previews, source code, and downloadable examples.**
 
 [**Explore the live catalog →**](https://duoop-ui.com/) · [Components](https://duoop-ui.com/?page=components) · [Installation](https://duoop-ui.com/?page=installation) · [Page examples](https://duoop-ui.com/?page=examples)
 
@@ -57,7 +57,7 @@ Use a React bundler such as Vite. For Next.js, import the stylesheet in the root
 
 ## Explore the collection
 
-**45 components · 7 categories**, each with downloadable examples. The collection includes Breadcrumb and Separator, plus Tooltip, Popover, Slider, Calendar, Date Picker, Table, Pagination, Sheet, File Upload, Skeleton and Alert. See [integration notes and verification](docs/essential-components.md).
+**46 components · 7 categories**, each with downloadable examples. The collection includes Breadcrumb and Separator, plus Tooltip, Popover, Slider, Calendar, Date Picker, Table, Pagination, Sheet, File Upload, Skeleton and Alert. See [integration notes and verification](docs/essential-components.md).
 
 | Collection | Explore |
 | --- | --- |

@@ -32,6 +32,7 @@ export const categories = [
   "Display",
 ];
 export const entries = [
+  define("chart", "Chart", "Display", "Chart", "Chart", "ChartShowcase", "Data with character. Customizable curves, areas and tactile bars.", "ChartDemos"),
   define(
     "breadcrumb",
     "Breadcrumb",

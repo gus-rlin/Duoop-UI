@@ -36,6 +36,7 @@ const primitiveIds = new Set([
 ]);
 
 const previewModules = {
+  chart: ["Chart/ChartDemos", "ChartPreview"],
   folder: ["Folder/FolderDemos", "FolderPreview"],
   breadcrumb: ["Breadcrumb/BreadcrumbDemos", "BreadcrumbPreview"],
   separator: ["Separator/SeparatorDemos", "SeparatorPreview"],
