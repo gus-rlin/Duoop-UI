@@ -21,8 +21,8 @@
   animation: duoop-popover-out 120ms ease-in;
 }
 .duoop-popover:focus-visible {
-  outline: 2px dashed #373434;
-  outline-offset: -6px;
+  outline: none;
+  border-style: dashed;
 }
 .duoop-popover h3 {
   margin: 0 0 8px;

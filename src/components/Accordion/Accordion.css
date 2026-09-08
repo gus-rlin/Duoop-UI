@@ -38,7 +38,7 @@
   transition: background 160ms ease, color 160ms ease;
 }
 .duoop-accordion__trigger:hover:not(:disabled) { background: var(--acc-soft); }
-.duoop-accordion__trigger:focus-visible { outline: 2px solid currentColor; outline-offset: -6px; }
+.duoop-accordion__trigger:focus-visible { outline:none; }
 .duoop-accordion__trigger[aria-expanded=true] { border-end-start-radius: 0; border-end-end-radius: 0; }
 .duoop-accordion__copy { display: grid; gap: 6px; min-width: 0; flex: 1; overflow-wrap: anywhere; }
 .duoop-accordion__copy small { font-size: 12px; font-weight: 400; line-height: 1.6; color: var(--acc-muted); }

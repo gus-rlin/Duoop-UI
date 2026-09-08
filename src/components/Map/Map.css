@@ -8,7 +8,8 @@
 .duoop-map { position:relative; height:510px; isolation:isolate; background:#eeece8; }
 .duoop-map-canvas { width:100%; height:100%; background:#eeece8; font-family:var(--duoop-font, 'DM Sans', sans-serif); }
 .duoop-map .leaflet-tile-pane { filter:grayscale(1) contrast(.72) brightness(1.15); }
-.duoop-map-canvas:focus-visible { outline:3px solid #373434; outline-offset:-6px; }
+.duoop-map-canvas:focus-visible { outline:none; }
+.duoop-map-canvas:focus-visible::after { content:''; position:absolute; inset:auto 0 0; height:3px; background:#373434; z-index:800; pointer-events:none; }
 .duoop-map-controls { position:absolute; z-index:800; right:22px; top:22px; display:grid; gap:12px; }
 .duoop-map-controls .duoop-button { width:44px; height:44px; }
 .duoop-map-controls .duoop-button:last-child { margin-top:4px; }

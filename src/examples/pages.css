@@ -311,8 +311,7 @@
   line-height: 16px;
 }
 .forma a:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
+  outline:none;
 }
 .forma-nav {
   align-items: center;

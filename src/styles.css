@@ -638,8 +638,7 @@ button {
   z-index: 1;
 }
 .catalog-card-copy h3 a:focus-visible::after {
-  outline: 2px solid currentColor;
-  outline-offset: -4px;
+  outline:none;
 }
 .catalog-card-copy > div > svg {
   color: #7e8999;

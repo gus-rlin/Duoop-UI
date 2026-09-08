@@ -1,6 +1,7 @@
 .duoop-autocomplete { width:100%; min-width:0; color:#373434; }
 .autocomplete-control { display:flex; align-items:center; width:100%; min-width:0; min-height:44px; border:2px solid #373434; border-radius:10px; background:#fff; box-shadow:0 3px 0 #1d1b1b; transition:box-shadow 180ms cubic-bezier(.2,.8,.2,1),border-color 140ms ease,background 140ms ease; }
 .autocomplete-control:hover { background:#fcfbfb; }
+.autocomplete-control:focus-within { outline:none; }
 .autocomplete-control[data-open] { box-shadow:0 4px 0 #1d1b1b; }
 .autocomplete-control input { display:block; flex:1; min-width:0; width:100%; margin:0; padding:11px 12px; border:0; border-radius:8px; background:transparent; color:inherit; box-shadow:none; font: inherit; font-size: 14px; line-height:1.4; }
 .autocomplete-control input:focus { outline:none; box-shadow:none; }
@@ -18,7 +19,7 @@
 .autocomplete-action { flex:none; display:grid; place-items:center; width:36px; align-self:stretch; margin:2px; padding:0; border:0; border-radius:6px; background:transparent; color:inherit; cursor:pointer; transition:background 140ms ease,transform 100ms ease; }
 .autocomplete-action:hover:not(:disabled) { background:#f0eeee; }
 .autocomplete-action:active:not(:disabled) { transform:translateY(2px); }
-.autocomplete-action:focus-visible { outline:2px solid currentColor; outline-offset:-4px; }
+.autocomplete-action:focus-visible { outline:none; }
 .autocomplete-action:disabled { opacity:.35; cursor:default; }
 .autocomplete-trigger svg { transition:transform 200ms cubic-bezier(.2,.8,.2,1); }
 .autocomplete-trigger[aria-expanded=true] svg { transform:rotate(180deg); }

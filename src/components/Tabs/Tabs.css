@@ -106,8 +106,9 @@
   cursor: not-allowed;
 }
 .duoop-tabs__tab:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: -5px;
+  outline:none;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 .duoop-tabs__indicator {
   background: var(--tabs-face);
@@ -204,8 +205,8 @@
   margin-top: 0;
 }
 .duoop-tabs__panel:focus-visible {
-  outline:2px solid currentColor; outline-offset:-5px;
-  border-style: solid;
+  outline:none;
+  border-style:dashed;
 }
 .duoop-tabs[data-transition='fade'] > .duoop-tabs__panels > .duoop-tabs__panel {
   animation: tabs-panel-pop 240ms cubic-bezier(0.2, 0.8, 0.2, 1);

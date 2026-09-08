@@ -31,7 +31,9 @@
 .feedback-lab-controls input[type=range]::-webkit-slider-thumb { appearance:none; width:20px; height:24px; margin-top:-10px; border:2px solid #1d1b1b; border-radius:5px; background:#fff; box-shadow:0 3px 0 #1d1b1b; }
 .feedback-lab-controls input[type=range]::-moz-range-track { height:5px; border:2px solid #1d1b1b; border-radius:4px; background:#e8e4e4; }
 .feedback-lab-controls input[type=range]::-moz-range-thumb { width:16px; height:20px; border:2px solid #1d1b1b; border-radius:5px; background:#fff; box-shadow:0 3px 0 #1d1b1b; }
-.feedback-lab-controls input[type=range]:focus-visible { outline:2px solid #373434; outline-offset:-4px; border-radius:4px; }
+.feedback-lab-controls input[type=range]:focus-visible { outline:none; border-radius:4px; }
+.feedback-lab-controls input[type=range]:focus-visible::-webkit-slider-thumb { background:#e8e4e4; border-style:dashed; }
+.feedback-lab-controls input[type=range]:focus-visible::-moz-range-thumb { background:#e8e4e4; border-style:dashed; }
 .feedback-lab-controls .duoop-switch { grid-column:1/-1; }
 .feedback-lab-stage { background:var(--feedback-soft); padding:40px; display:flex; flex-direction:column; justify-content:center; gap:28px; min-width:0; min-height:330px; }
 .toast-showcase .gallery-card-preview,.progress-showcase .gallery-card-preview { padding:32px 24px; min-height:280px; align-items:center; }

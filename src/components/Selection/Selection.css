@@ -25,7 +25,7 @@
 .radio-control input:checked + .radio-disc > span { opacity:1; transform:scale(1); }
 .radio-option:hover:not(:has(:disabled)) .radio-disc { border-color:var(--selection-fg,#373434); }
 .radio-option:active:not(:has(:disabled)) .radio-disc { transform:translateY(2px) scale(.94); box-shadow:0 0 0 var(--selection-shadow,#1d1b1b); }
-.radio-control input:focus-visible + .radio-disc,.switch-control input:focus-visible + .switch-track { border-style:solid; outline:2px solid currentColor; outline-offset:-5px; }
+.radio-control input:focus-visible + .radio-disc,.switch-control input:focus-visible + .switch-track { border-style:dashed; outline:none; }
 .radio-option--row,.radio-option--card { padding:18px; border:2px solid var(--selection-border,#777474); border-radius:10px; transition:background-color 160ms ease, border-color 160ms ease, transform 180ms cubic-bezier(.2,.8,.2,1),box-shadow 140ms ease; }
 .radio-option--row:has(:checked),.radio-option--card:has(:checked) { background:var(--selection-soft,#f0eeee); border-color:var(--selection-fg,#373434); box-shadow:0 3px 0 var(--selection-shadow,#1d1b1b); }
 .radio-option--row:hover:not(:has(:disabled)),.radio-option--card:hover:not(:has(:disabled)) { background:var(--selection-soft,#f0eeee); transform:translateY(-1px); }

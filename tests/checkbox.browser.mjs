@@ -18,8 +18,8 @@ try {
   await simple.press('Space');
   assert.equal(await simple.isChecked(), false);
   assert.equal(await simple.evaluate(el => el.matches(':focus-visible')), true);
-  assert.equal(await simple.evaluate(el => getComputedStyle(el.nextElementSibling).outlineStyle), 'solid');
-  assert.equal(await simple.evaluate(el => getComputedStyle(el.nextElementSibling).borderTopStyle), 'solid');
+  assert.equal(await simple.evaluate(el => getComputedStyle(el.nextElementSibling).outlineStyle), 'none');
+  assert.equal(await simple.evaluate(el => getComputedStyle(el.nextElementSibling).borderTopStyle), 'dashed');
   const partial = card('Partially selected');
   const parent = partial.getByRole('checkbox', { name: 'Select all teams' });
   assert.equal(await parent.evaluate(el => el.indeterminate), true);

@@ -1,5 +1,6 @@
 .shuffle-deck { width:100%; min-width:0; color:var(--feedback-ink,#373434); }
-.shuffle-deck__viewport { position:relative; height:350px; width:100%; max-width:430px; margin:0 auto; touch-action:pan-y; cursor:grab; user-select:none; outline-offset:-6px; }
+.shuffle-deck__viewport { position:relative; height:350px; width:100%; max-width:430px; margin:0 auto; touch-action:pan-y; cursor:grab; user-select:none; }
+.shuffle-deck__viewport:focus-visible::after { content:''; position:absolute; inset:auto calc(50% - 16px) 0; height:3px; background:currentColor; border-radius:1px; pointer-events:none; }
 .shuffle-deck__viewport:active { cursor:grabbing; }
 .shuffle-deck__card { position:absolute; inset:38px 40px 22px; padding:28px; display:flex; flex-direction:column; gap:20px; border:2px solid var(--feedback-edge,#1d1b1b); border-radius:10px; background:var(--feedback-face,#fff); box-shadow:0 5px 0 var(--feedback-edge,#1d1b1b); transform-origin:50% 85%; overflow:hidden; }
 .shuffle-deck__card[aria-hidden=true] { pointer-events:none; }

@@ -21,7 +21,7 @@ button.stepper-control { cursor:pointer; }
 .stepper-item[data-state=disabled] .stepper-control,.stepper-item[data-state=blocked] .stepper-control { color:var(--step-muted); }
 .stepper-control:disabled { opacity:1; cursor:not-allowed; }
 .stepper-control:focus-visible { outline:none; }
-.stepper-control:focus-visible .stepper-marker { outline:2px solid currentColor; outline-offset:-6px; }
+.stepper-control:focus-visible .stepper-marker { outline:none;  border-style:dashed; }
 .stepper-connector { position:absolute; z-index:0; top:calc(var(--step-mark) / 2 - 2px); inset-inline-start:50%; width:100%; height:6px; border-block:1px solid var(--step-edge); background:var(--step-soft); pointer-events:none; }
 .stepper-connector i { display:block; width:100%; height:100%; background:var(--step-ink); transform:scaleX(var(--step-progress)); transform-origin:left; transition:transform 320ms cubic-bezier(.2,.8,.2,1); }
 .duoop-stepper:dir(rtl) .stepper-connector i { transform-origin:right; }

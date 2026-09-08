@@ -81,7 +81,7 @@
   .duoop-button[aria-pressed=true] .favorite-star { animation: none; }
 }
 
-.favorite-button:focus-visible { outline: 1px solid #555; outline-offset: -6px; }
+.favorite-button:focus-visible { outline:none; }
 
 .saved-source { padding:14px 10px 22px; border-bottom:1px solid var(--border); }
 .saved-source summary { cursor:pointer; font-size: 12px; padding:8px 0; }

@@ -21,7 +21,7 @@
 .checkbox-control input:indeterminate + .checkbox-box .checkbox-dash { opacity:1; transform:scaleX(1); }
 .checkbox-label:hover .checkbox-control input:not(:disabled) + .checkbox-box { border-color:var(--check-fg); }
 .checkbox-label:active .checkbox-control input:not(:disabled):not([readonly]) + .checkbox-box { transform:translateY(2px); box-shadow:0 0 0 var(--check-shadow); }
-.checkbox-control input:focus-visible + .checkbox-box { outline:2px solid currentColor; outline-offset:-5px; border-style:solid; }
+.checkbox-control input:focus-visible + .checkbox-box { outline:none; border-style:dashed; }
 .checkbox-content { display:flex; flex:1; min-width:0; flex-direction:column; gap:5px; }
 .checkbox-title { display:flex; align-items:baseline; flex-wrap:wrap; gap:5px 7px; font-weight:550; overflow-wrap:anywhere; }
 .checkbox-title small { color:var(--check-muted); font-size: 11px; font-weight:400; }

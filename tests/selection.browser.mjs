@@ -37,7 +37,7 @@ try {
   await classic.getByRole('radio', { name: 'Push', exact: true }).press('ArrowDown');
   const sms = classic.getByRole('radio', { name: 'SMS', exact: true });
   assert.equal(await sms.isChecked(), true);
-  assert.equal(await sms.evaluate(el => getComputedStyle(el.nextElementSibling).borderTopStyle), 'solid');
+  assert.equal(await sms.evaluate(el => getComputedStyle(el.nextElementSibling).borderTopStyle), 'dashed');
   const info = card('Radio Group', 'Secondary information');
   await info.getByRole('radio', { name: 'Push' }).focus();
   await info.getByRole('radio', { name: 'Push' }).press('ArrowDown');
@@ -84,7 +84,7 @@ try {
   assert.equal(await labeled.getByRole('switch').isChecked(), true);
   await labeled.getByRole('switch').press('Space');
   assert.equal(await labeled.getByRole('switch').isChecked(), false);
-  assert.equal(await labeled.getByRole('switch').evaluate(el => getComputedStyle(el.nextElementSibling).borderTopStyle), 'solid');
+  assert.equal(await labeled.getByRole('switch').evaluate(el => getComputedStyle(el.nextElementSibling).borderTopStyle), 'dashed');
   const settings = card('Switch', 'Settings list');
   await settings.getByRole('switch', { name: 'Weekly summary' }).check();
   assert.equal(await settings.locator('input:checked').count(), 2);

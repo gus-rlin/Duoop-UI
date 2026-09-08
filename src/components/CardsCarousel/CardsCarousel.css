@@ -18,7 +18,7 @@
 @media(hover:hover) { .cards-carousel__card:hover { transform:translateY(-8px); box-shadow:0 9px 0 var(--story-border); }.cards-carousel__card:hover .cards-carousel__image { transform:scale(1.045); }.cards-carousel__card:hover .cards-carousel__plus { transform:translateY(2px); box-shadow:0 1px 0 var(--story-border); }.cards-carousel__card:hover .cards-carousel__plus svg { transform:rotate(90deg); } }
 .cards-carousel__card:focus-visible { transform:translateY(-8px); box-shadow:0 9px 0 var(--story-border); }
 .cards-carousel__card:active { transform:translateY(3px); box-shadow:0 2px 0 var(--story-border); }
-.cards-carousel__card:focus-visible { outline:2px solid var(--feedback-ink); outline-offset:-7px; }
+.cards-carousel__card:focus-visible { outline:none; }
 .cards-carousel__navigation { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:16px 32px 32px; }
 .cards-carousel__navigation>span { font-size: 12px; line-height:1.6; color:var(--feedback-muted); }
 .cards-carousel__progress { display:block; width:clamp(80px,18vw,200px); height:6px; margin-top:12px; overflow:hidden; border:1px solid var(--story-border); border-radius:3px; background:var(--feedback-soft); }

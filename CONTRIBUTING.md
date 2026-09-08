@@ -66,7 +66,7 @@ npm pack
 In your React 19 application, install the generated archive (adjust the path):
 
 ```sh
-npm i /path/to/Duoop-UI/duoop-ui-1.0.0.tgz
+npm i /path/to/Duoop-UI/duoop-ui-1.0.1.tgz
 ```
 
 A local archive is useful for testing unpublished changes before a release. Users installing the published library can use `npm i duoop-ui` directly.

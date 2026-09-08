@@ -22,7 +22,7 @@
   .duoop-card:hover .duoop-card__title { transform:translateX(3px); }
 }
 .duoop-card--interactive:active { transform:translateY(3px) scale(.99); box-shadow:0 1px 0 var(--card-shadow); transition-duration:90ms; }
-.duoop-card--interactive:focus-visible { outline:2px solid currentColor; outline-offset:-5px; border-style:solid; }
+.duoop-card--interactive:focus-visible { outline:none; border-style:dashed; }
 .duoop-card--interactive:not(a):not(button) { cursor:default; }
 .duoop-card--interactive:not(a):not(button):is(:hover,:active) { transform:none; }
 .duoop-card--interactive:not(a):not(button):focus-within { box-shadow:0 7px 0 var(--card-shadow); border-style:solid; }

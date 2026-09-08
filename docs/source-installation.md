@@ -14,7 +14,7 @@ Open [Raised button → Code](https://duoop-ui.com/?component=builtin-relief-but
 
 | File | Purpose |
 | --- | --- |
-| [src/base.css](../src/base.css) | Shared sizing, font fallback, accessible hidden text, and inset focus. |
+| [src/base.css](../src/base.css) | Shared sizing, font fallback, accessible hidden text, and keyboard focus without extra rings. |
 | [src/components/Button/Button.jsx](../src/components/Button/Button.jsx) | Button and ActionFeedback; imports its CSS and helper. |
 | [src/components/Button/Button.css](../src/components/Button/Button.css) | Appearance, depth, states, and reduced motion. |
 | [src/components/Button/buttonColor.js](../src/components/Button/buttonColor.js) | Custom color palette calculations. |
@@ -52,7 +52,7 @@ export default function App() {
 }
 ```
 
-Run `npm run dev`. Clicking increments the counter; Tab reveals inset focus and Enter/Space activate the button. `npm run build` creates `dist/`. Button needs no additional dependencies beyond React.
+Run `npm run dev`. Clicking increments the counter; Tab reveals an internal focus marker and Enter/Space activate the button. `npm run build` creates `dist/`. Button needs no additional dependencies beyond React.
 
 ### Styling and integration
 

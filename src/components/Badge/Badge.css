@@ -26,7 +26,7 @@
 .duoop-badge--interactive { cursor:pointer; transition:transform 220ms cubic-bezier(.2,1.7,.35,1),box-shadow 220ms cubic-bezier(.2,1.7,.35,1),background-color 150ms ease-out,color 150ms ease-out; }
 @media(hover:hover) { .duoop-badge--interactive:hover { transform:translateY(-2px) rotate(-1deg); box-shadow:0 4px 0 var(--badge-edge); } }
 .duoop-badge--interactive:active { transform:translateY(2px) scale(.97); box-shadow:none; transition-duration:80ms; }
-.duoop-badge--interactive:focus-visible,.duoop-badge__remove:focus-visible { outline:2px solid currentColor; outline-offset:-5px; border-style:solid; }
+.duoop-badge--interactive:focus-visible,.duoop-badge__remove:focus-visible { outline:none; border-style:dashed; }
 .duoop-badge[data-disabled] { opacity:.5; pointer-events:none; }
 .duoop-badge__label { overflow:hidden; text-overflow:ellipsis; }
 .duoop-badge__dot { width:8px; height:8px; flex:none; border:1.5px solid currentColor; background:currentColor; transform:rotate(45deg); border-radius:1px; }

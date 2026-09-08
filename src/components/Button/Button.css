@@ -78,7 +78,6 @@
 /* Intent variants share the same mechanical geometry. */
 .duoop-button--destructive { --button-face: #b42332; --button-text: #fff; --button-edge: #681322; }
 .duoop-button--destructive-outline { --button-face: #fff; --button-text: #a51d2d; --button-edge: #a51d2d; }
-.duoop-button--destructive:focus-visible, .duoop-button--destructive-outline:focus-visible { outline-color: #a51d2d; }
 .duoop-button--destructive[aria-pressed=true] { --button-face: #801b29; --button-text: #fff; --button-edge: #681322; }
 .duoop-button--destructive-outline[aria-pressed=true] { --button-face: #ffe9ec; --button-text: #8a1927; --button-edge: #a51d2d; }
 .duoop-button--link { --button-face: transparent; --button-text: #191919; --button-edge: transparent; --button-depth: 0px; padding-inline: 8px; border-radius: 4px; }
@@ -100,7 +99,6 @@
 .duoop-button[data-custom-color]:is(.duoop-button--ghost,.duoop-button--link) { --button-face:transparent; --button-text:var(--custom-ink); --button-edge:transparent; }
 .duoop-button[data-custom-color][aria-pressed=true] { --button-face:var(--custom-hover); }
 .duoop-button[data-custom-color][aria-pressed=true]:is(.duoop-button--outline,.duoop-button--destructive-outline,.duoop-button--ghost,.duoop-button--link) { --button-face:var(--custom-tint); }
-.duoop-button[data-custom-color]:focus-visible { outline-color:var(--custom-ink); }
 @media (hover:hover) {
   .duoop-button[data-custom-color]:hover:not([aria-disabled=true]) { background:var(--custom-hover); }
   .duoop-button[data-custom-color]:is(.duoop-button--outline,.duoop-button--destructive-outline,.duoop-button--ghost,.duoop-button--link):hover:not([aria-disabled=true]) { background:var(--custom-tint); }
@@ -119,7 +117,7 @@
 .duoop-button[data-status=success] { --button-face:#356247; --button-edge:#234631; --button-text:#fff; background:var(--button-face); color:var(--button-text); animation:feedback-reveal 240ms ease-out; }
 .duoop-button[data-status=error] { --button-face:#a51d2d; --button-edge:#761725; --button-text:#fff; background:var(--button-face); color:var(--button-text); }
 .duoop-button:focus-visible { outline:none; }
-.duoop-button:focus-visible::after { content:''; position:absolute; inset:5px; border:1px solid currentColor; border-radius:4px; pointer-events:none; }
+.duoop-button:focus-visible::after { content:''; position:absolute; inset:auto 5px 4px; height:2px; background:currentColor; border-radius:1px; pointer-events:none; }
 @media(prefers-reduced-motion:reduce) { .action-feedback-content,.feedback-orbit,.feedback-symbol,.duoop-button[data-status=success] { animation:none; } }
 
 .action-feedback:empty { display:none; }

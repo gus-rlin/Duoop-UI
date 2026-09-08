@@ -25,7 +25,7 @@
 .duoop-dialog__close { position: absolute; z-index: 1; inset-block-start: 24px; inset-inline-end: 24px; width: 44px; height: 44px; color: inherit; border: 2px solid #373434; border-radius: 10px; background: #fff; box-shadow: 0 3px 0 #1d1b1b; display: grid; place-items: center; cursor: pointer; transition: transform 180ms cubic-bezier(.2,.8,.2,1),box-shadow 180ms ease,background 150ms ease; }
 .duoop-dialog__close:hover { background: #f0eeee; transform: translateY(-2px); box-shadow: 0 5px 0 #1d1b1b; }
 .duoop-dialog__close:active { transform: translateY(3px); box-shadow: 0 0 0 #1d1b1b; }
-.duoop-dialog__close:focus-visible { outline: 2px solid #373434; outline-offset: -7px; }
+.duoop-dialog__close:focus-visible { outline:none; }
 .duoop-dialog__close svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; }
 .duoop-dialog__body input,.duoop-dialog__body textarea { box-sizing: border-box; width: 100%; min-height: 46px; margin-top: 8px; border: 2px solid #777474; border-radius: 10px; padding: 12px 14px; background: #fff; color: #373434; font: inherit; font-weight: 400; transition: border-color 150ms ease,background 150ms ease; }
 .duoop-dialog__body input:focus,.duoop-dialog__body textarea:focus { outline: none; border-color: #373434; background: #faf9f8; box-shadow: inset 3px 0 #373434; }

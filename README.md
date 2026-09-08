@@ -90,7 +90,7 @@ npm run dev
 | --- | --- |
 | `npm run build` | Build the static site into `dist/`. |
 | `npm run build:lib` | Build the npm library into `lib/`. |
-| `npm pack` | Build and create the installable `duoop-ui-1.0.0.tgz` archive. |
+| `npm pack` | Build and create the installable `duoop-ui-1.0.1.tgz` archive. |
 | `npm run test:package` | Install the archive in an isolated app; verify exports, build, styling and interaction. |
 | `npm run preview` | Preview the production build. |
 | `npm run test:docs` | Check documentation counts, public URLs, local links and documented npm scripts against the project. |

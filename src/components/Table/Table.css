@@ -15,8 +15,8 @@
   background: #fff;
 }
 .duoop-table-scroll:focus-visible {
-  outline: 2px dashed #373434;
-  outline-offset: -5px;
+  outline: none;
+  border-style: dashed;
 }
 .duoop-table {
   width: 100%;

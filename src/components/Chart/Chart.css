@@ -82,8 +82,7 @@
   box-shadow: none;
 }
 .duoop-chart :focus-visible {
-  outline: 2px dashed var(--chart-ink);
-  outline-offset: -4px;
+  outline:none;
 }
 .duoop-chart__plot {
   margin: 0 12px;
@@ -313,8 +312,8 @@
   background: #f0eeee;
 }
 .chart-data-editor :focus-visible {
-  outline: 2px dashed #373434;
-  outline-offset: 2px;
+  outline:none;
+  background: #f0eeee;
 }
 .chart-showcase .gallery-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
