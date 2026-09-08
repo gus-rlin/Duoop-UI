@@ -176,7 +176,7 @@ Stepper leaves at least 16 px between step text and content cards, including the
 
 ### Catalog previews
 
-“All components” thumbnails represent current components. Material Card, Badge, or Tabs changes require updating corresponding `.mini-*` previews in `src/main.jsx` and `src/styles.css`. Match current outlines, shadows, icons, shapes, contrast, and selected states. Review all three together in the main grid. A current detail page with a stale thumbnail is a regression. Compact static previews are acceptable when animation cannot be represented reliably, but they must show the current tactile style.
+“All components” thumbnails represent current components. Material Card, Badge, or Tabs changes require updating corresponding previews in `src/catalog/Previews.jsx` and their `.mini-*` styles in `src/styles.css`. Match current outlines, shadows, icons, shapes, contrast, and selected states. Review all three together in the main grid. A current detail page with a stale thumbnail is a regression. Compact static previews are acceptable when animation cannot be represented reliably, but they must show the current tactile style.
 
 ## 8. Delivery checklist
 
@@ -206,7 +206,8 @@ Stepper leaves at least 16 px between step text and content cards, including the
 - `src/components/Card/Card.css`, `CardDemos.jsx`, `CardShowcase.css`: cards, frames, tactile icons, static SVG.
 - `src/components/Badge/Badge.css` and `BadgeShowcase.css`: contrast, outlines, appearance/tone matrices.
 - `src/components/Tabs/Tabs.css` and `TabsDemos.jsx`: bouncing indicator, alignment, panels, keyboard navigation.
-- `src/main.jsx` and `src/styles.css`: compact catalog previews; keep them synchronized with components.
+- `src/catalog/Previews.jsx`, `PrimitivePreviews.jsx`, and `EssentialPreviews.jsx`: catalog previews; keep them synchronized with components and their styles.
+- `src/main.jsx`: application shell, home page and routing.
 - `tests/checkbox.browser.mjs` and `tests/feedback.browser.mjs`: focused interaction and visual regressions.
 
 For each new component, read the shared rules, inspect neighboring primitives, define states and motion, then verify the rendered result. Finishing is part of the work.

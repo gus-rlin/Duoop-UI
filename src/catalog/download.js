@@ -47,7 +47,7 @@ export function starterFiles(bundle) {
     ],
     [
       'README.md',
-      '# Duoop example\n\nRequires Node.js 22.12+ or 24+ and npm.\n\n```sh\nnpm install\nnpm run dev\n```\n\nBuild with `npm run build`. The output is in `dist/`.\n\nTo use in an existing React application, keep the supplied paths inside `src/`, install the dependencies in package.json, import `src/base.css` once, and use App.jsx as your example. Component styles are imported by their implementations. DM Sans is optional: the shared base uses a system font fallback.\n\nGallery requests, sample accounts and rewards are local demonstrations. Map and photographic examples use remote providers; check attribution, availability and usage terms before publishing.\n\nDuoop source is Apache 2.0d; retain the project license notice.\n',
+      '# Duoop UI example\n\nDocumentation: https://duoop-ui.com/\nSource: https://github.com/gus-rlin/Duoop-UI\n\nRequires React 19 and Node.js 22.18+ in the 22.x line, or 24.11+, with npm. The project includes React in package.json.\n\n```sh\nnpm install\nnpm run dev\n```\n\nBuild with `npm run build`. The output is in `dist/`.\n\nTo use in an existing React application, keep the supplied paths inside `src/`, install the dependencies in package.json, import `src/base.css` once, and use App.jsx as your example. Component styles are imported by their implementations. DM Sans is optional: the shared base uses a system font fallback.\n\nGallery requests, sample accounts and rewards are local demonstrations. Map and photographic examples use remote providers; check attribution, availability and usage terms before publishing.\n\nDuoop source is Apache 2.0; retain the project license notice.\n',
     ],
   ];
 }

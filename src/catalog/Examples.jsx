@@ -166,7 +166,7 @@ export function Examples({ selected, mode, onMode }) {
                     <h3>Install and run</h3>
                     <p>
                       The downloaded project includes its dependencies. With
-                      Node.js 22.12+ or 24+, run <code>npm install</code>, then{" "}
+                      Node.js 22.18+ in the 22.x line, or 24.11+, run <code>npm install</code>, then{" "}
                       <code>npm run dev</code>. In an existing React app,
                       install any listed additional packages and import{" "}
                       <code>base.css</code> once.

@@ -48,8 +48,8 @@ export function Installation() {
         <li>
           <h2>Start with a React project</h2>
           <p>
-            Already have one? Continue to step 2. For a new project, install Node.js 22.12+ or
-            24+ and npm, then run:
+            Already have one? Continue to step 2. For a new project, install Node.js 22.18+ in the 22.x line, or
+            24.11+, and npm, then run:
           </p>
           <CodeBlock
             label="Terminal"
@@ -118,19 +118,23 @@ export function Installation() {
           <AccordionItem value="dependencies">
             <AccordionTrigger>Which dependencies do I need?</AccordionTrigger>
             <AccordionContent>
-              Every component’s Installation tab lists its exact requirements. Some motion
-              components use GSAP; Map uses Leaflet. Install only the packages required by your
-              chosen component. Shared Duoop dependencies are included in the source file list.
+              The npm library installs its runtime dependencies automatically. When copying source,
+              follow the requirements in the component’s Installation tab: motion components
+              may use GSAP; Map uses Leaflet; Tooltip, Popover, Slider and Sheet use Radix;
+              calendars use React DayPicker; File Upload uses React Dropzone. Local Duoop
+              dependencies are included in the source file list.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="next">
             <AccordionTrigger>Can I use Next.js or TypeScript?</AccordionTrigger>
             <AccordionContent>
               These are JavaScript/JSX components. In Next.js, put a <code>'use client';</code>{' '}
-              boundary above components using hooks, import base.css in the root layout and
-              preserve the CSS imports. Map needs a client-only dynamic import with SSR
+              boundary above components using hooks. For the npm library, import{' '}
+              <code>duoop-ui/styles.css</code> in the root layout. For copied source, import{' '}
+              <code>base.css</code> there and preserve component CSS imports. Map needs a client-only dynamic import with SSR
               disabled. TypeScript projects can include JSX files with{' '}
               <code>allowJs: true</code>; dedicated TypeScript declarations are not supplied.
+              Next.js and server rendering have not been separately validated.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="font">
@@ -149,7 +153,7 @@ export function Installation() {
             <AccordionTrigger>Can I copy a complete page?</AccordionTrigger>
             <AccordionContent>
               Yes. The <a href="?page=examples">Examples section</a> includes a landing page
-              and settings page. Each provides its React source, styles, all component
+              for outdoor adventures. It provides its React source, styles, all component
               dependencies and a runnable download.
             </AccordionContent>
           </AccordionItem>

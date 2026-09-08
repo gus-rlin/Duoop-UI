@@ -1,6 +1,6 @@
 # Essential components
 
-Eleven catalog entries cover ten component families. Each includes a live gallery, API notes, source files, a working starter and downloadable examples.
+This guide covers eleven component families, each represented by one entry in the 46-component catalog. Each includes a live gallery, API notes, source files, a working starter and downloadable examples. Compound exports such as RangeSlider and DataTable are part of their parent entry. Breadcrumb and Separator are additional catalog entries covered by `npm run test:navigation`.
 
 | Family | Source | Foundation |
 | --- | --- | --- |
@@ -18,6 +18,8 @@ Eleven catalog entries cover ten component families. Each includes a live galler
 
 ## Integration details
 
+Install the collection with `npm i duoop-ui` in a React 19 app and import `duoop-ui/styles.css` once. Runtime dependencies install automatically. For source-copy integration, preserve the listed files, import `base.css` once and install the dependencies shown by each component's Installation tab. See the [installation guide](../README.md#install-the-library).
+
 - Tooltip children must forward refs and DOM props. Share TooltipProvider across a toolbar to share timing. Hints do not consume touch taps; essential instructions belong in visible text. Interactive help belongs in Popover.
 - Popover is intentionally non-modal. Sheet is modal. When placing Popover inside an existing native dialog, pass that dialog's content element as the portal `container` so it remains in the top layer.
 - Slider values are arrays, including single values. Set `name` to include its native hidden fields in a form. Supply valid bounds and positive steps.
@@ -32,4 +34,4 @@ Eleven catalog entries cover ten component families. Each includes a live galler
 
 Run `npm run test:essentials` for browser interactions, responsive galleries at 1440/768/390/320 px, axe checks, screenshots, focus restoration, touch activation, range selection, file rejection/progress/retry/cancellation and cleanup. Artifacts are written to `artifacts/essentials/`.
 
-Run `npm run test:essential-downloads` to download and build all 11 new starters and 42 gallery variants. `npm test` also validates public navigation, every component download, gallery source bundles and their builds. Third-party source links and MIT notices are retained in [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md), which is included in downloads.
+Run `npm run test:essential-downloads` to download and build all eleven essential starters and their current gallery variants. The script discovers variants from the live galleries and writes the measured total to `artifacts/essential-downloads/results.json`. Both essential scripts start their own servers. `npm test` also attempts public navigation, component downloads and gallery source builds; see [current validation limits](../VALIDATION.md) before treating that broader suite as a passing result. Third-party source links and notices are retained in [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md), which is included in downloads.

@@ -5,9 +5,9 @@ import assert from 'node:assert/strict';
 import { chromium } from 'playwright';
 
 // Follow README.md literally, outside the repository and its node_modules tree.
-const readme = await fs.readFile('README.md', 'utf8');
-const main = readme.match(/Remplacez `src\/main.jsx` par :\s*```jsx\n([\s\S]+?)```/)[1];
-const app = readme.match(/Remplacez `src\/App.jsx` par :\s*```jsx\n([\s\S]+?)```/)[1];
+const readme = (await fs.readFile('README.md', 'utf8')).replaceAll('\r\n', '\n');
+const main = readme.match(/Replace `src\/main.jsx` with:\s*```jsx\n([\s\S]+?)```/)[1];
+const app = readme.match(/Replace `src\/App.jsx` with:\s*```jsx\n([\s\S]+?)```/)[1];
 const files = [...readme.matchAll(/\| \[(src\/(?:base\.css|components\/Button\/[^\]]+))\]/g)].map(match => match[1]);
 assert.equal(files.length, 4);
 // Windows Application Control blocks native Vite bindings in this host's Temp folder.

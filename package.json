@@ -6,7 +6,7 @@
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "npm run build -- --logLevel warn && node tests/check-imports.mjs && npm run test:essentials && playwright test && node tests/build-downloads.mjs",
+    "test": "npm run test:docs && npm run build -- --logLevel warn && node tests/check-imports.mjs && npm run test:essentials && playwright test && node tests/build-downloads.mjs",
     "test:navigation": "node tests/navigation.browser.mjs",
     "test:essentials": "node tests/essentials.browser.mjs",
     "test:essential-downloads": "node tests/essential-downloads.mjs",
@@ -16,7 +16,8 @@
     "test:a11y": "node tests/audit-galleries.mjs",
     "build:lib": "vite build --config vite.lib.config.js",
     "prepack": "npm run build:lib",
-    "test:package": "node tests/package.mjs"
+    "test:package": "node tests/package.mjs",
+    "test:docs": "node tests/docs.mjs"
   },
   "keywords": [
     "react",

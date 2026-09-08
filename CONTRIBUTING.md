@@ -22,6 +22,7 @@ Export new public components from `src/index.js` as well. Run `npm run test:pack
 ## Verify your work
 
 ```sh
+npm run test:docs
 npm run build
 node tests/check-imports.mjs
 npx playwright install chromium
@@ -30,7 +31,15 @@ npx playwright test tests/seo.spec.mjs
 
 For interaction or download changes, run `npm test` and relevant primitive suites. Start `npm run dev -- --port 5176 --strictPort` in another terminal before `npm run test:primitives` or `npm run test:a11y`. Page and fresh-app integration commands are in the [README](README.md).
 
-Check UI changes at desktop and mobile widths, with keyboard input and reduced motion. Include screenshots for visible changes. Report failing checks honestly, including whether they fail before your change. See [VALIDATION.md](VALIDATION.md) for historical results and known limitations.
+Check UI changes at desktop and mobile widths, with keyboard input and reduced motion. Include screenshots for visible changes. Report failing checks honestly, including whether they fail before your change. See [VALIDATION.md](VALIDATION.md) for verification scope and known limitations.
+
+## Keep documentation consistent
+
+- Read current facts from `src/catalog/catalog.js` (entries and categories), `src/catalog/seo.js` (production origin), `src/catalog/Examples.jsx` (public pages), and `package.json` (scripts, engines, exports and dependencies).
+- Keep [README.md](README.md) as the main installation and development guide. Update the rendered guides in `src/catalog/Installation.jsx`, `src/catalog/Examples.jsx`, and the generated download README in `src/catalog/download.js` when those instructions change.
+- For catalog or route changes, update the README totals, `public/llms.txt`, `public/sitemap.xml`, and [SEO.md](SEO.md). The AI index describes the current collection; historical test totals belong in Git history, not in its introduction.
+- Use [docs/essential-components.md](docs/essential-components.md) for the eleven essential families, [design.md](design.md) for design guidance, and [VALIDATION.md](VALIDATION.md) for dated verification and known gaps. Preserve third-party notices in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+- Run `npm run test:docs` and the SEO checks after documentation changes. Confirm registry status with `npm view duoop-ui version homepage` before claiming a release is published. Source changes and site deployment do not publish an npm release.
 
 ## Open a pull request
 

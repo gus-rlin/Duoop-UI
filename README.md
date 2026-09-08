@@ -66,7 +66,7 @@ export default function App() {
 
 The ESM package contains all public components, their compound components and helpers, including `IconButton`. It excludes the catalogue, demos and development tools. Your bundler can remove unused JavaScript exports; the single stylesheet includes the full collection, the shared foundation and Leaflet styles. The foundation sets page defaults such as body margin and font, so import your application overrides afterwards. DM Sans remains an optional font installation.
 
-Use a React bundler such as Vite. For Next.js, import the stylesheet in the root layout and use interactive components from a client component; the library entry preserves its `"use client"` boundary. Next.js integration and dedicated TypeScript declarations are not yet verified/provided. The source-copy instructions below remain available.
+Use a React bundler such as Vite. For Next.js, import the stylesheet in the root layout and use interactive components from a client component; the library entry preserves its `"use client"` boundary. Next.js and server rendering have not been separately validated. Dedicated TypeScript declarations are not supplied.
 
 ## Explore the collection
 
@@ -82,11 +82,11 @@ Use a React bundler such as Vite. For Next.js, import the stylesheet in the root
 | Motion | [Animated text and expressive interactions](https://duoop-ui.com/?category=Motion) |
 | Display | [Avatars, maps, and more](https://duoop-ui.com/?category=Display) |
 
-Explore [Page examples](https://duoop-ui.com/?page=examples). Sources include a [studio landing page](src/examples/LandingPage.jsx) and a [settings page](src/examples/SettingsPage.jsx). Example brands, pricing, forms, and persistence are demonstrations; connect your own services when adapting them.
+Explore the [outdoor adventure landing page](https://duoop-ui.com/?page=examples&example=landing), the current public page example, with [source](src/examples/LandingPage.jsx), styles and a runnable download. [SettingsPage.jsx](src/examples/SettingsPage.jsx) remains a source-only example in the repository; it is not listed in the public catalog. Example brands, pricing, forms, and persistence are demonstrations; connect your own services when adapting them.
 
 ## Your first component by copying source
 
-Use **React 19 + React DOM 19**, JSX compilation, and CSS imports. For a new Vite app, use Node.js **22.12+ or 24+**:
+Use **React 19 + React DOM 19**, JSX compilation, and CSS imports. Use Node.js **22.18+ in the 22.x line, or 24.11+**, matching this repository's supported tooling:
 
 ```sh
 npm create vite@latest my-duoop-app -- --template react
@@ -152,7 +152,7 @@ Import `base.css` once; components import their own styles. To match the site's 
 | Next.js | Add a `'use client';` boundary above hook-based components; import the foundation in your layout. Map needs client-only loading without SSR. This framework integration is not separately verified. |
 | TypeScript | Allow JavaScript with `allowJs: true`, or add types in your project. |
 
-Page downloads map the page to `src/App.jsx` and [pages.css](src/examples/pages.css) to `src/example.css`, including the foundation and local dependencies. The settings example stores test data under `duoop-example-settings-v1`; replace `readSettings()` and `save()` with your API.
+The public page download maps [LandingPage.jsx](src/examples/LandingPage.jsx) to `src/App.jsx` and [pages.css](src/examples/pages.css) to `src/example.css`, including the foundation and local dependencies. If adapting the source-only settings example, replace its `readSettings()` and `save()` functions with your API; its demo storage key is `duoop-example-settings-v1`.
 
 On Windows, if npm reports `UNABLE_TO_VERIFY_LEAF_SIGNATURE` and your network certificate is in the system store, use Node.js 24 and set `$env:NODE_USE_SYSTEM_CA = '1'` in PowerShell before installing. This preserves TLS verification.
 
@@ -174,21 +174,27 @@ npm run dev
 | `npm pack` | Build and create the installable `duoop-ui-1.0.0.tgz` archive. |
 | `npm run test:package` | Install the archive in an isolated app; verify exports, build, styling and interaction. |
 | `npm run preview` | Preview the production build. |
-| `npm test` | Build, check imports, run public browser/SEO tests, and build downloaded projects. |
+| `npm run test:docs` | Check documentation counts, public URLs, local links and documented npm scripts against the project. |
+| `npm test` | Run documentation checks, build, check imports, run essentials and public browser/SEO tests, then build downloaded projects. See current limitations in VALIDATION.md. |
+| `npm run test:essentials` | Start its own server and check the eleven essential component families. |
+| `npm run test:essential-downloads` | Start its own server, download and build essential starters and gallery variants. |
+| `npm run test:navigation` | Start its own server and check Breadcrumb and Separator. |
 | `npm run test:primitives` | Run detailed primitive suites against a dev server on port 5176. |
 | `npm run test:a11y` | Audit galleries against a dev server on port 5176. |
-| `npm run test:pages` | Build and test downloaded pages after `npm test`. |
+| `npm run test:pages` | Legacy two-page regression script; requires old downloads and selectors. See VALIDATION.md before using. |
 | `npm run test:integration` | Verify the README button in a fresh Vite app; requires npm access. |
 
-Install Chromium with `npx playwright install chromium`. For a fixed dev port, run `npm run dev -- --port 5176 --strictPort`; `TEST_URL` overrides the primitive suites' server address. Reports and screenshots go to the ignored `artifacts/` directory.
+Install Chromium with `npx playwright install chromium`. For a fixed dev port, run `npm run dev -- --port 5176 --strictPort`. Most primitive suites accept `TEST_URL`, but some diagnostic scripts use fixed addresses; keep port 5176 for the combined run. Reports and screenshots go to the ignored `artifacts/` directory.
 
-GitHub CI runs the production build, import checks, and SEO browser tests. See [VALIDATION.md](VALIDATION.md) for historical results and known limitations. Automated accessibility checks are not a comprehensive certification.
+GitHub CI runs documentation checks, the production build, import checks, package installation tests, essential-component browser checks, and SEO browser tests. See [VALIDATION.md](VALIDATION.md) for verification scope and known limitations. Automated accessibility checks are not a comprehensive certification.
 
 ## Deployment
 
 ### npm release
 
 Run `npm run test:package` before releasing (Chromium must be installed). Review `npm pack --dry-run`, verify that you control the npm package name, and sign in with `npm login`. Set a new, unpublished release version with `npm version <version>`, then run `npm publish --access public`. The `prepack` hook rebuilds the library for packing and publishing. Registry publication is a separate maintainer action; this repository does not publish automatically.
+
+The published `1.0.0` release was confirmed on September 8, 2026. Its registry metadata still contains the previous hosting URL; `package.json` now points to the production domain. Pushing this repository updates the source documentation, but does not rewrite a published npm version's README or metadata. Include the corrected documentation and homepage in the next npm release.
 
 ### Documentation site
 
@@ -201,6 +207,8 @@ Legacy personal entries in `duoop-ui.components.v1` are no longer displayed; the
 Start with [CONTRIBUTING.md](CONTRIBUTING.md), follow the [design guidelines](design.md), and use the [issue templates](https://github.com/gus-rlin/Duoop-UI/issues/new/choose) for bugs and ideas.
 
 Useful entry points: [catalog metadata](src/catalog/catalog.js), [integration recipes](src/catalog/recipes.js), [source bundling](src/catalog/source-bundle.js), and [code documentation](src/components/Button/Documentation.jsx).
+
+Documentation ownership and the update checklist are in [CONTRIBUTING.md](CONTRIBUTING.md#keep-documentation-consistent). Catalog counts come from `entries` and `categories` in `src/catalog/catalog.js`; package requirements come from `package.json`; canonical URLs come from `src/catalog/seo.js`. Counts refer to catalog entries, not the larger set of exported compound components and helpers.
 
 If Duoop helps you build something, a GitHub star helps others discover it.
 

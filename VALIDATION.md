@@ -1,67 +1,64 @@
-# Historical library validation — September 7, 2026
+# Validation status
 
-The current catalogue, as of September 8, 2026, contains **46 components in seven categories**. See the [current README](README.md) and [catalogue summary](https://duoop-ui.com/llms.txt). The component and variant totals below describe an older test snapshot, not the current collection. A current total variant count is not published.
+This document records verification scope, not a blanket certification. The current catalog contains **46 components across 7 categories** and one public page example. The package is published as `duoop-ui`. See the [README](README.md) for installation and [SEO.md](SEO.md) for deployment checks.
 
-Historical checks performed on **September 7, 2026**, with Node.js 24.18.0, React 19, Vite 8.2.2, and Chromium through Playwright 1.63. These results describe that delivery snapshot, not a guarantee that every subsequent revision passes the same checks.
+## Documentation audit — September 8, 2026
 
-## Recorded results
+The audit compared documentation and generated download instructions with catalog metadata, public page registration, package exports, npm scripts, the CI workflow and live HTTP responses. Node.js 24.18.0 was used locally.
 
-The checked catalog contained 34 components, 504 variant sources, and two full compositions. No build or runtime blocker was identified within that snapshot's tested scope.
+- Catalog metadata: 46 entries and 7 categories. Compound exports such as IconButton, RangeSlider and DataTable do not add catalog entries.
+- Public pages: one outdoor adventure landing page. SettingsPage.jsx remains source-only.
+- Registry: `npm view duoop-ui version homepage` confirmed version 1.0.0. The published homepage still uses the previous hosting address; the corrected production homepage is already in package.json. A Git push does not update a published package's metadata or README.
+- Production: the home page, robots.txt, llms.txt and sitemap.xml returned HTTP 200. TXT files had text/plain content types; the sitemap had application/xml. Cloudflare adds managed bot rules to the deployed robots.txt; see [SEO.md](SEO.md).
 
-| Check | Recorded result |
+Local results from this audit:
+
+| Check | Result |
 | --- | --- |
-| Catalog build and imports | Passed; 198 files checked, including Linux path casing. |
-| Public journeys | 7 scenarios passed: discovery, search, history, source, real clipboard copying, installation, downloads, pages, and keyboard use. |
-| Downloaded projects | **540/540 built**: 34 initial examples, 504 variants, and 2 pages. Each archive was extracted into a fresh directory; local imports and declared dependencies were checked before building. |
-| Primitive regressions | **25/25 suites passed**, covering forms, selection, overlays, animations, carousels, maps, avatars, notifications, and asynchronous states. |
-| Gallery accessibility | No axe WCAG A/AA violations detected across 34 galleries at 1440 and 390 px; no document overflow at 390 and 320 px. |
-| Site responsiveness | Six journeys checked at 1440, 1024, 768, 390, and 320 px; axe checks at 1440 and 390 px. |
-| Standalone pages | Builds, interactions, and axe checks passed at 1440, 768, 390, and 320 px using downloaded files. |
-| Fresh integration | Independent React/Vite app with its own dependencies followed the README: build, click, Space activation, tactile depth, and mobile rendering passed. |
-| Production dependencies | `npm audit --omit=dev` reported no vulnerabilities at the time. |
+| `npm run test:docs` | Passed: tracked Markdown/TXT files and three rendered/download guides; catalog inventory, links, scripts and 58 sitemap URLs agree. |
+| `npm run build -- --logLevel warn` | Passed: production catalog build. |
+| `node tests/check-imports.mjs` | Passed: 254 source files with resolvable imports and exact path casing. |
+| `npm run test:package` | Passed: isolated archive installation, 145 exports, shared React, production build, stylesheet, mouse and keyboard interaction. |
+| `npm run test:integration` | Passed: README source-copy example in a fresh Vite app, build, click, Space activation, tactile styles and mobile width. |
+| `npm run test:essentials` | Passed: interactions, all eleven galleries at 1440/768/390/320 px, axe, reduced motion and alert dismissal. The Vite server logged ResizeObserver notifications during the run; browser assertions and the final console check passed. |
+| `npx playwright test tests/seo.spec.mjs` | All four tests passed: public TXT/XML delivery, sitemap coverage, index links, canonicals and search/error directives. |
 
-Visual review covered the home page, source view, installation, compositions, and mobile layouts. Mobile navigation trapped focus and closed with Escape; tabs supported arrow keys. Checks also covered retaining edits between preview and code, validation in hidden tabs, cancellation, and settings persistence.
+The full `npm test`, all-download, primitive and legacy page suites were not rerun in this documentation audit. Older delivery reports are available in [Git history](https://github.com/gus-rlin/Duoop-UI/commits/main/VALIDATION.md); their totals and passing results must not be reused as current validation.
 
-## Fixes from that validation
+## Reproduce the maintained checks
 
-- Removed 320 px overflow and improved secondary text contrast.
-- Isolated Tabs styles so nested tabs do not affect each other.
-- Improved Select accessible names and active-option tracking, named badge semantics, and the Textarea resize target.
-- Resolved multiline imports and shared files in downloads; fixed Avatar import casing for Linux.
-- Removed duplicate code-dialog previews; included formatted implementations, explicit files, dependencies, and the license.
-- Excluded test artifacts from Vite watching and dependency discovery to avoid reloads during verification.
-
-## Reproduce the checks
+Use the Node.js range in package.json (22.18+ in the 22.x line, or 24.11+) and install Chromium:
 
 ```sh
 npm ci
 npx playwright install chromium
-npm test
-npm run test:pages
-npm run test:integration
+npm run test:docs
+npm run build
+node tests/check-imports.mjs
+npm run test:package
+npm run test:essentials
+npx playwright test tests/seo.spec.mjs
 ```
 
-For primitive and gallery checks, start `npm run dev -- --port 5176 --strictPort` in another terminal, then run:
+These are the checks run by [GitHub CI](.github/workflows/ci.yml). Package checks create an isolated consumer app, install a locally packed archive, verify public exports and shared React, then check production build, styles and interaction. They require npm access and test the local archive, not every historical registry release.
 
-```sh
-npm run test:primitives
-npm run test:a11y
-```
+For additional focused coverage:
 
-Generated evidence is stored in ignored `artifacts/`: `public-test-results.json`, `gallery-coverage.json`, `download-builds.json`, `primitive-regressions.json`, `accessibility.json`, `gallery-accessibility.json`, `standalone-pages.json`, `fresh-integration.json`, and screenshots.
+- `npm run test:integration`: create an independent Vite app from the README source-copy example; build and check pointer/keyboard interaction, styling and mobile width. Requires npm access.
+- `npm run test:essential-downloads`: download and build essential starters and variants using its own server.
+- `npm run test:navigation`: check Breadcrumb and Separator with its own server.
+- `npm run test:primitives` and `npm run test:a11y`: first start `npm run dev -- --port 5176 --strictPort` in another terminal. Some individual diagnostic scripts use fixed local addresses; inspect them before overriding TEST_URL.
 
-## Subsequent findings and CI scope
+Reports, downloaded archives and screenshots are written under ignored `artifacts/`. Use results from the current execution, since previous artifacts can remain there.
 
-On September 8, the SEO build and four SEO tests passed. An additional public test, `discover, search, deep-link, use history and copy real source`, failed because it expected the `A little more focus` switch on a home page that no longer displayed it. See [SEO.md](SEO.md). The full functional suite has therefore not been revalidated by those checks.
+## Known broader-suite gaps
 
-The GitHub CI workflow now runs the production build, import checks, essential-component browser checks, and the four SEO browser tests. Its badge reflects that scope; it does not certify the full download, primitive, or accessibility suites.
+- `npm test` runs the maintained checks relevant to the catalog plus the broader public browser and download-build suite. It stops on failure and does not include the package test. The public suite still contains expectations for removed home-page controls and the former studio/settings pages in `tests/public-catalog.spec.mjs`; its last recorded discovery failure expected the absent “A little more focus” switch. Do not describe the full suite as passing based on CI's narrower scope.
+- `npm run test:pages` still consumes both landing.zip and settings.zip and uses old studio selectors in `tests/standalone-pages.mjs`. It is a legacy regression script, not a current public-page validation command. It cannot be reproduced from today's single public page download without updating the script.
+- `tests/build-downloads.mjs` builds archives already in `artifacts/downloads/`; stale downloads can affect its totals. No current aggregate variant or full-download success count is claimed.
 
-## Deployment and limitations
+## Integration limits
 
-At the September 7 validation, hosting was not configured. The production domain is now [duoop-ui.com](https://duoop-ui.com/); see [SEO.md](SEO.md) for the subsequent deployment record. Serve `dist/` over HTTPS for clipboard access. Query-based deep links do not require route rewrites.
+The supported distribution paths are the npm ESM library, copied JSX/CSS source and runnable Vite downloads. Dedicated TypeScript declarations are not supplied. Next.js notes are integration guidance; Next.js, server rendering, every browser and every screen reader have not been separately validated.
 
-The verified distribution is JSX/CSS source copied into React 19 with Vite. No Duoop npm package, complete TypeScript declarations, or server-rendering validation is claimed. Next.js notes describe adaptations, not a completed framework integration test.
-
-Studio creation, settings, rewards, and example requests are local demonstrations that require application services in production. Remote images and map tiles retain their own terms and availability limits. Image-recovery tests use controlled responses to isolate component behavior from the CDN.
-
-Axe and keyboard checks are not an exhaustive certification across all screen readers and browsers.
+Examples require application services for production requests, authentication, persistence and uploads. Remote images and map tiles retain their own terms and availability. Axe and keyboard checks cover the tested scenarios and are not an exhaustive accessibility certification.
