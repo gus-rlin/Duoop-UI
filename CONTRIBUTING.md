@@ -17,6 +17,8 @@ Preserve the tactile style, keyboard behavior, visible focus, and reduced-motion
 
 A new component needs an implementation, CSS, gallery, public entry in `src/catalog/catalog.js`, minimal recipe in `src/catalog/recipes.js`, and matching preview. Verify that copied and downloaded sources include every local import and required dependency. Update the sitemap and `public/llms.txt` when public routes change.
 
+Export new public components from `src/index.js` as well. Run `npm run test:package` for changes to library exports, dependencies or packaging; it verifies an actual archive in a separate consumer app. Keep catalogue-only dependencies in `devDependencies`, runtime dependencies in `dependencies`, and React in `peerDependencies` and `devDependencies`.
+
 ## Verify your work
 
 ```sh

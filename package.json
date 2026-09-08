@@ -1,8 +1,7 @@
 {
   "name": "duoop-ui",
-  "homepage": "https://duoop-ui.com/",
   "version": "1.0.0",
-  "description": "Tactile React components with live previews, complete source code and integration guides.",
+  "description": "Tactile React components with plain CSS.",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
@@ -14,25 +13,28 @@
     "test:primitives": "node tests/run-primitives.mjs",
     "test:integration": "node tests/fresh-project.mjs",
     "test:pages": "node tests/standalone-pages.mjs",
-    "test:a11y": "node tests/audit-galleries.mjs"
+    "test:a11y": "node tests/audit-galleries.mjs",
+    "build:lib": "vite build --config vite.lib.config.js",
+    "prepack": "npm run build:lib",
+    "test:package": "node tests/package.mjs"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "css"
+  ],
   "author": "",
   "license": "Apache-2.0",
   "type": "module",
   "dependencies": {
-    "@fontsource-variable/dm-sans": "^5.3.0",
     "@radix-ui/react-dialog": "^1.1.23",
     "@radix-ui/react-popover": "^1.1.23",
     "@radix-ui/react-slider": "^1.4.7",
     "@radix-ui/react-tooltip": "^1.2.16",
-    "fflate": "^0.8.3",
     "gsap": "^3.15.0",
-    "highlight.js": "^11.11.1",
     "leaflet": "^1.9.4",
-    "react": "^19.2.8",
     "react-day-picker": "^9.14.0",
-    "react-dom": "^19.2.8",
     "react-dropzone": "^14.4.1"
   },
   "devDependencies": {
@@ -40,10 +42,38 @@
     "@babel/parser": "^8.0.4",
     "@playwright/test": "^1.63.0",
     "prettier": "^3.9.6",
-    "vite": "^8.2.2"
+    "vite": "^8.2.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "fflate": "^0.8.3",
+    "highlight.js": "^11.11.1"
   },
-  "private": true,
   "engines": {
     "node": "^22.18.0 || >=24.11.0"
+  },
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./styles.css": "./lib/styles.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gus-rlin/Duoop-UI.git"
+  },
+  "homepage": "https://duoop-ui.com/",
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
 }

@@ -38,7 +38,20 @@ Install [duoop-ui from npm](https://www.npmjs.com/package/duoop-ui) in your Reac
 npm i duoop-ui
 ```
 
-Component dependencies install automatically. React and React DOM are shared with your application as peer dependencies.
+To build an installable archive from a local checkout instead:
+
+```sh
+npm ci
+npm pack
+```
+
+In your React 19 application, install the generated archive (adjust the path):
+
+```sh
+npm i /path/to/Duoop-UI/duoop-ui-1.0.0.tgz
+```
+
+Both methods install the component dependencies automatically. React and React DOM are shared with your application as peer dependencies.
 
 Import the stylesheet once in your application entry, then import components by name:
 
@@ -157,6 +170,9 @@ npm run dev
 | Command | Purpose |
 | --- | --- |
 | `npm run build` | Build the static site into `dist/`. |
+| `npm run build:lib` | Build the npm library into `lib/`. |
+| `npm pack` | Build and create the installable `duoop-ui-1.0.0.tgz` archive. |
+| `npm run test:package` | Install the archive in an isolated app; verify exports, build, styling and interaction. |
 | `npm run preview` | Preview the production build. |
 | `npm test` | Build, check imports, run public browser/SEO tests, and build downloaded projects. |
 | `npm run test:primitives` | Run detailed primitive suites against a dev server on port 5176. |
@@ -169,6 +185,12 @@ Install Chromium with `npx playwright install chromium`. For a fixed dev port, r
 GitHub CI runs the production build, import checks, and SEO browser tests. See [VALIDATION.md](VALIDATION.md) for historical results and known limitations. Automated accessibility checks are not a comprehensive certification.
 
 ## Deployment
+
+### npm release
+
+Run `npm run test:package` before releasing (Chromium must be installed). Review `npm pack --dry-run`, verify that you control the npm package name, and sign in with `npm login`. Set a new, unpublished release version with `npm version <version>`, then run `npm publish --access public`. The `prepack` hook rebuilds the library for packing and publishing. Registry publication is a separate maintainer action; this repository does not publish automatically.
+
+### Documentation site
 
 The live site is on [Cloudflare Pages](https://duoop-ui.com/). Deploy `dist/` over HTTPS for clipboard access. Query-based deep links do not need route rewrites. Preserve public TXT/XML files and allow required remote demo assets in any CSP. See [SEO.md](SEO.md).
 

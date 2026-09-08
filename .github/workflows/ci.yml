@@ -21,6 +21,7 @@ jobs:
       - run: npm run build
       - run: node tests/check-imports.mjs
       - run: npx playwright install --with-deps chromium
+      - run: npm run test:package
       - run: npm run test:essentials
       - run: npx playwright test tests/seo.spec.mjs
       - name: Upload failure reports
