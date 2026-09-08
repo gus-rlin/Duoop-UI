@@ -1,6 +1,6 @@
 # Historical library validation — September 7, 2026
 
-The current catalogue, as of September 8, 2026, contains **46 components in seven categories**. See the [current README](README.md) and [catalogue summary](https://duoop-ui.pages.dev/llms.txt). The component and variant totals below describe an older test snapshot, not the current collection. A current total variant count is not published.
+The current catalogue, as of September 8, 2026, contains **46 components in seven categories**. See the [current README](README.md) and [catalogue summary](https://duoop-ui.com/llms.txt). The component and variant totals below describe an older test snapshot, not the current collection. A current total variant count is not published.
 
 Historical checks performed on **September 7, 2026**, with Node.js 24.18.0, React 19, Vite 8.2.2, and Chromium through Playwright 1.63. These results describe that delivery snapshot, not a guarantee that every subsequent revision passes the same checks.
 
@@ -58,7 +58,7 @@ The GitHub CI workflow now runs the production build, import checks, essential-c
 
 ## Deployment and limitations
 
-At the September 7 validation, hosting was not configured. The production domain is now [duoop-ui.pages.dev](https://duoop-ui.pages.dev/); see [SEO.md](SEO.md) for the subsequent deployment record. Serve `dist/` over HTTPS for clipboard access. Query-based deep links do not require route rewrites.
+At the September 7 validation, hosting was not configured. The production domain is now [duoop-ui.com](https://duoop-ui.com/); see [SEO.md](SEO.md) for the subsequent deployment record. Serve `dist/` over HTTPS for clipboard access. Query-based deep links do not require route rewrites.
 
 The verified distribution is JSX/CSS source copied into React 19 with Vite. No Duoop npm package, complete TypeScript declarations, or server-rendering validation is claimed. Next.js notes describe adaptations, not a completed framework integration test.
 
