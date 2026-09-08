@@ -16,7 +16,13 @@ The alternate Cloudflare hosting address is not a canonical documentation URL. T
 - The sitemap contains **58 URLs**: home, catalog, installation, examples index, one outdoor adventure landing-page example, 7 categories, and 46 components. Source-only SettingsPage.jsx has no public example route. Exclude searches, alternate tabs, preview domains and invented modification dates.
 - `public/llms.txt` is a current Markdown index of installation guidance, all catalog components and the public example. It is optional agent-facing documentation, not an indexing guarantee. Keep its inventory aligned with [catalog.js](src/catalog/catalog.js).
 
-The site is client-rendered. Page canonicals and search directives require JavaScript; TXT/XML files do not. Local checks cannot establish search-engine indexing.
+The interactive site is client-rendered. Vite also generates a visible HTML summary from `entries` and `categories` in catalog.js: the current count, npm installation, all component links and the public page example. The initial response and description metadata therefore expose current facts without JavaScript. React replaces the summary when the app loads. This summary is the same on query-based routes; it is not a full prerender of each component page. Page canonicals and search directives still require JavaScript. Local checks cannot establish search-engine indexing.
+
+## Retrieval freshness
+
+On September 8, 2026, an external web-reading tool returned the old September 7 README snapshot for the GitHub repository homepage, while direct HTTP retrieval of that same URL returned the corrected README. In the same tool, the [direct README page](https://github.com/gus-rlin/Duoop-UI/blob/main/README.md) and [raw README](https://raw.githubusercontent.com/gus-rlin/Duoop-UI/main/README.md) returned the current collection. This establishes a retrieval discrepancy; it does not identify the internal cache or prove every AI provider uses the same copy.
+
+When investigating a conflicting answer, compare the exact cited URL through the affected reader and a direct HTTP request. Do not infer freshness from a “crawled today” label alone. The public HTML summary and [plain-text index](https://duoop-ui.com/llms.txt) give readers current facts on the production domain, but deploying them cannot purge third-party retrieval caches or rewrite existing conversations.
 
 ## Publication checks
 

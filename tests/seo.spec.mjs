@@ -2,6 +2,33 @@ import { test, expect } from '@playwright/test';
 import { categories, entries } from '../src/catalog/catalog.js';
 import { siteOrigin } from '../src/catalog/seo.js';
 
+test('initial HTML exposes the current catalog and npm installation without JavaScript', async ({ browser, request, page }) => {
+  const response = await request.get('/');
+  const html = await response.text();
+  expect(html).toContain(`${entries.length} components across ${categories.length} categories`);
+  expect(html).toContain('npm i duoop-ui');
+  expect(html).not.toContain('%DUOOP_CATALOG_DESCRIPTION%');
+  expect(html).not.toContain('<!--duoop-catalog-summary-->');
+
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  try {
+    const staticPage = await context.newPage();
+    await staticPage.goto(response.url());
+    const summary = staticPage.locator('[data-catalog-summary]');
+    await expect(summary).toBeVisible();
+    const links = await summary.locator('a[href^="?component="]').evaluateAll(nodes => nodes.map(node => node.getAttribute('href')));
+    expect(links.sort()).toEqual(entries.map(entry => `?component=${entry.id}`).sort());
+    await expect(staticPage.locator('meta[name="description"]')).toHaveAttribute('content', new RegExp(`${entries.length} React components`));
+    await expect(summary.getByRole('link', { name: 'README', exact: true })).toHaveAttribute('href', 'https://github.com/gus-rlin/Duoop-UI/blob/main/README.md');
+  } finally {
+    await context.close();
+  }
+
+  await page.goto('/?page=components');
+  await expect(page.locator('.catalog-card')).toHaveCount(entries.length);
+  await expect(page.locator('[data-catalog-summary]')).toHaveCount(0);
+});
+
 test('SEO files are served as text and XML, and cover the public catalogue', async ({ page, request }) => {
   const robots = await request.get('/robots.txt');
   expect(robots.status()).toBe(200);

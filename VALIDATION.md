@@ -25,6 +25,10 @@ Local results from this audit:
 
 The full `npm test`, all-download, primitive and legacy page suites were not rerun in this documentation audit. Older delivery reports are available in [Git history](https://github.com/gus-rlin/Duoop-UI/commits/main/VALIDATION.md); their totals and passing results must not be reused as current validation.
 
+## HTML retrieval follow-up — September 8, 2026
+
+The external web reader reproduced the stale GitHub homepage snapshot while direct HTTP and the direct README URL returned current content. Before this follow-up, the site's initial HTML contained no component inventory and directed readers without JavaScript to GitHub. Vite now generates the inventory and npm instructions into the HTML from catalog metadata. Documentation checks, the production build, import checks and all five SEO tests passed in an isolated checkout. The added browser test disables JavaScript, verifies every component link and installation facts, then verifies that React replaces the summary with the interactive catalog. This is a delivery correction, not a guarantee that external readers have refreshed their stored copies.
+
 ## Reproduce the maintained checks
 
 Use the Node.js range in package.json (22.18+ in the 22.x line, or 24.11+) and install Chromium:
